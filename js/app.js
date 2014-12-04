@@ -4,9 +4,10 @@
     
     document.addEventListener('deviceready', function () {	
         window.location.replace("http://swbsocial.infotec.com.mx/spribo/landing.html");  
-        document.addEventListener("backbutton", onBackKeyDown, false);
+        
     }, false);
     
+    document.addEventListener("backbutton", onBackKeyDown, false);
     
      // Handle the back button
     //
