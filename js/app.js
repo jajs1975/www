@@ -4,8 +4,16 @@
     
     document.addEventListener('deviceready', function () {	
         window.location.replace("http://swbsocial.infotec.com.mx/spribo/landing.html");  
+        document.addEventListener("backbutton", onBackKeyDown, false);
     }, false);
     
+    
+     // Handle the back button
+    //
+    function onBackKeyDown() {
+        alert("en onBackKeyDown");
+    }
+
    
    /*
     //Handler for phonegap deviceready event
