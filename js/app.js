@@ -3,6 +3,7 @@
     /* --------------------------------- Event Registration -------------------------------- */
     
     document.addEventListener('deviceready', function () {	
+        alert("entra a onDeviceReady....");
         document.addEventListener("backbutton", onBackKeyDown, false);
         document.addEventListener("backbutton", this.onBackKeyDown, false);
         document.addEventListener("backbutton", function (e) {
