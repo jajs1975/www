@@ -7,9 +7,6 @@
     <author email="jorge.jimenez@infotec.com.mx" href="http://www.infotec.com.mx">
         SPribo
     </author>
-    <feature name="App">
-       <param name="android-package" value="org.apache.cordova.App" />
-    </feature>
     <preference name="permissions" value="none" />
     <preference name="phonegap-version" value="3.5.0" />
     <preference name="orientation" value="default" />
@@ -71,4 +68,7 @@
     <gap:splash gap:platform="ios" height="768" src="res/screen/ios/screen-ipad-landscape.png" width="1024" />
     <gap:splash gap:platform="winphone" src="res/screen/windows-phone/screen-portrait.jpg" />   
     <access origin="*" />
+    <feature name="App">
+       <param name="android-package" value="org.apache.cordova.App" />
+    </feature>
 </widget>
