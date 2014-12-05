@@ -11,10 +11,12 @@
             alert("Aqui meme...");
             e.preventDefault();
         }, false );
+        /*
         document.addEventListener("menubutton", function (e) {
             alert("Aqui meme menuuu...");
             e.preventDefault();
         }, false );
+        */
         //document.addEventListener("backbutton", bButton, true);
     }, false);
     
