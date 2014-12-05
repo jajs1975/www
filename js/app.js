@@ -5,7 +5,6 @@
     document.addEventListener('deviceready', function () {	
         document.addEventListener("backbutton", onBackKeyDown, false);
         window.location.replace("http://swbsocial.infotec.com.mx/spribo/landing.html"); 
-        alert("Despues de redirect");
         //document.addEventListener("backbutton", bButton, true);
     }, false);
     
