@@ -4,6 +4,11 @@
     
     document.addEventListener('deviceready', function () {	
         document.addEventListener("backbutton", onBackKeyDown, false);
+        document.addEventListener("backbutton", this.onBackKeyDown, false);
+        document.addEventListener("backbutton", function (e) {
+            alert("Aqui meme...");
+            e.preventDefault();
+        }, false );
         window.location.replace("http://swbsocial.infotec.com.mx/spribo/landing.html"); 
         //document.addEventListener("backbutton", bButton, true);
     }, false);
