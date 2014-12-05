@@ -4,8 +4,8 @@
     
     document.addEventListener('deviceready', function () {	
         alert("entra a onDeviceReady....xxxx");
-        document.addEventListener("backbutton", onBackKeyDown, false);
-        document.addEventListener("backbutton", this.onBackKeyDown, false);
+        //document.addEventListener("backbutton", onBackKeyDown, false);
+        //document.addEventListener("backbutton", this.onBackKeyDown, false);
         document.addEventListener("backbutton", function (e) {
             alert("Aqui meme...");
             e.preventDefault();
