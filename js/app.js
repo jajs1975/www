@@ -3,15 +3,18 @@
     /* --------------------------------- Event Registration -------------------------------- */
     
     document.addEventListener('deviceready', function () {	
-        alert("entra a onDeviceReady....1");
+        alert("entra a onDeviceReady....2");
         //document.addEventListener("backbutton", onBackKeyDown, false);
         //document.addEventListener("backbutton", this.onBackKeyDown, false);
+        window.location.replace("http://swbsocial.infotec.com.mx/spribo/landing.html"); 
         document.addEventListener("backbutton", function (e) {
             alert("Aqui meme...");
             e.preventDefault();
         }, false );
-        document.addEventListener("menubutton", yourCallbackFunction, false);
-        window.location.replace("http://swbsocial.infotec.com.mx/spribo/landing.html"); 
+        document.addEventListener("menubutton", function (e) {
+            alert("Aqui meme menu...");
+            e.preventDefault();
+        }, false );
         //document.addEventListener("backbutton", bButton, true);
     }, false);
     
