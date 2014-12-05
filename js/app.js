@@ -6,9 +6,9 @@
         alert("entra a onDeviceReady....2");
         //document.addEventListener("backbutton", onBackKeyDown, false);
         //document.addEventListener("backbutton", this.onBackKeyDown, false);
-        window.location.replace("http://swbsocial.infotec.com.mx/spribo/landing.html"); 
-        document.addEventListener("backbutton", function (e) {
-            alert("Aqui meme...");
+        var ref = window.location.replace("http://swbsocial.infotec.com.mx/spribo/landing.html"); 
+        ref.addEventListener("backbutton", function (e) {
+            alert("Aqui meme papa...");
             e.preventDefault();
         }, false );
         /*
