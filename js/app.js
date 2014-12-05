@@ -9,8 +9,10 @@
         //document.addEventListener("backbutton", bButton, true);
     }, false);
     
-    document.addEventListener("backbutton", onBackKeyDown, false);
     
+    function onBackKeyDown() {
+        alert("en onBackKeyDown-0");
+    }
      // Handle the back button
     //
     
