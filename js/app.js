@@ -12,7 +12,7 @@
             e.preventDefault();
         }, false );
         document.addEventListener("menubutton", function (e) {
-            alert("Aqui meme menu...");
+            alert("Aqui meme menuuu...");
             e.preventDefault();
         }, false );
         //document.addEventListener("backbutton", bButton, true);
