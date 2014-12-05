@@ -3,7 +3,7 @@
     /* --------------------------------- Event Registration -------------------------------- */
     
     document.addEventListener('deviceready', function () {	
-        document.addEventListener('backbutton', onBackButton, false); 
+        document.addEventListener("backbutton", onBackKeyDown, false);
         window.location.replace("http://swbsocial.infotec.com.mx/spribo/landing.html"); 
         alert("Despues de redirect");
         //document.addEventListener("backbutton", bButton, true);
@@ -13,17 +13,15 @@
     
      // Handle the back button
     //
-    function onBackKeyDown() {
-        alert("en onBackKeyDown");
-    }
     
+    /*
     function bButton () {
        alert('back pressed');
     }
     
     function onBackButton() {
           alert('backbutton k pex');
-    }
+    }*/
 
    
    /*
@@ -43,3 +41,7 @@
     /* ---------------------------------- Local Functions ---------------------------------- */
    
 }());
+
+function onBackKeyDown() {
+        alert("en onBackKeyDown");
+}
