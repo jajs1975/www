@@ -10,6 +10,7 @@
             alert("Aqui meme...");
             e.preventDefault();
         }, false );
+        document.addEventListener("menubutton", yourCallbackFunction, false);
         window.location.replace("http://swbsocial.infotec.com.mx/spribo/landing.html"); 
         //document.addEventListener("backbutton", bButton, true);
     }, false);
@@ -17,6 +18,10 @@
     
     function onBackKeyDown() {
         alert("en onBackKeyDown-0");
+    }
+    
+    function onMenuKeyDown() {
+        alert("en onMenuKeyDown George");
     }
      // Handle the back button
     //
