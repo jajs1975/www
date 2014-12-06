@@ -6,18 +6,25 @@
         alert("entra a onDeviceReady....2");
         //document.addEventListener("backbutton", onBackKeyDown, false);
         //document.addEventListener("backbutton", this.onBackKeyDown, false);
+        /*
         var ref = window.location.replace("http://swbsocial.infotec.com.mx/spribo/landing.html"); 
         ref.addEventListener("backbutton", function (e) {
             alert("Aqui meme papa...");
             e.preventDefault();
         }, false );
+        */
         /*
         document.addEventListener("menubutton", function (e) {
             alert("Aqui meme menuuu...");
             e.preventDefault();
         }, false );
         */
-        //document.addEventListener("backbutton", bButton, true);
+        window.new_window = window.open("http://swbsocial.infotec.com.mx/spribo/landing.html", '_blank', 'location=no');
+
+        window.new_window.addEventListener("exit", function () {
+            alert("Aqui meroles...");
+            window.new_window.close();
+        });
     }, false);
     
     
