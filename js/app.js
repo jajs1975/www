@@ -26,7 +26,7 @@
             window.new_window.close();
         });
         
-        document.addEventListener("menubutton", function (e) {
+        window.new_window.addEventListener("menubutton", function (e) {
             alert("Aqui meme menuuu...");
             e.preventDefault();
         }, false );
