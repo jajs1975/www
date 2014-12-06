@@ -21,10 +21,15 @@
         */
         window.new_window = window.open("http://swbsocial.infotec.com.mx/spribo/landing.html", '_blank', 'location=no');
 
-        window.new_window.addEventListener("exit", function () {
+        window.new_window.addEventListener("backbutton", function () {
             alert("Aqui meroles...");
             window.new_window.close();
         });
+        
+        document.addEventListener("menubutton", function (e) {
+            alert("Aqui meme menuuu...");
+            e.preventDefault();
+        }, false );
     }, false);
     
     
