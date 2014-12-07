@@ -37,55 +37,33 @@
               $('.objTypes').html(objTypesTpl(response));
          });
     
-    /* ---------------------------------- Local Functions ---------------------------------- */
+    /* ---------------------------------- Local Functions PhoneGap---------------------------------- */
 	
      //var app = document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1;
      //if (app) {  // PhoneGap application
      if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|IEMobile)/)) {
-        alert("entra a PhoneGap application:"+document.URL);
-	document.addEventListener('deviceready', function () {	
-        alert("entra a onDeviceReady....Local");
-        //document.addEventListener("backbutton", onBackKeyDown, false);
-        //document.addEventListener("backbutton", this.onBackKeyDown, false);
-        /*
-        var ref = window.location.replace("http://swbsocial.infotec.com.mx/spribo/landing.html"); 
-        ref.addEventListener("backbutton", function (e) {
-            alert("Aqui meme papa...");
-            e.preventDefault();
-        }, false );
-        */
-       
-        document.addEventListener("offline", function(){ alert("You're offline") }, false);
+        document.addEventListener('deviceready', function () {	
+        //alert("entra a onDeviceReady....Local");
+		FastClick.attach(document.body);
+		
+        document.addEventListener("offline", function(){ jAlert("<pre align=\"center\"><strong>Sin Conexión a Internet. Esta aplicación requiere tener conexión a Internet.</strong></pre>") }, false);
         
-        document.addEventListener("online", function(){ alert("You're online") }, false);
+        document.addEventListener("online", function(){ jAlert("<pre align=\"center\"><strong>Ahora usted se encuentra conectado a Internet.</strong></pre>") }, false);
         
         document.addEventListener("backbutton", function (e) {
-            alert("Aqui meme backbutton...");
+            alert("Pulsaron backbutton...");
             e.preventDefault();
         }, false );
         
 		document.addEventListener("menubutton", function (e) {
-            alert("Aqui meme menuuu...");
+            alert("Pulsaron menu button");
             e.preventDefault();
-        }, false );
-		/*
-        window.new_window = window.open("http://swbsocial.infotec.com.mx/spribo/landing.html", '_blank', 'location=no');
-
-        window.new_window.addEventListener("backbutton", function () {
-            alert("Aqui meroles...");
-            window.new_window.close();
-        });
-        
-        window.new_window.addEventListener("menubutton", function (e) {
-            alert("Aqui meme menuuu...");
-            e.preventDefault();
-        }, false );
-		*/
+        }, false );		
     }, false);
     
   }else {
       //WebPage application-->do nothing
-      alert("entra a WebPage application:"+document.URL);
+      //alert("entra a WebPage application:"+document.URL);
   }
 	
     /* --------------------------------- Authentication Managment --------------------------- */
