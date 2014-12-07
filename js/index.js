@@ -77,13 +77,6 @@
     }, false);
     
     
-    function onBackKeyDown() {
-        alert("en onBackKeyDown-0");
-    }
-    
-    function onMenuKeyDown() {
-        alert("en onMenuKeyDown George");
-    }
 	
     /* --------------------------------- Authentication Managment --------------------------- */
 }());
