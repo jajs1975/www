@@ -39,8 +39,9 @@
     
     /* ---------------------------------- Local Functions ---------------------------------- */
 	
-     var app = document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1 && document.URL.indexOf( 'file://' );
-     if (app) {  // PhoneGap application
+     //var app = document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1;
+     //if (app) {  // PhoneGap application
+     if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|IEMobile)/)) {
         alert("entra a PhoneGap application:"+document.URL);
 	document.addEventListener('deviceready', function () {	
         alert("entra a onDeviceReady....Local");
