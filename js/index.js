@@ -46,9 +46,9 @@
         //alert("entra a onDeviceReady....Local");
 		FastClick.attach(document.body);
 		
-        document.addEventListener("offline", function(){ jAlert("<pre align=\"center\"><strong>Sin Conexión a Internet. Esta aplicación requiere tener conexión a Internet.</strong></pre>") }, false);
+        document.addEventListener("offline", function(){ jAlert("<pre align=\"center\"><strong>Mensaje Spribo</strong></pre>","Esta aplicacion requiere tener conexion a Internet."); }, false);
         
-        document.addEventListener("online", function(){ jAlert("<pre align=\"center\"><strong>Ahora usted se encuentra conectado a Internet.</strong></pre>") }, false);
+        document.addEventListener("online", function(){ jAlert("<pre align=\"center\"><strong>Mensaje Spribo</strong></pre>","Ahora se encuentra conectado a Internet."); }, false);
         
         document.addEventListener("backbutton", function (e) {
             alert("Pulsaron backbutton...");
