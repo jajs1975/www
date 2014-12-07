@@ -53,6 +53,10 @@
             e.preventDefault();
         }, false );
         */
+       
+        document.addEventListener("offline", function(){ alert("You're offline") }, false);
+        
+        document.addEventListener("online", function(){ alert("You're online") }, false);
         
         document.addEventListener("backbutton", function (e) {
             alert("Aqui meme backbutton...");
