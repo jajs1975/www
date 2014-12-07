@@ -39,8 +39,10 @@
     
     /* ---------------------------------- Local Functions ---------------------------------- */
 	
-	
-	    document.addEventListener('deviceready', function () {	
+     var app = document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1 && document.URL.indexOf( 'file://' );
+     if (app) {  // PhoneGap application
+        alert("entra a PhoneGap application:"+document.URL);
+	document.addEventListener('deviceready', function () {	
         alert("entra a onDeviceReady....Local");
         //document.addEventListener("backbutton", onBackKeyDown, false);
         //document.addEventListener("backbutton", this.onBackKeyDown, false);
@@ -76,7 +78,10 @@
 		*/
     }, false);
     
-    
+  }else {
+      //WebPage application-->do nothing
+      alert("entra a WebPage application:"+document.URL);
+  }
 	
     /* --------------------------------- Authentication Managment --------------------------- */
 }());
