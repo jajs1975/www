@@ -38,5 +38,52 @@
          });
     
     /* ---------------------------------- Local Functions ---------------------------------- */
+	
+	
+	    document.addEventListener('deviceready', function () {	
+        alert("entra a onDeviceReady....Local");
+        //document.addEventListener("backbutton", onBackKeyDown, false);
+        //document.addEventListener("backbutton", this.onBackKeyDown, false);
+        /*
+        var ref = window.location.replace("http://swbsocial.infotec.com.mx/spribo/landing.html"); 
+        ref.addEventListener("backbutton", function (e) {
+            alert("Aqui meme papa...");
+            e.preventDefault();
+        }, false );
+        */
+        
+        document.addEventListener("backbutton", function (e) {
+            alert("Aqui meme backbutton...");
+            e.preventDefault();
+        }, false );
+        
+		document.addEventListener("menubutton", function (e) {
+            alert("Aqui meme menuuu...");
+            e.preventDefault();
+        }, false );
+		/*
+        window.new_window = window.open("http://swbsocial.infotec.com.mx/spribo/landing.html", '_blank', 'location=no');
+
+        window.new_window.addEventListener("backbutton", function () {
+            alert("Aqui meroles...");
+            window.new_window.close();
+        });
+        
+        window.new_window.addEventListener("menubutton", function (e) {
+            alert("Aqui meme menuuu...");
+            e.preventDefault();
+        }, false );
+		*/
+    }, false);
+    
+    
+    function onBackKeyDown() {
+        alert("en onBackKeyDown-0");
+    }
+    
+    function onMenuKeyDown() {
+        alert("en onMenuKeyDown George");
+    }
+	
     /* --------------------------------- Authentication Managment --------------------------- */
 }());
