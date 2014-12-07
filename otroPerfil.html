@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/jquery.mobile-1.4.4.min.css">
+<script src="js/jquery-1.11.0.js"></script>
+<script src="js/jquery.mobile-1.4.4.min.js"></script>
+
+<!--<link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">-->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<script src="js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="css/spribo.css">
+
+<style>
+
+</style>
+</head>
+<body>
+
+<div data-role="page" id="pageone" class="ui-responsive-panel">
+	<div data-role="panel" data-position-fixed="true" id="myPanel" data-dismissible="false" data-display="reveal" data-position="left">
+		<div data-role="listview" class="nav-search">
+            <div class="row">
+					<div class="col-xs-12 text-center">
+						<p><img src="img/ricardo.png" class="img-profile"/></p>
+					</div>
+			</div><!-- /row-->
+			
+			<div class="row" id="side-menu">
+				<ul class="nav nav-pills nav-stacked">
+					<li><a href="perfil-detalle.html" data-ajax="false"><span class="ui-icon-user ui-btn-icon-left text-muted side-menu-item">&nbsp;Ricardo Alcalá</span></a><hr></li>
+					<li><a href="contactos.html" data-ajax="false"><span class="ui-icon-contacts ui-btn-icon-left text-muted side-menu-item">&nbsp;Contactos</span></a><hr></li>
+					<li><a href="pois.html" data-ajax="false"><span class="ui-icon-poi ui-btn-icon-left text-muted side-menu-item">&nbsp;Puntos de interés</span></a><hr></li>
+					<li><a href="newsFeed.html" data-ajax="false"><span class="ui-icon-poi ui-btn-icon-left text-muted side-menu-item">&nbsp;Newsfeed</span></a><hr></li>
+				</ul>
+			</div><!-- /menu-->
+		</div><!-- /nav-search-->
+	</div><!-- /myPanel -->
+	
+	<div data-role="header" data-position="fixed" data-tap-toggle="false">
+		<a href="#myPanel" class="ui-icon-alt" data-icon="bars" data-iconpos="notext" data-inline="true" onclick="this.blur();">Menu</a>
+		<h1 class="page-title">Smart City POIS</h1>
+		<a href="acercaDe.html" class="ui-icon-alt" data-icon="info" data-iconpos="notext" data-inline="true" rel="external" data-ajax="false">Acerca de</a>
+	</div><!-- /header -->
+
+<div data-role="main" class="ui-content" id="maincontent">
+	<div class="row">
+		<div class="col-xs-12 text-center">
+			<p>
+				<img class="img-thumbnail" style="max-height:450px" src="img/mkt1.jpg" />
+			<p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-4 col-xs-offset-4 text-center iconprofile">
+			<img style="max-height:90px; border: 2px solid silver;" class="img-responsive img-circle img-responsive-rounded" src="img/mktsmall.jpg" />
+		</div>
+	</div>
+	
+	
+	<!-- Actividad reciente e imagen del usuario y desc de la actividad-->
+     
+	<div class="row">
+		<div class="col-xs-4 text-center col-xs-offset-2" style="margin-top:-30px">
+			<span><img class="img-circle" src="img/icon1.png" width="40px" /></span>
+		</div>
+		<div class="col-xs-4 text-center " style="margin-top:-30px">
+			<span><img class="img-circle" src="img/icon2.png" width="40px" /></span>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12 text-center ">
+			<br><span class="userbg">&nbsp;&nbsp;Actividad Reciente&nbsp;&nbsp;</span>
+		</div>
+	</div>
+	
+	<br><br>
+	
+	<div class="row"><!--imagen del frente-->
+		<div  class="col-xs-3 text-right" style="padding-right: 1px;">
+			<div class="row">
+				<div class="col-xs-9 text-right col-xs-offset-3" style="padding-right: 1px;">
+					<img style="max-height:80px; background-color:transparent; border:0px;" class="img-responsive img-circle img-responsive-rounded" src="img/mktsmall.jpg" />
+				</div>
+			</div>
+		</div>
+		
+		<div class="col-xs-9 text-left">
+			<span class="objectName">Samantha Pérez</span>
+			<span>es ahora contacto de</span> <span class="objectName">Enrique Domínguez</span>
+		</div>
+	</div>
+	
+	<!--imagen del otro usuario u objeto que representa la actividad-->
+	<div class="row" style="margin-top:-20px;">
+		<div  class="col-xs-3 text-left" style="padding-right: 1px;">
+		</div>
+		<div class="col-xs-8 text-left">
+			<div class="row">
+				<div class="col-xs-3 text-left" style="padding-left: 1px;">
+					<img style="max-height:70px; background-color:transparent; border:0px;" class="img-responsive img-circle img-responsive-rounded" src="img/enrique.png" />
+				</div>
+				<div class="col-xs-9 text-right">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12 text-right">
+					<span class="ui-icon-clock ui-btn-icon-left text-muted" style="position:relative; font-size:12px;" >Hace 22 horas</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!--comment icon-->
+	<div class="row" style="margin-top:-20px;">
+		<div  class="col-xs-3" style="padding-right: 1px;">
+		</div>
+		<div class="col-xs-8 text-left">
+			<div class="row">
+				<span class="ui-icon-comment ui-btn-icon-left text-muted objectName" style="position:relative; font-size:12px; padding-top: 3px;">Comentar</span>
+			</div>
+		</div>
+	</div>
+	
+	
+	<hr>
+	
+	
+	<div class="row"><!--imagen del frente-->
+		<div  class="col-xs-3 text-right" style="padding-right: 1px;">
+			<div class="row">
+				<div class="col-xs-9 text-right col-xs-offset-3" style="padding-right: 1px;">
+					<img style="max-height:80px; background-color:transparent; border:0px;" class="img-responsive img-circle img-responsive-rounded" src="img/mktsmall.jpg" />
+				</div>
+			</div>
+		</div>
+		
+		<div class="col-xs-8 text-left">
+			<span class="objectName">Samantha Pérez</span>
+			<span>cambió su imagen de perfil</span>
+		</div>
+	</div>
+	
+	
+	<!--imagen del otro usuario u objeto que representa la actividad-->
+	<div class="row" style="margin-top:-20px;">
+		<div  class="col-xs-3 text-left" style="padding-right: 1px;">
+		</div>
+		<div class="col-xs-8 text-left">
+			<div class="row">
+				<div class="col-xs-12 text-left">
+					<img style=" background-color:transparent; border:0px;" class="img-thumbnail" src="img/mkt.jpg" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12 text-right">
+					<span class="ui-icon-clock ui-btn-icon-left text-muted" style="position:relative; font-size:12px;">Hace 3 días</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!--comment icon-->
+	<div class="row" style="margin-top:-20px;">
+		<div  class="col-xs-3" style="padding-right: 1px;">
+		</div>
+		<div class="col-xs-8 text-left">
+			<div class="row">
+				<span class="ui-icon-comment ui-btn-icon-left text-muted objectName" style="position:relative; font-size:12px; padding-top: 3px;">Comentar</span>
+			</div>
+		</div>
+	</div>
+</div> 
+
+<div data-role="footer" data-position="fixed" data-tap-toggle="false" class="ui-bar">
+<a href="#myPanel" class="ui-icon-alt footeranchor" data-icon="home" data-iconpos="notext" data-inline="true">Menu</a>
+</div><!-- /footer -->
+
+</div>
+</body>
+</html>
+
+<script>
+$(document).ready(function() {
+	$("#maincontent").swipeleft(function() {
+		console.log('swipeleft');
+		$( "#myPanel" ).panel( "close" );
+	});  
+	$("#maincontent").swiperight(function() {
+	  console.log('swiperight');
+	  $( "#myPanel" ).panel( "open" );
+	});  
+		
+	   
+});
+	
+	/*$(document).on('pagebeforeshow', '#pageone', function(){       
+    $( "#myPanel" ).panel( "open");
+});*/
+
+window.onresize = function (event) {
+	if (window.innerWidth >= 768) {
+		window.setTimeout(openPanel, 1);
+	}
+	if (window.innerWidth < 768) {
+		window.setTimeout(closePanel, 1);
+	}
+};
+
+function closePanel() {
+	$("#myPanel").panel("close");
+}
+function openPanel() {
+	$("#myPanel").panel("open");
+}
+
+$( "#myPanel" ).on( "panelcreate", function( event, ui ) {
+	if (window.innerWidth >= 768) {
+		openPanel();
+	}
+	if (window.innerWidth < 768) {
+		closePanel();
+	}
+});
+</script>

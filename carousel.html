@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+<script src="js/jquery-1.11.0.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="jquery/jquery.mobile.custom.js"></script>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+</head>
+
+<style>
+.carousel-inner .active.left { left: -33.33%; }
+.carousel-inner .next        { left:  33.33%; }
+.carousel-inner .prev		 { left: -33.33%; }
+.carousel-control 			 { width:  4%; }
+.carousel-control.left,.carousel-control.right {margin-left:15px;background-image:none;}
+</style>
+
+<body>
+<div class="col-md-12 text-center"><h3>Bootstrap 3 Multiple Slide Carousel</h3></div>
+<div class="col-md-6 col-md-offset-3">
+<div class="carousel slide" id="myCarousel">
+  <div class="carousel-inner">
+    <div class="item active">
+      <div class="col-xs-4"><a href="#"><img src="http://placehold.it/500/e499e4/fff&amp;text=1" class="img-responsive"></a></div>
+    </div>
+    <div class="item">
+      <div class="col-xs-4"><a href="#"><img src="http://placehold.it/500/e477e4/fff&amp;text=2" class="img-responsive"></a></div>
+    </div>
+    <div class="item">
+      <div class="col-xs-4"><a href="#"><img src="http://placehold.it/500/eeeeee&amp;text=3" class="img-responsive"></a></div>
+    </div>
+    <div class="item">
+      <div class="col-xs-4"><a href="#"><img src="http://placehold.it/500/f4f4f4&amp;text=4" class="img-responsive"></a></div>
+    </div>
+    <div class="item">
+      <div class="col-xs-4"><a href="#"><img src="http://placehold.it/500/f566f5/333&amp;text=5" class="img-responsive"></a></div>
+    </div>
+    <div class="item">
+      <div class="col-xs-4"><a href="#"><img src="http://placehold.it/500/f477f4/fff&amp;text=6" class="img-responsive"></a></div>
+    </div>
+    <div class="item">
+      <div class="col-xs-4"><a href="#"><img src="http://placehold.it/500/eeeeee&amp;text=7" class="img-responsive"></a></div>
+    </div>
+    <div class="item">
+      <div class="col-xs-4"><a href="#"><img src="http://placehold.it/500/fcfcfc/333&amp;text=8" class="img-responsive"></a></div>
+    </div>
+  </div>
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
+</div>
+</div>
+</body>
+<script type="text/javascript">
+	$('#myCarousel').carousel({
+	  interval: 4000
+	})
+
+	$('.carousel .item').each(function(){
+		console.log('calling');
+	  var next = $(this).next();
+	  if (!next.length) {
+		next = $(this).siblings(':first');
+	  }
+	  next.children(':first-child').clone().appendTo($(this));
+	  
+	  for (var i=0;i<1;i++) {
+		next=next.next();
+		if (!next.length) {
+			next = $(this).siblings(':first');
+		}
+		
+		next.children(':first-child').clone().appendTo($(this));
+	  }
+	});
+	
+	$(document).ready(function() {
+	   $("#myCarousel").swiperight(function() {
+		  $(this).carousel('prev');
+		});
+	   $("#myCarousel").swipeleft(function() {
+		  $(this).carousel('next');
+	   });
+	});
+</script>
+</script>
+</html>
