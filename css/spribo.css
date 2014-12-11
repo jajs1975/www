@@ -123,6 +123,19 @@ font-weight:100 !important;
 
 }
 
+.ui-icon-info:after {
+	background-repeat: no-repeat;
+	background-image: url("../img/i.png");
+	background-color: #FFF;
+
+}
+.ui-icon-carat-l:after {
+	background-repeat: no-repeat;
+	background-image: url("../img/back.png");
+	background-color: #FFF;
+
+}
+
 .ui-icon-poi:after {
 	//background-repeat: no-repeat;
 	//background-image: url("../img/puntosdeinteres_icon@2x.png");
