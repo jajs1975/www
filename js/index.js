@@ -37,34 +37,6 @@
               $('.objTypes').html(objTypesTpl(response));
          });
     
-    /* ---------------------------------- Local Functions PhoneGap---------------------------------- */
-	
-     //var app = document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1;
-     //if (app) {  // PhoneGap application
-     if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|IEMobile)/)) {
-        document.addEventListener('deviceready', function () {	
-        //alert("entra a onDeviceReady....Local");
-		FastClick.attach(document.body);
-		
-        document.addEventListener("offline", function(){ jAlert("Esta aplicacion requiere contar con conexion a Internet.","Mensaje Spribo"); }, false);
-        
-        document.addEventListener("online", function(){ jAlert("Ahora se encuentra conectado a Internet","Mensaje Spribo"); }, false);
-        
-        document.addEventListener("backbutton", function (e) {
-            alert("Pulsaron backbutton...");
-            e.preventDefault();
-        }, false );
-        
-		document.addEventListener("menubutton", function (e) {
-            alert("Pulsaron menu button");
-            e.preventDefault();
-        }, false );		
-    }, false);
-    
-  }else {
-      //WebPage application-->do nothing
-      //alert("entra a WebPage application:"+document.URL);
-  }
-	
+    /* ---------------------------------- Local Functions ---------------------------------- */
     /* --------------------------------- Authentication Managment --------------------------- */
 }());

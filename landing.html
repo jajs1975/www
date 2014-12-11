@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+
+<!--link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+<script src="js/jquery-1.11.0.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="jquery/jquery.mobile.custom.js"></script-->
+<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="lib/bootstrap/css/bootstrap-theme.min.css">
+<script src="lib/jquery/js/jquery-1.11.0.js"></script>
+<script src="lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="lib/jquery/js/jquery.mobile.custom.js"></script>
+
+<style>
+
+html, body {
+	height:80%;
+	margin:0;
+	padding:0;
+	background-color: #EF8C4B;
+	/*background: url(img/background1.jpg) no-repeat center center fixed;
+	background-image: url("img/background1.jpg");
+	background-repeat:no-repeat;
+	background-attachment:fixed;
+	background-size: contain;
+	-o-background-size: contain;
+	-moz-background-size: contain;
+	-webkit-background-size: contain;*/
+	
+}
+
+.carousel, .item, .active {
+	height:90%;
+}
+.carousel-inner {
+	height:90%;
+}
+.carousel {
+	margin-bottom: 60px;
+}
+.carousel-caption {
+	z-index: 10;
+}
+.carousel .item {
+	background-color: #000;
+}
+
+.carousel .carousel-inner .bg {
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+.carousel .carousel-inner .spribo {
+    background-image:url(img/spribo.png);
+    background-position: center top;
+	background-color: #EF8C4B;
+}
+.carousel .carousel-inner .bg1 {
+    background-image:url(img/h1.jpg);
+    background-position: center top;
+}
+.carousel .carousel-inner .bg2 {
+    background-image:url(img/h2.jpg);
+    background-position: center center;
+}
+.carousel .carousel-inner .bg3 {
+    background-image:url(img/h3.jpg);
+    background-position: center bottom;
+}
+
+/***********************/
+.row {
+    margin-left: 0px;
+    margin-right: 0px;
+	margin-top: -40px;
+}
+
+/*icons left align*/
+.left-inner-addon {
+    position: relative;
+}
+.left-inner-addon input {
+	background-color:transparent;
+    padding-left: 30px;
+}
+.left-inner-addon i {
+    position: absolute;
+    padding: 10px 12px;
+    pointer-events: none;
+}
+
+.right-inner-addon {
+    position: relative;
+}
+.right-inner-addon input {
+    padding-right: 30px;    
+}
+.right-inner-addon i {
+    position: absolute;
+    right: 0px;
+    padding: 10px 12px;
+    pointer-events: none;
+	border-radius: none;
+}
+
+/*remove borders*/
+.simplebox {
+  outline: none;
+  border: none !important;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
+  border-bottom: 1px solid #fff !important;
+  border-radius: none !important;
+}
+/*change the color of placeholder*/
+.form-control::-moz-placeholder {
+  color: #fff;
+}
+.form-control:-ms-input-placeholder {
+  color: #fff;
+}
+.form-control::-webkit-input-placeholder {
+  color: #fff;
+}
+/*white icon*/
+.white-icon {
+    color: white;
+}
+
+/*center login button*/
+.form-actions {
+    margin: 0;
+    background-color: transparent;
+    text-align: center;
+}
+/*change color button*/
+.btn-warning { background-color: #EE9363; border-color:transparent; border-radius:1px; text-shadow: none !important;} //button
+
+.btn-warning:hover { background-color: #ED9632; } //hover
+
+.form-control{
+	box-shadow: none !important;
+	/*border: none !important;*/
+    border-radius: 0px !important;
+}
+.form-control::-moz-input {
+	box-shadow: none !important;	
+}
+.form-control:-ms-input {
+	box-shadow: none !important;
+}
+.form-control::-webkit-input {
+	box-shadow: none !important;
+}
+
+.form-control {
+	-webkit-border-radius: 0px !important;
+	-moz-border-radius: 0px !important;
+	-o-border-radius: 0px !important;
+	border-radius: 0px !important;
+	-webkit-box-shadow: none !important;
+	-moz-box-shadow: none !important;
+	-o-box-shadow: none !important;
+	box-shadow: none !important;
+	
+}
+
+
+</style>
+</head>
+<body>
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+	<!--<ol class="carousel-indicators">
+	<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+	<li data-target="#myCarousel" data-slide-to="1"></li>
+	<li data-target="#myCarousel" data-slide-to="2"></li>
+	</ol>-->
+	
+	<div class="carousel-inner">
+		<div class="item bg spribo active">
+			<div class="container">
+				<div class="carousel-caption">
+					<!--<h1>Tenemos una nueva versión</h1>-->
+					
+				</div>
+			</div>
+		</div>
+		<div class="item bg bg1">
+			<div class="container">
+				<div class="carousel-caption">
+					<h1>Tenemos una nueva versión</h1>
+					<p>Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto.
+					Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500 cuando un impresor 
+					(N. del T. persona que se dedica a la imprenta) desconocido.</p>
+				</div>
+			</div>
+		</div>
+		
+		<div class="item bg bg2">
+			<div class="container">
+				<div class="carousel-caption">
+					<h1>Otro ejemplo de encabezado.</h1>
+					<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+					<p></p>
+				</div>
+			</div>
+		</div>
+		
+		<div class="item bg bg3">
+			<div class="container">
+				<div class="carousel-caption">
+					<h1>Y un último ejemplo.</h1>
+					<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+					<p></p>
+				</div>
+			</div>	
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
+    <form id="authForm" role="form" action="index.html">
+		<p><div class="left-inner-addon ">
+			<i class="glyphicon glyphicon-user white-icon" style="font-color:red;"></i>
+			<input type="text" class="form-control simplebox" placeholder="Cuenta de usuario"/>
+		</div></p>
+	
+		<div class="left-inner-addon ">
+			<i class="glyphicon glyphicon-envelope white-icon"></i>
+			<input type="password" class="form-control simplebox" placeholder="Contraseña" />
+		</div>	</p>
+	
+		<div class="left-inner-addon ">
+			<i class="glyphicon glyphicon-envelope white-icon"></i>
+			<input type="comunidad" id="commId" class="form-control simplebox" placeholder="Comunidad" />
+		</div>		
+		<br>
+		<div class="form-actions">
+		<!--<button class="btn btn-default btn-warning"  type="submit" id="submitButton">&nbsp;&nbsp;&nbsp;Ingresar&nbsp;&nbsp;&nbsp;</button>-->
+                <input type="submit" class="btn btn-default btn-warning" value="Ingresar" id="submitButton">
+		<p style="font-size: 85%; color:#eee;">
+		¿Olvidaste tu contraseña?
+		</p>
+		</div>
+	</form>
+	
+	
+	</div>
+</div>
+    
+<!--Jorge-->
+<script src="js/landing.js"></script>
+<!--/Jorge-->
+    
+</body>
+</html>         
+
+<script>
+$(document).ready(function() {  
+	$('.carousel').carousel({  
+	  interval: 10000 // in milliseconds  
+	})  
+
+   $("#myCarousel").swiperight(function() {  
+      $("#myCarousel").carousel('prev');  
+    });  
+   $("#myCarousel").swipeleft(function() {  
+      $("#myCarousel").carousel('next');  
+   });  
+});
+</script>                         		

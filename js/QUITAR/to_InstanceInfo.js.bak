@@ -1,14 +1,13 @@
 var objInstanceId=window.localStorage["objInstanceId"];
 if(objInstanceId==undefined) objInstanceId = 1;
     console.log("obj :"+objInstanceId);
-var instanceTitle=window.localStorage["instanceTitle"];
+
 //Servicio 5 -- Lista los objetos de una instancia de tipo objeto
 $.ajax({
     type: 'GET',
           "url": "http://swbsocial.infotec.com.mx/spribo/services.jsp?srv=5&objInstanceId=" + objInstanceId,
           "dataType": "json"
     }).done(function(response){
-    	$('.page-title').html(instanceTitle);
         loadAllRest(response);
 }); 
 //Recarga la lista de jquery con las instancias creadas
@@ -67,8 +66,9 @@ var data = "";
 						data = data + '<br>';
 						data = data + '</div>';
 						data = data + '<br>';
+						data = data + '<br>';
 						data = data + '<div class="row">';
-						data = data + '<div class="col-xs-12 carousel-arrow">';
+						data = data + '<div class="col-xs-12">';
 						data = data + '<div class="col-xs-10">';
 						data = data + '<div class="carouselSpribo owl-carousel">';
 						for(var k=0, l=property[i].Values.length; k<l; k++) {
@@ -84,13 +84,12 @@ var data = "";
 						data = data + '<div class="col-xs-2">';
 						data = data + '<div class="col-xs-offset-6">';
 						data = data + '<a href="to_instanceObjectList.html" onclick="setPropId(\'' + property[i].Id + '\'); insertHtml(this.href);this.blur(); return false;">';
-						data = data + '<img style="height:26px; top:22px; width:35px" src="img/arrow.png"></img>';
+						data = data + '<span style="color:#F48341;top:22px" class="glyphicon glyphicon-chevron-right "></span>';
 						data = data + '</a>';
 						data = data + '</div>';
 						data = data + '</div>';
 						
 						data = data + '</div>';
-						data = data + '<hr width="100%">';
 						//data = data + '</div>';
 					}	
 					data = data + '</div>';

@@ -8,7 +8,6 @@ $.ajax({
           "url": "http://swbsocial.infotec.com.mx/spribo/services.jsp?srv=7&objInstanceId=" + objInstanceId,
           "dataType": "json"
     }).done(function(response){
-    	window.localStorage["instanceTitle"]=response.Name;
 		$('.page-title').html(response.Name);
         loadAllRest(response);
 }); 
