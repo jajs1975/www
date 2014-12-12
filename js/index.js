@@ -38,32 +38,34 @@
          });
     
     /* ---------------------------------- Local Functions ---------------------------------- */
-	    //var app = document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1;
-		 //if (app) {  // PhoneGap application
-		 if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|IEMobile)/)) {
-			document.addEventListener('deviceready', function () {	
-			//alert("entra a onDeviceReady....Local");
-			FastClick.attach(document.body);
+		document.addEventListener('deviceready', function () {
+			//var app = document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1;
+			//if (app) {  // PhoneGap application
+		 	 if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|IEMobile)/)) {
+				document.addEventListener('deviceready', function () {	
+				//alert("entra a onDeviceReady....Local");
+				FastClick.attach(document.body);
+				
+				document.addEventListener("offline", function(){ alert("Esta aplicacion requiere contar con conexion a Internet."); }, false);
+				
+				document.addEventListener("online", function(){ alert("Ahora se encuentra conectado a Internet"); }, false);
+				
+				document.addEventListener("backbutton", function (e) {
+					alert("Pulsaron backbutton...");
+					e.preventDefault();
+				}, false );
+				
+				document.addEventListener("menubutton", function (e) {
+					alert("Pulsaron menu button");
+					e.preventDefault();
+				}, false );		
+			}, false);
 			
-			document.addEventListener("offline", function(){ alert("Esta aplicacion requiere contar con conexion a Internet."); }, false);
-			
-			document.addEventListener("online", function(){ alert("Ahora se encuentra conectado a Internet"); }, false);
-			
-			document.addEventListener("backbutton", function (e) {
-				alert("Pulsaron backbutton...");
-				e.preventDefault();
-			}, false );
-			
-			document.addEventListener("menubutton", function (e) {
-				alert("Pulsaron menu button");
-				e.preventDefault();
-			}, false );		
-		}, false);
-		
-	  }else {
-		  //WebPage application-->do nothing
-		  alert("entra a WebPage application1:"+document.URL);
-		  jAlert("WebPage application--Esta aplicacion requiere contar con conexion a Internet.","Mensaje Spribo");
-	  }
+		  }else {
+			  //WebPage application-->do nothing
+			  alert("entra a WebPage application1:"+document.URL);
+			  jAlert("WebPage application--Esta aplicacion requiere contar con conexion a Internet.","Mensaje Spribo");
+		  }
+		}
     /* --------------------------------- Authentication Managment --------------------------- */
 }());
