@@ -249,7 +249,7 @@ font-weight:100 !important;
 }
 
 .ui-btn-icon-left:after, .ui-btn-icon-right:after, .ui-btn-icon-top:after, .ui-btn-icon-bottom:after, .ui-btn-icon-notext:after {
-    border-radius:0em !important;
+    /*border-radius:0em !important;*/
 }
 
 .headerFooterColor{

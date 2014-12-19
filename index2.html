@@ -192,7 +192,7 @@ hr{
 </div> 
 
 <div data-role="footer" data-position="fixed" data-tap-toggle="false" class="ui-bar headerFooterColor">
-<a href="#" class="ui-icon-alt footeranchor iconsSpribo iconsScribo1" data-icon="home" data-iconpos="top" data-inline="true" onclick="home();">Inicio</a>
+<a href="#" class="ui-icon-alt footeranchor iconsSpribo iconsScribo1" data-icon="home" data-iconpos="top" data-inline="true" onclick="home(); insertHtml('newsFeedCommunity.html'); this.blur(); return false;">Inicio</a>
 
 </div><!-- /footer -->
 
@@ -202,8 +202,8 @@ hr{
     <ul class="nav nav-pills nav-stacked">
         {{#each this}}
 			<li>
-				<a href="to_Instances.html" onclick="setObjId({{objectId}}); insertHtml(this.href); this.blur(); return false;" data-ajax="true" style="text-shadow: none !important;">
-					<span style="color:#FFF;" class="text-menu side-menu-item">&nbsp;{{objName}}</span>
+				<a href="to_Instances.html" onclick="setObjId('{{Id}}', '{{Name}}'); insertHtml(this.href); this.blur(); return false;" data-ajax="true" style="text-shadow: none !important;">
+					<span style="color:#FFF;" class="text-menu side-menu-item">&nbsp;{{Name}}</span>
 				</a><hr>
 			</li>
         {{/each}}
@@ -254,21 +254,28 @@ function openPanel() {
 	$("#myPanel").panel("open");
 }
 
-function setObjId(param) {
-    var objTypeId=param;
-    if(objTypeId!=null) window.localStorage["objectId"]=objTypeId;
+function setObjId(param, param2) {
+    if(param != null) window.localStorage["objectId"]=param;
+	if(param2 != null) window.localStorage["objectName"]=param2;
 }
 
-function setPropId(param) {
-    var propId=param;
-
-    if(propId!=null) window.localStorage["propId"]=propId;
+function setPropId(param1, param2) {
+	if(param1!=null) window.localStorage["objInstanceId"]=param1;
+    if(param2!=null) window.localStorage["propId"]=param2;
 
 }
 
-function setObjInstanceId(param) {
-    var objInstanceId=param;
-    if(objInstanceId!=null) window.localStorage["objInstanceId"]=objInstanceId;
+function setAttrId(param1, param2, param3, param4) {
+    if(param1!=null) window.localStorage["attrId"]=param1;
+	if(param2!=null) window.localStorage["attrName"]=param2;
+	if(param3!=null) window.localStorage["attrDisplayImage"]=param3;	
+	if(param4!=null) window.localStorage["attrCoverImage"]=param4;	
+}
+
+function setObjInstanceId(param1, param2, param3) {
+    if(param1!=null) window.localStorage["objInstanceId"]=param1;
+    if(param2!=null) window.localStorage["objInstanceName"]=param2;
+    if(param3!=null) window.localStorage["objInstanceImage"]=param3;
 }
 
 function insertHtml(targetUrl) {
@@ -276,10 +283,11 @@ console.log(targetUrl +"-->");
 	//ocultar siempre el icono de informacion. En el html que se carga se muestra cuando aplica(instance_detail.html)
 	$("#action-icon-right").addClass("hide-action-icon-right");
 	$( "#myPanel" ).panel( "close" );
-	$('#icon-bars').removeClass("ui-icon-bars");
-	$("#icon-bars").addClass("ui-icon-carat-l");
-	$('#icon-barS').attr("data-icon","carat-l");
-	
+	if(targetUrl.indexOf("newsFeedCommunity") < 0) {
+    	$('#icon-bars').removeClass("ui-icon-bars");
+    	$("#icon-bars").addClass("ui-icon-carat-l");
+    	$('#icon-barS').attr("data-icon","carat-l");
+    }
 
 	var request = $.ajax({
 	  url: targetUrl,
@@ -350,8 +358,13 @@ function backIcon (){
 		}
 		if($("#to_attrDetail").html()!=undefined && $("#to_attrDetail").html()!=''){
 			document.getElementById('icon-bars').href="javascript:insertHtml('to_InstanceInfo.html')";
+			$('#subtitle').html("Información");
 		}		
 		
+		if($("#to_AttrInfo").html()!=undefined && $("#to_AttrInfo").html()!=''){
+			document.getElementById('icon-bars').href="javascript:insertHtml('to_attrDetail.html')";
+			document.getElementById('action-icon-right').href="javascript:insertHtml('to_InstanceInfo.html')";
+		}
 	}
 	
 function home(){

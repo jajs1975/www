@@ -1,13 +1,14 @@
-var propId=window.localStorage["propId"];
+var objectId=window.localStorage["objectId"];
+var playerConstraintId=window.localStorage["playerConstraintId"];
 
 
 //Servicio 9 -- Lista de instancias de tipo de objeto
 $.ajax({
     type: 'GET',
-          "url": "http://swbsocial.infotec.com.mx/spribo/services.jsp?srv=9&propId=" + propId,
+          "url": "http://smartcitypois.spribo.qoslabs.com/spribo/api/associatedWith?objectId="+objectId+"&playerConstraintId=" + playerConstraintId,
           "dataType": "json"
     }).done(function(response){
-		console.log(response);
+		//console.log(response);
         loadAllRest(response);
 });  
 //Recarga la lista de jquery con las instancias creadas

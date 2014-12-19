@@ -8,8 +8,8 @@
 	<!--ul data-role="listview" data-scroll="true" data-filter="true" data-input="#pois-filter" id="pois"-->
         {{#each Values}}
             <li>
-                <a href="to_attrDetail.html" data-ajax="true" onclick="setPropId('{{Id}}'); insertHtml(this.href); this.blur(); return false;" style="background-color: #FFFFFF;">
-                    <img class="img-responsive img-circle img-responsive-rounded" style="max-width:60px" src="{{Image}}">
+                <a href="to_attrDetail.html" data-ajax="true" onclick="setAttrId('{{Id}}'); insertHtml(this.href); this.blur(); return false;" style="background-color: #FFFFFF;">
+                    <img class="img-responsive img-circle img-responsive-rounded" style="max-width:60px" src="{{DisplayImage.Thumbnail}}">
 					<p><h3 class="class="ui-li-heading text-muted"">{{Name}}</h3></p>
                 </a>
                 <hr>

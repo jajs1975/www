@@ -4,19 +4,27 @@
         console.log('router perfil');
         
         var commId=window.localStorage["commId"];
-		if(commId==undefined) commId = 1;
-        console.log("com en form:"+commId);
+        var urlComm = window.localStorage["urlComm"];
+        if (commId == undefined) commId = 1;
+		if (urlComm == undefined || urlComm != "smartcitypois") {
+            urlComm = "smartcitypois";
+            window.localStorage["urlComm"] = urlComm;
+            console.log("urlComm fijado por codigo: " + urlComm);
+        }
         
         //Service 1 -->Community Data
         $.ajax({
         type: 'GET',
-            "url": "http://swbsocial.infotec.com.mx/spribo/services.jsp?srv=1&commId="+commId,
+            "url": "http://" + urlComm + ".spribo.qoslabs.com/spribo/api/getCommunity", //http://swbsocial.infotec.com.mx/spribo/services.jsp?srv=1&commId=+commId
             "dataType": "json"
-         }).done(function(response){
-             $('.page-title').html(response.Name);
-			 var commName=response.Name;
-			 if(commId!=null) window.localStorage["commName"]=commName;
-         });            
+        }).done(function(response) {
+            $('.page-title').html(response.Name);
+			var commName = response.Name;
+            commId = response.Id;
+			if (commId != null) {
+                window.localStorage["commName"] = commName;
+            }
+        });
     
 		//Service 2 -->User Data
          $.ajax({
@@ -31,7 +39,7 @@
          var objTypesTpl = Handlebars.compile($("#obj-list-tpl").html());	
          $.ajax({
          type: 'GET',
-            "url": "http://swbsocial.infotec.com.mx/spribo/services.jsp?srv=3&commId="+commId,
+            "url": "http://" + urlComm + ".spribo.qoslabs.com/spribo/api/instancesOf?objectId=InstancePage", //swbsocial.infotec.com.mx/spribo/services.jsp?srv=3&commId="+commId
             "dataType": "json"
          }).done(function(response){
               $('.objTypes').html(objTypesTpl(response));

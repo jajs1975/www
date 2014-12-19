@@ -1,9 +1,13 @@
 var objectId=window.localStorage["objectId"];
+console.log('toInstance');
+//	objectId="EM007-Publicacion";
+var typeObjName=window.localStorage["commName"];
 
 //Servicio 4 -- Lista de instancias de tipo de objeto
 $.ajax({
     type: 'GET',
-          "url": "http://swbsocial.infotec.com.mx/spribo/services.jsp?srv=4&objectId=" + objectId,
+          /*"url": "http://swbsocial.infotec.com.mx/spribo/services.jsp?srv=4&objectId=" + objectId,*/
+          "url": "http://smartcitypois.spribo.qoslabs.com/spribo/api/instancesOf?objectId=" + objectId,
           "dataType": "json"
     }).done(function(response){
         loadAllRest(response);
@@ -15,6 +19,7 @@ function loadAllRest( responseJson){
     var result = compileResult(responseJson);
     $("#maincontent").addClass("displayListview");
     $('#maincontent').html(result);
+	$('.page-title').html(typeObjName);
     //here already exists #to_Instances
     $("#to_Instances").on( "filterablefilter", function( event, ui ) {
         if ($(this).children(':visible').not('#no-results').length === 0) {
@@ -27,10 +32,10 @@ function loadAllRest( responseJson){
 } 
 
 //Servicio --> Obtiene el título del tipo de objeto                           
-$.ajax({
+/*$.ajax({
     type: 'GET',
     "url": "http://swbsocial.infotec.com.mx/spribo/services.jsp?srv=6&objectId="+objectId,
     "dataType": "json"
 }).done(function(response){
     $('.page-title').html(response.Name);
-});   
+});*/   

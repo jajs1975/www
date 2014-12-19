@@ -8,7 +8,7 @@
 (function () {
 	/* ---------------------------------- Local Variables ---------------------------------- */
    $("#authForm").on("submit",handleLogin);
-   console.log("handleLoginNew000");
+   //console.log("handleLoginNew000");
 	
     function handleLogin() {
         console.log("handleLoginNew1");
