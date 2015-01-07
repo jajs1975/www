@@ -6,10 +6,12 @@
 <script id="obj-list-instance" type="text/template">
     <ul class="ui-listview" data-role="listview" data-scroll="true" data-filter="true" data-filter-placeholder="Buscar" id="to_instanceObjectList">
 	<!--ul data-role="listview" data-scroll="true" data-filter="true" data-input="#pois-filter" id="pois"-->
-        {{#each Values}}
+        {{#each this}}
             <li>
-                <a href="to_attrDetail.html" data-ajax="true" onclick="setAttrId('{{Id}}'); insertHtml(this.href); this.blur(); return false;" style="background-color: #FFFFFF;">
+                <a href="to_attrDetail.html" data-ajax="true" onclick="setAttrId('{{Id}}', '{{Name}}', '{{DisplayImage.Thumbnail}}', '{{CoverImage.Image}}'); insertHtml(this.href); this.blur(); return false;" style="background-color: #FFFFFF;">
+                    {{#if DisplayImage.Thumbnail}}
                     <img class="img-responsive img-circle img-responsive-rounded" style="max-width:60px" src="{{DisplayImage.Thumbnail}}">
+                    {{/if}}
 					<p><h3 class="class="ui-li-heading text-muted"">{{Name}}</h3></p>
                 </a>
                 <hr>
@@ -20,7 +22,7 @@
 					<h4 class="ui-li-heading text-muted text-center">No existen coincidencias con tu búsqueda.</h4>
 				</p>
 			</li>
-    </ul>    
-</script>       
+    </ul>
+</script>
 
 <script src="js/to_instanceObjectList.js"></script>

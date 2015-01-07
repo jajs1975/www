@@ -1,8 +1,9 @@
-var objectId=window.localStorage["objectId"];
-var playerConstraintId=window.localStorage["playerConstraintId"];
+var objectId=window.localStorage["objInstanceId"];
+var playerConstraintId=window.localStorage["propId"];
+var windowSubtitle = window.localStorage["attrName"];
+var attrType=window.localStorage["attrType"]; 
 
-
-//Servicio 9 -- Lista de instancias de tipo de objeto
+//Servicio 9 -- Lista de instancias de tipo de objeto asignadas a una propiedad
 $.ajax({
     type: 'GET',
           "url": "http://smartcitypois.spribo.qoslabs.com/spribo/api/associatedWith?objectId="+objectId+"&playerConstraintId=" + playerConstraintId,
@@ -18,8 +19,9 @@ function loadAllRest( responseJson){
     var result = compileResult(responseJson);
     $("#maincontent").addClass("displayListview");
     $('#maincontent').html(result);
-	$('#subtitle').html(responseJson.Name);
+	$('#subtitle').html(windowSubtitle);
     //here already exists #to_instanceObjectList
+    
     $("#to_instanceObjectList").on( "filterablefilter", function( event, ui ) {
         if ($(this).children(':visible').not('#no-results').length === 0) {
             $('#no-results').removeClass("ui-screen-hidden").fadeIn(1000);
@@ -28,4 +30,5 @@ function loadAllRest( responseJson){
         }
     });
     $('#to_instanceObjectList').listview().listview('refresh');
+    
 } 

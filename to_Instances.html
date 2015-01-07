@@ -9,7 +9,7 @@
         {{#each this}}
             <li>
                 <a href="to_InstanceDetail.html" data-ajax="true" onclick="setObjInstanceId('{{Id}}', '{{Name}}', '{{DisplayImage.Image}}');insertHtml(this.href); this.blur(); return false;" style="background-color: #FFFFFF;">
-                    <img class="img-responsive img-circle img-responsive-rounded" style="max-width:60px" src="{{DisplayImage.Thumbnail}}">
+                    <img class="img-responsive img-circle img-responsive-rounded" style="width:60px;height:60px;" src="{{DisplayImage.Thumbnail}}">
 					<p><h3 class="ui-li-heading text-muted">{{Name}}</h3></p>
                 </a>
                 <hr>

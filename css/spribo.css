@@ -18,7 +18,7 @@ hr{
 }
 
 .text-menu{
-margin-left:45px;
+margin-left:15px;
 font-weight:100 !important;
 }
 
@@ -97,7 +97,7 @@ font-weight:100 !important;
 	font-size:18px;
 }
 .objectName{
-	color: #F77004;
+	color: #F77004!important;
 	padding-bottom: 5px;
 	padding-top: 5px;
 	text-shadow: 0 0px 0 #F77004;
@@ -172,13 +172,13 @@ font-weight:100 !important;
 	left: 0;
 	right: 0;
 	bottom: 0px;
-	/*overflow: scroll;*/
+	overflow: auto;
 	-webkit-overflow-scrolling: touch;
 }
 
 @media only screen and (max-width : 700px) and (orientation : landscape) {
     .ui-panel-inner {
-		overflow: scroll;
+		overflow: auto;
 	}
 }
 
@@ -204,7 +204,7 @@ font-weight:100 !important;
 
 .side-menu-item{
 	position:relative;
-	font-size:17px;
+	font-size:15px;
 	padding-top: 3px;
 	
 }

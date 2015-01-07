@@ -32,7 +32,7 @@
 <style>
 hr{
 	margin-bottom: 2px;
-    margin-left: 30px;
+    margin-left: 20px;
     margin-top: 2px;
 	border-width: 1px 0 0;
 	border-image: none;
@@ -202,13 +202,18 @@ hr{
     <ul class="nav nav-pills nav-stacked">
         {{#each this}}
 			<li>
-				<a href="to_Instances.html" onclick="setObjId('{{Id}}', '{{Name}}'); insertHtml(this.href); this.blur(); return false;" data-ajax="true" style="text-shadow: none !important;">
+				<a href="to_Instances.html" onclick="setObjId('{{Id}}', '{{Name}}'); insertHtml(this.href); this.blur(); return false;" data-ajax="true" style="text-shadow: none !important;padding: 5px 5px;">
 					<span style="color:#FFF;" class="text-menu side-menu-item">&nbsp;{{Name}}</span>
 				</a><hr>
 			</li>
         {{/each}}
     </ul>   
-</script>   
+</script> 
+<script id="newsFeedCommunityTem" type="text/template">
+	{{#eachNeewsFeed this}}
+	{{/eachNeewsFeed}}
+</script>
+<script src="js/newsFeedCommunity.js"></script>
 <!--script src="lib/handlebars.js"></script-->
 <script src="cordova.js"></script>
 <script src="js/index2.js"></script>
@@ -259,17 +264,19 @@ function setObjId(param, param2) {
 	if(param2 != null) window.localStorage["objectName"]=param2;
 }
 
-function setPropId(param1, param2) {
+function setPropId(param1, param2, param3, param4) {
 	if(param1!=null) window.localStorage["objInstanceId"]=param1;
     if(param2!=null) window.localStorage["propId"]=param2;
-
+	if(param3!=null) window.localStorage["attrName"]=param3;
+	if(param4!=null) window.localStorage["attrType"]=param4;
 }
 
-function setAttrId(param1, param2, param3, param4) {
+function setAttrId(param1, param2, param3, param4, param5) {
     if(param1!=null) window.localStorage["attrId"]=param1;
 	if(param2!=null) window.localStorage["attrName"]=param2;
-	if(param3!=null) window.localStorage["attrDisplayImage"]=param3;	
-	if(param4!=null) window.localStorage["attrCoverImage"]=param4;	
+	if(param3!=null) window.localStorage["attrDisplayImage"]=param3;
+	if(param4!=null) window.localStorage["attrCoverImage"]=param4;
+	if(param5!=null) window.localStorage["attrType"]=param5;
 }
 
 function setObjInstanceId(param1, param2, param3) {
@@ -277,13 +284,26 @@ function setObjInstanceId(param1, param2, param3) {
     if(param2!=null) window.localStorage["objInstanceName"]=param2;
     if(param3!=null) window.localStorage["objInstanceImage"]=param3;
 }
-
+function setObjInstIdNFObj(param1, param2, param3) {
+    if(param1!=null) window.localStorage["objInstIdNFObj"]=param1;
+	if(param2!=null) window.localStorage["objInstNameNFObj"]=param2;
+	if(param3!=null) window.localStorage["objInstImgNFObj"]=param3;
+}
 function insertHtml(targetUrl) {
 console.log(targetUrl +"-->");
 	//ocultar siempre el icono de informacion. En el html que se carga se muestra cuando aplica(instance_detail.html)
 	$("#action-icon-right").addClass("hide-action-icon-right");
 	$( "#myPanel" ).panel( "close" );
-	if(targetUrl.indexOf("newsFeedCommunity") < 0) {
+	var isMenu = false;
+	if(targetUrl.indexOf("newsFeedCommunity") < 0 && targetUrl.indexOf("index2") >= 0){
+		isMenu = true;
+		document.getElementById('icon-bars').href = "#myPanel"
+	} 
+	if(targetUrl.indexOf("newsFeedCommunity") >= 0 && targetUrl.indexOf("index2") < 0){
+		 isMenu = true;
+		 document.getElementById('icon-bars').href = "#myPanel"
+	}
+	if(!isMenu) { 
     	$('#icon-bars').removeClass("ui-icon-bars");
     	$("#icon-bars").addClass("ui-icon-carat-l");
     	$('#icon-barS').attr("data-icon","carat-l");
@@ -326,46 +346,59 @@ console.log(targetUrl +"-->");
 
 }
 
-function backIcon (){
-	
+function backIcon() {
+    if ($("#to_Instances").html() != undefined && $("#to_Instances").html() != '' ) {
+        $('#icon-bars').addClass("ui-icon-bars");
+        $("#icon-bars").removeClass("ui-icon-carat-l");
+        $('#icon-barS').attr("data-icon","bars");
+        document.getElementById('icon-bars').href = "#myPanel"
+        //$('#maincontent').empty();
+        $( '.ui-header .ui-title' ).css( "padding","0.7em 0" );
+        var commName=window.localStorage["commName"];
+        if (commName == undefined) commName = "";
+        $('.page-title').html(commName);
+        document.getElementById('icon-bars').href = "javascript:insertHtml('index2.html')";
+    }
+    
+    if ($("#to_instanceDetail").html() != undefined && $("#to_instanceDetail").html() != '') {
+        document.getElementById('icon-bars').href = "javascript:insertHtml('to_Instances.html')";
+    }
+    if ($("#to_instanceInfo").html() != undefined && $("#to_instanceInfo").html() != '') {
+        $('#subtitle').hide();
+        $( '.ui-header .ui-title' ).css( "padding","0.7em 0" );
+        document.getElementById('icon-bars').href = "javascript:insertHtml('to_InstanceDetail.html')";
+    }
 		
-		if($("#to_Instances").html()!=undefined && $("#to_Instances").html()!='' ){
-			$('#icon-bars').addClass("ui-icon-bars");
-			$("#icon-bars").removeClass("ui-icon-carat-l");
-			$('#icon-barS').attr("data-icon","bars");
-			document.getElementById('icon-bars').href="#myPanel"
-			$('#maincontent').empty();
-			var commName=window.localStorage["commName"];
-			if(commName==undefined) commName = "";
-			$('.page-title').html(commName);}
-		if($("#to_instanceDetail").html()!=undefined && $("#to_instanceDetail").html()!=''){
-			document.getElementById('icon-bars').href="javascript:insertHtml('to_Instances.html')";
-		}
-		if($("#to_instanceInfo").html()!=undefined && $("#to_instanceInfo").html()!=''){
-			$('#subtitle').hide();
-			$( '.ui-header .ui-title' ).css( "padding","0.7em 0" );
-			document.getElementById('icon-bars').href="javascript:insertHtml('to_InstanceDetail.html')";
-		}
+    if ($("#vp_display").html() != undefined && $("#vp_display").html() != '') {
+        document.getElementById('icon-bars').href = "javascript:insertHtml('to_InstanceInfo.html')";
+        $('#subtitle').html("Información");
+    } 
 		
-		if($("#vp_display").html()!=undefined && $("#vp_display").html()!=''){
-			document.getElementById('icon-bars').href="javascript:insertHtml('to_InstanceInfo.html')";
-			$('#subtitle').html("Información");
-		} 
-		
-		if($("#to_instanceObjectList").html()!=undefined && $("#to_instanceObjectList").html()!=''){
-			document.getElementById('icon-bars').href="javascript:insertHtml('to_InstanceInfo.html')";
-			$('#subtitle').html("Información");
-		}
-		if($("#to_attrDetail").html()!=undefined && $("#to_attrDetail").html()!=''){
-			document.getElementById('icon-bars').href="javascript:insertHtml('to_InstanceInfo.html')";
-			$('#subtitle').html("Información");
-		}		
-		
-		if($("#to_AttrInfo").html()!=undefined && $("#to_AttrInfo").html()!=''){
-			document.getElementById('icon-bars').href="javascript:insertHtml('to_attrDetail.html')";
-			document.getElementById('action-icon-right').href="javascript:insertHtml('to_InstanceInfo.html')";
-		}
-	}
+    if ($("#to_instanceObjectList").html() != undefined && $("#to_instanceObjectList").html() != '') {
+        document.getElementById('icon-bars').href = "javascript:insertHtml('to_InstanceInfo.html')";
+        $('#subtitle').html("Información");
+    }
+    if ($("#to_attrDetail").html() != undefined && $("#to_attrDetail").html() != '') {
+        document.getElementById('icon-bars').href = "javascript:insertHtml('to_InstanceInfo.html')";
+        $('#subtitle').html("Información");
+    }		
+    
+    if ($("#to_AttrInfo").html() != undefined && $("#to_AttrInfo").html() != '') {
+        document.getElementById('icon-bars').href = "javascript:insertHtml('to_attrDetail.html')";
+        document.getElementById('action-icon-right').href = "javascript:insertHtml('to_InstanceInfo.html')";
+    }
+	if ($("#newsFeedObjType").html() != undefined && $("#newsFeedObjType").html() != '') {
+        $('#icon-bars').addClass("ui-icon-bars");
+        $("#icon-bars").removeClass("ui-icon-carat-l");
+        $('#icon-barS').attr("data-icon","bars");
+        document.getElementById('icon-bars').href = "#myPanel"
+        $( '.ui-header .ui-title' ).css( "padding","0.7em 0" );
+        var commName=window.localStorage["commName"];
+        if (commName == undefined) commName = "";
+        $('.page-title').html(commName);
+        document.getElementById('icon-bars').href = "javascript:insertHtml('index2.html')";
+    }
+}
 	
 function home(){
 	$('#maincontent').empty();

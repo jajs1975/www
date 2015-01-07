@@ -6,7 +6,7 @@ if(attrId==undefined) attrId = 1;
 //Servicio 5 -- Lista los objetos de una instancia de tipo objeto
 $.ajax({
     type: 'GET',
-          "url": "http://swbsocial.infotec.com.mx/spribo/services.jsp?srv=12&asociationId=" + attrId,
+          "url": "http://smartcitypois.spribo.qoslabs.com/spribo/api/attributes?objectId=" + attrId,
           "dataType": "json"
     }).done(function(response){
     	
