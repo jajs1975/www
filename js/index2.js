@@ -21,6 +21,7 @@
             "url": "http://" + urlComm + ".spribo.qoslabs.com/spribo/api/getCommunity", //http://swbsocial.infotec.com.mx/spribo/services.jsp?srv=1&commId=+commId
             "dataType": "json"
         }).done(function(response) {
+		    //alert("Lo hace... Name");
             $('.page-title').html(response.Name);
 			var commName = response.Name;
             commId = response.Id;
@@ -45,6 +46,7 @@
             "url": "http://" + urlComm + ".spribo.qoslabs.com/spribo/api/instancesOf?objectId=InstancePage", //swbsocial.infotec.com.mx/spribo/services.jsp?srv=3&commId="+commId
             "dataType": "json"
          }).done(function(response){
+			  //alert("Lo hace...");
               $('.objTypes').html(objTypesTpl(response));
          });
     
@@ -58,15 +60,23 @@
 			
 			document.addEventListener("offline", function(){ alert("Esta aplicacion requiere contar con conexion a Internet."); }, false);
 			
-			document.addEventListener("online", function(){ alert("Ahora se encuentra conectado a Internet"); }, false);
+			//document.addEventListener("online", function(){ alert("Ahora se encuentra conectado a Internet"); }, false);
 			
 			document.addEventListener("backbutton", function (e) {
 				alert("Pulsaron backbutton...");
+				backIcon();
 				e.preventDefault();
 			}, false );
 			
 			document.addEventListener("menubutton", function (e) {
 				alert("Pulsaron menu button");
+				if( $("#myPanel").hasClass("ui-panel-open") == true ){
+				   alert("OPENED");
+				   closePanel();
+				}else{
+				   alert("CLOSED");
+				   openPanel();
+				}
 				e.preventDefault();
 			}, false );		
 		}, false);
