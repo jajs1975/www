@@ -8,7 +8,7 @@
 	<!--ul data-role="listview" data-scroll="true" data-filter="true" data-input="#pois-filter" id="pois"-->
         {{#each this}}
             <li>
-                <a href="to_attrDetail.html" data-ajax="true" onclick="setAttrId('{{Id}}', '{{Name}}', '{{DisplayImage.Thumbnail}}', '{{CoverImage.Image}}'); insertHtml(this.href); this.blur(); return false;" style="background-color: #FFFFFF;">
+                <a href="to_attrDetail.html" data-ajax="true" onclick="setPath('to_instanceObjectList');setAttrId('{{Id}}', '{{Name}}', '{{DisplayImage.Thumbnail}}', '{{CoverImage.Image}}'); insertHtml(this.href); this.blur(); return false;" style="background-color: #FFFFFF;">
                     {{#if DisplayImage.Thumbnail}}
                     <img class="img-responsive img-circle img-responsive-rounded" style="max-width:60px" src="{{DisplayImage.Thumbnail}}">
                     {{/if}}

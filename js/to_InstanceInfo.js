@@ -1,15 +1,15 @@
 //Se Arma un arreglo con objetos que incluyen peticiones asíncronas y otro con las respuestas de los servicios
 //En loadAllRest, evaluar cuando todas las peticiones del arreglo han terminado
 //y sustituir el código generado en cada petición por la cadena que identifica el lugar en que va ese código en result
-var objInstanceId = window.localStorage["objInstanceId"];
-var instanceTitle = window.localStorage["instanceTitle"];
+var objInstanceId = window.localStorage["attrId"];
+var instanceTitle = window.localStorage["attrName"];
 var resultFirstJson;
 var data = "";
 var identifiers = "";
 
-if (objInstanceId == undefined) {
+/*if (objInstanceId == undefined) {
     objInstanceId = 1;
-}
+}*/
 //Almacena los carrouselCode generados por las peticiones asincronas
 var htmlCarrousels = [];
 //Genera instancias de objetos que almacenan el codigo HTML generado para cada carrusel
@@ -34,6 +34,7 @@ var numCarrousels;
 //Almacena el codigo HTML generado
 var result;
 //Servicio -- Se obtiene la lista de propiedades de un objeto
+setPath('to_attrDetail');
 $.ajax({
     type: 'GET',
           "url": "http://smartcitypois.spribo.qoslabs.com/spribo/api/attributes?objectId=" + objInstanceId,
@@ -126,7 +127,7 @@ function htmlCarrousel(dataElements, codeIndex) {
             displayImage = dataElements[k].DisplayImage.Thumbnail;
         }
         data1 = data1 + '\n<div class="text-center owl-item">';
-        data1 = data1 + '<a href="to_attrDetail.html" class="item link" onclick="setAttrId(\'';
+        data1 = data1 + '<a href="to_attrDetail.html" class="item link" onclick="setPath(\'to_InstanceInfo\');setPageNF(\'to_InstanceInfo\');setAttrId(\'';
         data1 = data1 + dataElements[k].Id + '\', \'' + dataElements[k].Name + '\', \'' + displayImage + '\', \'' + coverImage + '\', \'' + htmlCarrousels[codeIndex].type;
         data1 = data1 + '\'); insertHtml(this.href);this.blur(); return false;">';
         data1 = data1 + '<img src="' + displayImage + '" class="img-circle" style="width:60px; height:60px; ">';
@@ -149,13 +150,13 @@ Handlebars.registerHelper('eachM', function(property) {
         if (property[i].Type == 'string' || property[i].Type == 'date' || property[i].Type == 'boolean' 
 					|| property[i].Type == 'integer' || property[i].Type == 'float' || property[i].Type == 'url' || 
 					property[i].Type == 'email') {
-            data += '<div class="row" onclick="setPropId(\'' + objInstanceId + '\',\'' + property[i].Id + '\'); insertHtml(\'vp_display.html\');this.blur(); return false;">';
+            data += '<div class="row" onclick="setPath(\'to_InstanceInfo\');setPropId(\'' + objInstanceId + '\',\'' + property[i].Id + '\'); insertHtml(\'vp_display.html\');this.blur(); return false;">';
             data = data + '<div class="col-xs-9" >';
             data = data + '<span class="font-detail">' + property[i].Name +'</span>';
             data = data + '</div>';
             data = data + '<div class="col-xs-3">';
             data = data + '<div class="col-xs-offset-8">';
-            data = data + '<a href="vp_display.html" onclick="setPropId(\'' + objInstanceId + '\',\'' + property[i].Id + '\'); insertHtml(this.href);this.blur(); return false;">';
+            data = data + '<a href="vp_display.html" onclick="setPath(\'to_InstanceInfo\');setPropId(\'' + objInstanceId + '\',\'' + property[i].Id + '\'); insertHtml(this.href);this.blur(); return false;">';
             data = data + '<span style="color:#F48341;" class="glyphicon glyphicon-chevron-right "></span>';
             data = data + '</a>';
             data = data + '</div>';
@@ -191,7 +192,7 @@ Handlebars.registerHelper('eachM', function(property) {
             data = data + '</div>';
             data = data + '<div class="col-xs-2">';
             data = data + '<div class="col-xs-offset-6">';
-            data = data + '<a href="to_instanceObjectList.html" onclick="setPropId(\'' + objInstanceId + '\', \'' + property[i].Id + '\', \'' + property[i].Name + '\', \'' + property[i].Type + '\'); insertHtml(this.href);this.blur(); return false;">';
+            data = data + '<a href="to_instanceObjectList.html" onclick="setPath(\'to_InstanceInfo\');setPropId(\'' + objInstanceId + '\', \'' + property[i].Id + '\', \'' + property[i].Name + '\', \'' + property[i].Type + '\'); insertHtml(this.href);this.blur(); return false;">';
             data = data + '<img style="height:26px; top:22px; width:35px" src="img/arrow.png"></img>';
             data = data + '</a>';
             data = data + '</div>';

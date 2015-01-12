@@ -5,6 +5,9 @@
         
         var commId=window.localStorage["commId"];
         var urlComm = window.localStorage["urlComm"];
+		var usrName = window.localStorage["userId"]; 
+		restartVariables();
+		$('#username').html('<span style="color:#FFF;"  class="text-menu side-menu-item">'+usrName+'</span>');
         if (commId == undefined) commId = 1;
 		if (urlComm == undefined || urlComm != "smartcitypois") {
             urlComm = "smartcitypois";
@@ -27,13 +30,13 @@
         });
     
 		//Service 2 -->User Data
-         $.ajax({
+         /*$.ajax({
          type: 'GET',
             "url": "http://swbsocial.infotec.com.mx/spribo/services.jsp?srv=2&commId="+commId,
             "dataType": "json"
          }).done(function(response){
              $('.ui-icon-user').html(response.userName);
-         });
+         });*/
          
          //Service 3 -->Lista de tipos de objetos
          var objTypesTpl = Handlebars.compile($("#obj-list-tpl").html());	
@@ -75,3 +78,137 @@
 	  }		
     /* --------------------------------- Authentication Managment --------------------------- */
 }());
+/*function getUserInfo(){
+	
+	var userId = window.localStorage["userId"];
+	  $.ajax({
+			type: 'GET',
+          "url": "http://smartcitypois.spribo.qoslabs.com/spribo/api/attributeValue?objectId="+userId+"&attributeId=Avatar",
+          "dataType": "json"
+		  
+		  
+		}).done(function(object){
+			
+				
+		 if(object.Values){
+			 if(object.Values[0].Thumbnail){
+			var DisplayImage=object.Values[0].Thumbnail;
+			
+            window.localStorage["attrDisplayImage"]=DisplayImage;			
+			 }
+		 } else { var DisplayImage=null;
+              window.localStorage["attrDisplayImage"]=DisplayImage;		 }
+		}); 
+		
+	 $.ajax({
+			type: 'GET',
+          "url": "http://smartcitypois.spribo.qoslabs.com/spribo/api/attributeValue?objectId="+userId+"&attributeId=Cover",
+          "dataType": "json"
+		  
+		  
+		}).done(function(object){
+		 if(object.Values){
+			 if(object.Values[0].Image){
+			 var CoverImage=object.Values[0].Image;
+             window.localStorage["attrCoverImage"]=CoverImage;
+			 }
+		 } else { var CoverImage=null;
+			window.localStorage["attrCoverImage"]=CoverImage;		 }
+		 
+		 
+		});
+		window.localStorage["attrId"]=userId;
+		window.localStorage["attrName"]=userId;
+	   window.localStorage["attrType"]="Profile";
+		window.localStorage["isPageNF"]="index2";
+	
+}*/
+
+var innerCalls = [];
+function getUserInfo(){
+	var userId = window.localStorage["userId"];
+	var ajax1 = getAjax1();
+	innerCalls.push(ajax1);
+	var ajax2 = getAjax2();
+	innerCalls.push(ajax2);
+		
+	window.localStorage["attrId"]=userId;
+	window.localStorage["attrName"]=userId;
+	window.localStorage["attrType"]="Profile";
+	window.localStorage["isPageNF"]="index2";
+	$.when(innerCalls).then(rest);
+	//return true;
+}
+function rest() {
+	return true;
+}
+function getAjax1() {
+	var userId = window.localStorage["userId"];
+	var ajax1 = $.ajax({
+		type: 'GET',
+        "url": "http://smartcitypois.spribo.qoslabs.com/spribo/api/attributeValue?objectId="+userId+"&attributeId=Avatar",
+        "dataType": "json",
+		async:false
+	}).done(function(object){
+		if(object.Values) {
+			if(object.Values != '' && object.Values[0].Thumbnail){
+				var DisplayImage=object.Values[0].Thumbnail;
+				window.localStorage["attrDisplayImage"]=DisplayImage;			
+			} else {
+				var CoverImage=null;
+				window.localStorage["attrCoverImage"]=CoverImage;	
+			}
+		} else { 
+			var DisplayImage=null;
+			window.localStorage["attrDisplayImage"]=DisplayImage;		 
+		}
+	}); 
+		return ajax1;
+}
+function getAjax2() {
+var userId = window.localStorage["userId"];
+var ajax2 = $.ajax({
+			type: 'GET',
+          "url": "http://smartcitypois.spribo.qoslabs.com/spribo/api/attributeValue?objectId="+userId+"&attributeId=Cover",
+          "dataType": "json",
+		  async:false
+		  
+		}).done(function(object){
+		
+		 if(object.Values){
+			if(object.Values != '' && object.Values[0].Image){
+			 var CoverImage=object.Values[0].Image;
+             window.localStorage["attrCoverImage"]=CoverImage;
+			 } else {
+			 var CoverImage=null;
+			window.localStorage["attrCoverImage"]=CoverImage;	
+			 }
+		 } else { 
+		 
+			var CoverImage=null;
+			window.localStorage["attrCoverImage"]=CoverImage;		
+			}
+		   
+			
+		 
+		});
+		return ajax2;
+}
+
+function restartVariables() {
+	window.localStorage["attrCoverImage"]="";
+	window.localStorage["attrDisplayImage"]="";
+	window.localStorage["attrId"]="";
+	window.localStorage["attrName"]="";
+	window.localStorage["attrType"]="";
+	window.localStorage["objectId"]="";
+	window.localStorage["objectName"]="";
+	window.localStorage["isPageNF"]="";
+	window.localStorage["path"]="";
+	
+	window.localStorage["attrCoverImage1"]="";
+	window.localStorage["attrDisplayImage1"]="";
+	window.localStorage["attrId1"]="";
+	window.localStorage["attrName1"]="";
+	window.localStorage["attrType1"]="";
+}
