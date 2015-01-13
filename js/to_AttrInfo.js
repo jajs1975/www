@@ -1,10 +1,10 @@
-var attrId=window.localStorage["attrId"];
+var attrId=getAttrData('attrId', false);//window.localStorage["attrId"];
 //if(attrId==undefined) attrId = 1;
 //    console.log("obj :"+attrId);
    
 //var instanceTitle=window.localStorage["instanceTitle"];
 //Servicio 5 -- Lista los objetos de una instancia de tipo objeto
-setPath('to_attrDetail');
+//setPath('to_attrDetail');
 $.ajax({
     type: 'GET',
           "url": "http://smartcitypois.spribo.qoslabs.com/spribo/api/attributes?objectId=" + attrId,

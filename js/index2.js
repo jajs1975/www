@@ -7,7 +7,8 @@
         var urlComm = window.localStorage["urlComm"];
 		var usrName = window.localStorage["userId"]; 
 		restartVariables();
-		$('#username').html('<span style="color:#FFF;"  class="text-menu side-menu-item">'+usrName+'</span>');
+		//$('#username').html('<span style="color:#FFF;"  class="text-menu side-menu-item">'+usrName+'</span>');
+		$('#username').html('<img src="img/user_48dp.png" class="img-profile" style="width:20px;height:20px"> <span style="color:#FFF;"  class="text-menu side-menu-item">'+usrName+'</span> '); 
         if (commId == undefined) commId = 1;
 		if (urlComm == undefined || urlComm != "smartcitypois") {
             urlComm = "smartcitypois";
@@ -21,7 +22,6 @@
             "url": "http://" + urlComm + ".spribo.qoslabs.com/spribo/api/getCommunity", //http://swbsocial.infotec.com.mx/spribo/services.jsp?srv=1&commId=+commId
             "dataType": "json"
         }).done(function(response) {
-		    //alert("Lo hace... Name");
             $('.page-title').html(response.Name);
 			var commName = response.Name;
             commId = response.Id;
@@ -46,7 +46,6 @@
             "url": "http://" + urlComm + ".spribo.qoslabs.com/spribo/api/instancesOf?objectId=InstancePage", //swbsocial.infotec.com.mx/spribo/services.jsp?srv=3&commId="+commId
             "dataType": "json"
          }).done(function(response){
-			  //alert("Lo hace...");
               $('.objTypes').html(objTypesTpl(response));
          });
     
@@ -56,30 +55,32 @@
 		 if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|IEMobile)/)) {
 			document.addEventListener('deviceready', function () {	
 			//alert("entra a onDeviceReady....Local");
-			//FastClick.attach(document.body);
+			FastClick.attach(document.body);
 			
-			document.addEventListener("offline", function(){ alert("Esta aplicacion requiere contar con conexion a Internet."); }, false);
+			
+		    document.addEventListener("offline", function(){ alert("Esta aplicacion requiere contar con conexion a Internet."); }, false);
 			
 			//document.addEventListener("online", function(){ alert("Ahora se encuentra conectado a Internet"); }, false);
 			
 			document.addEventListener("backbutton", function (e) {
-				alert("Pulsaron backbutton...");
+				//alert("Pulsaron backbutton...");
 				backIcon();
 				e.preventDefault();
 			}, false );
 			
 			document.addEventListener("menubutton", function (e) {
-				alert("Pulsaron menu button");
+				//alert("Pulsaron menu button");
 				if( $("#myPanel").hasClass("ui-panel-open") == true ){
-				   alert("OPENED");
+				   //alert("OPENED");
 				   closePanel();
 				}else{
-				   alert("CLOSED");
+				   //alert("CLOSED");
 				   openPanel();
 				}
 				e.preventDefault();
 			}, false );		
 		}, false);
+
 		
 	  }else {
 		  //WebPage application-->do nothing
@@ -135,21 +136,21 @@
 }*/
 
 var innerCalls = [];
+var coverImage = "";
+var displayImage = "";
 function getUserInfo(){
 	var userId = window.localStorage["userId"];
 	var ajax1 = getAjax1();
 	innerCalls.push(ajax1);
 	var ajax2 = getAjax2();
 	innerCalls.push(ajax2);
-		
-	window.localStorage["attrId"]=userId;
-	window.localStorage["attrName"]=userId;
-	window.localStorage["attrType"]="Profile";
-	window.localStorage["isPageNF"]="index2";
-	$.when(innerCalls).then(rest);
+
+	$.when(innerCalls).then(rest(userId));
 	//return true;
 }
-function rest() {
+function rest(userId) {
+	setPath('index2');
+	setAttrId(userId, userId , displayImage, coverImage, 'Profile');
 	return true;
 }
 function getAjax1() {
@@ -163,46 +164,46 @@ function getAjax1() {
 		if(object.Values) {
 			if(object.Values != '' && object.Values[0].Thumbnail){
 				var DisplayImage=object.Values[0].Thumbnail;
-				window.localStorage["attrDisplayImage"]=DisplayImage;			
+				//window.localStorage["attrDisplayImage"]=DisplayImage;		
+				displayImage = DisplayImage;
 			} else {
-				var CoverImage=null;
-				window.localStorage["attrCoverImage"]=CoverImage;	
+				var DisplayImage=null;
+				//window.localStorage["attrDisplayImage"]=CoverImage;	
+				displayImage = DisplayImage;
 			}
 		} else { 
 			var DisplayImage=null;
-			window.localStorage["attrDisplayImage"]=DisplayImage;		 
+			displayImage = DisplayImage;
+			//window.localStorage["attrDisplayImage"]=DisplayImage;		 
 		}
 	}); 
 		return ajax1;
 }
 function getAjax2() {
-var userId = window.localStorage["userId"];
-var ajax2 = $.ajax({
-			type: 'GET',
-          "url": "http://smartcitypois.spribo.qoslabs.com/spribo/api/attributeValue?objectId="+userId+"&attributeId=Cover",
-          "dataType": "json",
-		  async:false
-		  
-		}).done(function(object){
-		
-		 if(object.Values){
+	var userId = window.localStorage["userId"];
+	var ajax2 = $.ajax({
+		type: 'GET',
+	  "url": "http://smartcitypois.spribo.qoslabs.com/spribo/api/attributeValue?objectId="+userId+"&attributeId=Cover",
+	  "dataType": "json",
+	  async:false
+	}).done(function(object){
+		if(object.Values){
 			if(object.Values != '' && object.Values[0].Image){
-			 var CoverImage=object.Values[0].Image;
-             window.localStorage["attrCoverImage"]=CoverImage;
-			 } else {
-			 var CoverImage=null;
-			window.localStorage["attrCoverImage"]=CoverImage;	
+				var CoverImage=object.Values[0].Image;
+				//window.localStorage["attrCoverImage"]=CoverImage;
+				coverImage = CoverImage;
+			} else {
+				var CoverImage=null;
+				coverImage = CoverImage;
+				//window.localStorage["attrCoverImage"]=CoverImage;	
 			 }
-		 } else { 
-		 
+		} else { 
 			var CoverImage=null;
-			window.localStorage["attrCoverImage"]=CoverImage;		
-			}
-		   
-			
-		 
-		});
-		return ajax2;
+			coverImage = CoverImage;
+			//window.localStorage["attrCoverImage"]=CoverImage;		
+		}
+	});
+	return ajax2;
 }
 
 function restartVariables() {
@@ -216,9 +217,9 @@ function restartVariables() {
 	window.localStorage["isPageNF"]="";
 	window.localStorage["path"]="";
 	
-	window.localStorage["attrCoverImage1"]="";
+	/*window.localStorage["attrCoverImage1"]="";
 	window.localStorage["attrDisplayImage1"]="";
 	window.localStorage["attrId1"]="";
 	window.localStorage["attrName1"]="";
-	window.localStorage["attrType1"]="";
+	window.localStorage["attrType1"]="";*/
 }

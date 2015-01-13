@@ -1,7 +1,7 @@
 var objectId=window.localStorage["objInstanceId"];
 var playerConstraintId=window.localStorage["propId"];
-var windowSubtitle = window.localStorage["attrName"];
-var attrType=window.localStorage["attrType"]; 
+var windowSubtitle = getAttrData('attrName', false);//window.localStorage["attrName"];
+var attrType=getAttrData('attrType', false);//window.localStorage["attrType"]; 
 
 //Servicio 9 -- Lista de instancias de tipo de objeto asignadas a una propiedad
 $.ajax({

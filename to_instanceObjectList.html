@@ -10,7 +10,7 @@
             <li>
                 <a href="to_attrDetail.html" data-ajax="true" onclick="setPath('to_instanceObjectList');setAttrId('{{Id}}', '{{Name}}', '{{DisplayImage.Thumbnail}}', '{{CoverImage.Image}}'); insertHtml(this.href); this.blur(); return false;" style="background-color: #FFFFFF;">
                     {{#if DisplayImage.Thumbnail}}
-                    <img class="img-responsive img-circle img-responsive-rounded" style="max-width:60px" src="{{DisplayImage.Thumbnail}}">
+                    <img class="img-responsive img-circle img-responsive-rounded" style="width:60px;height:60px" src="{{DisplayImage.Thumbnail}}">
                     {{/if}}
 					<p><h3 class="class="ui-li-heading text-muted"">{{Name}}</h3></p>
                 </a>

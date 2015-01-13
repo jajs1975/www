@@ -1,12 +1,22 @@
 //Se Arma un arreglo con objetos que incluyen peticiones asíncronas y otro con las respuestas de los servicios
 //En loadAllRest, evaluar cuando todas las peticiones del arreglo han terminado
 //y sustituir el código generado en cada petición por la cadena que identifica el lugar en que va ese código en result
-var objInstanceId = window.localStorage["attrId"];
-var instanceTitle = window.localStorage["attrName"];
+//var objInstanceId = window.localStorage["attrId"];
+//var instanceTitle = window.localStorage["attrName"];
+var objInstanceId = getAttrData('attrId', false);//window.localStorage["attrId"];
+var instanceTitle = getAttrData('attrName', false);//window.localStorage["attrName"];
 var resultFirstJson;
 var data = "";
 var identifiers = "";
-
+var objectType = getAttrData("attrType", false);
+if (objectType && objectType.toLowerCase() == "profile") {
+    instanceTitle = "Sobre mí";
+    $('#subtitle').hide();
+    $( '.ui-header .ui-title' ).css( "padding","0.7em 0" );
+} else {
+    $('#subtitle').show();
+    $( '.ui-header .ui-title' ).css( "padding","2px 0" );
+}
 /*if (objInstanceId == undefined) {
     objInstanceId = 1;
 }*/
@@ -34,7 +44,7 @@ var numCarrousels;
 //Almacena el codigo HTML generado
 var result;
 //Servicio -- Se obtiene la lista de propiedades de un objeto
-setPath('to_attrDetail');
+//setPath('to_attrDetail');
 $.ajax({
     type: 'GET',
           "url": "http://smartcitypois.spribo.qoslabs.com/spribo/api/attributes?objectId=" + objInstanceId,
@@ -156,7 +166,7 @@ Handlebars.registerHelper('eachM', function(property) {
             data = data + '</div>';
             data = data + '<div class="col-xs-3">';
             data = data + '<div class="col-xs-offset-8">';
-            data = data + '<a href="vp_display.html" onclick="setPath(\'to_InstanceInfo\');setPropId(\'' + objInstanceId + '\',\'' + property[i].Id + '\'); insertHtml(this.href);this.blur(); return false;">';
+            data = data + '<a href="vp_display.html" onclick="setPropId(\'' + objInstanceId + '\',\'' + property[i].Id + '\'); insertHtml(this.href);this.blur(); return false;">';
             data = data + '<span style="color:#F48341;" class="glyphicon glyphicon-chevron-right "></span>';
             data = data + '</a>';
             data = data + '</div>';

@@ -1,21 +1,8 @@
-var attrId=window.localStorage["attrId"];
-var attrName=window.localStorage["attrName"];
-var attrDisplayImage=window.localStorage["attrDisplayImage"];
-var attrCoverImage=window.localStorage["attrCoverImage"];
-var attrType=window.localStorage["attrType"]; 
-
-var attrId1=getAttrData("attrId1", false);
-var attrName1=getAttrData("attrName1", false);
-var attrDisplayImage1=getAttrData("attrDisplayImage1", false);
-var attrCoverImage1=getAttrData("attrCoverImage1", false);
-var attrType1=getAttrData("attrType1", false); 
-console.log('attrId1: ' + attrId1);
-console.log('attrName1: ' + attrName1);
-console.log('attrDisplayImage1: ' + attrDisplayImage1);
-console.log('attrCoverImage1: ' + attrCoverImage1);
-console.log('attrType1: ' + attrType1);
-//console.log('attrCoverImage: ' + attrCoverImage);
-//console.log('attrDisplayImage: ' + attrDisplayImage);
+var attrId=getAttrData("attrId", false);
+var attrName=getAttrData("attrName", false);
+var attrDisplayImage=getAttrData("attrDisplayImage", false);
+var attrCoverImage=getAttrData("attrCoverImage", false);
+var attrType=getAttrData("attrType", false); 
 
 $('.page-title').html(attrName);
 $('#subtitle').hide();
@@ -28,7 +15,8 @@ if (attrCoverImage) {
 }*/
 if (attrType!= undefined && attrType == 'Profile') {
 	  $('#action-icon-right').removeClass('hide-action-icon-right'); 
-    document.getElementById('action-icon-right').href = "to_AttrInfo.html";
+    //document.getElementById('action-icon-right').href = "to_AttrInfo.html";
+    document.getElementById('action-icon-right').href = "to_InstanceInfo.html";
     $('#prflImg').removeClass('hide-action-icon-right');
     if (attrDisplayImage) {
     	 $('#prflImg').html('<img id ="profile" style="border: 2px solid silver; height: 130px; width: 130px; " class="img-responsive img-circle img-responsive-rounded" src="'+ attrDisplayImage +'" />');	

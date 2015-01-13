@@ -8,7 +8,7 @@ var typeObjName=window.localStorage["commName"];
 $.ajax({
     type: 'GET',
          
-          "url": "http://smartcitypois.spribo.qoslabs.com/spribo/api/contacts?profileId="+objectId+"&authorizationToken=sjfaodf7832909" + Authorization,
+          "url": "http://smartcitypois.spribo.qoslabs.com/spribo/api/contacts?profileId="+objectId+"&authorizationToken=" + Authorization,//sjfaodf7832909
           "dataType": "json"
     }).done(function(response){
         loadAllRest(response);
@@ -21,6 +21,11 @@ function loadAllRest( responseJson){
     $("#maincontent").addClass("displayListview");
     $('#maincontent').html(result);
 	$('.page-title').html(typeObjName);
+	var nodo = $('#subtitle');
+	if ($(nodo).is(":visible")){
+		$(nodo).hide();
+		$( '.ui-header .ui-title' ).css( "padding","0.7em 0" );
+	}	
     //here already exists #to_Instances
     $("#to_UserInstances").on( "filterablefilter", function( event, ui ) {
         if ($(this).children(':visible').not('#no-results').length === 0) {

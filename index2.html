@@ -176,32 +176,33 @@ hr{
 						<p><img src="img/ricardo.png" class="img-profile"/></p>
 					</div>
 			</div>-->
-	<div class = "userInfo">
-		<ul class="nav nav-pills nav-stacked">	
-        
-			<li>
-				<a href="to_attrDetail.html" id="username" onclick="setPath('index2');getUserInfo(); insertHtml(this.href); this.blur(); return false;" data-ajax="true" style="text-shadow: none !important;padding: 5px 5px;">
-					<span style="color:#FFF;" class="text-menu side-menu-item"></span>
-				</a><hr>
-			</li>
-		
-			<li>
-				<a href="to_UserInstances.html" onclick="setPath('index2');insertHtml(this.href); this.blur(); return false;" data-ajax="true" style="text-shadow: none !important;padding: 5px 5px;">
-					<span style="color:#FFF;" class="text-menu side-menu-item">Contactos</span>
-				</a><hr>
-			</li>
-        
-		</ul>	  			
-			</div>			
+
+		<div class = "userInfo">
+			<ul class="nav nav-pills nav-stacked">  
+			   <li>
+					<a href="to_attrDetail.html"  id="username" onclick="setPath('index2');getUserInfo(); insertHtml(this.href); this.blur(); return false;" data-ajax="true" style="text-shadow: none !important;padding: 5px 5px;">
+						<span style="color:#FFF;" class="text-menu side-menu-item"></span>
+					</a><hr>
+			   </li>
+
+			   <li>
+					<a href="to_UserInstances.html" onclick="setPath('index2');insertHtml(this.href); this.blur(); return false;" data-ajax="true" style="text-shadow: none !important;padding: 5px 5px;">
+						<img src="img/contacts_focus_48dp.png"  style="width:20px;height:20px">
+						<span style="color:#FFF;" class="text-menu side-menu-item">Contactos</span>
+					</a><hr>
+			   </li>
+			</ul>                                                    
+		</div>  
+			
 			<div class="objTypes"></div> 
 		</div><!-- /nav-search-->
 	</div><!-- /myPanel -->
-	
+	<!--myPanel-->
   <div data-role="header" data-position="fixed" data-tap-toggle="false" class="headerFooterColor">
-	<a id="icon-bars" href="#myPanel" class="ui-icon-alt iconsSpribo" data-icon="bars" data-iconpos="notext" data-inline="true" onclick="backIcon();">Menu</a>
+	<a id="icon-bars" href="#" class="ui-icon-alt iconsSpribo" data-icon="bars" data-iconpos="notext" data-inline="true" onclick="backIcon();">Menu</a>
 		<h1 class="page-title"></h1>
 		<h1 id="subtitle" class="page-subTitle" style="display:none">Información</h1>
-	<a id="action-icon-right" href="to_InstanceInfo.html" onclick="insertHtml(this.href); this.blur(); return false;" class="ui-icon-alt hide-action-icon-right iconsSpribo" data-icon="info" data-iconpos="notext" data-inline="true" rel="external" data-ajax="false">Info</a>
+	<a id="action-icon-right" href="to_InstanceInfo.html" onclick="insertHtml(this.href); this.blur(); setPath('to_attrDetail');return false;" class="ui-icon-alt hide-action-icon-right iconsSpribo" data-icon="info" data-iconpos="notext" data-inline="true" rel="external" data-ajax="false">Info</a>
   </div><!-- /header -->
 
 <div id="maincontent" data-role="main" class="ui-content">
@@ -233,6 +234,7 @@ hr{
 <script src="js/newsFeedCommunity.js"></script>
 <!--script src="lib/handlebars.js"></script-->
 <script src="cordova.js"></script>
+<script src="lib/fastclick/fastclick.js"></script>
 <script src="js/index2.js"></script>
 </body>
 </html>
@@ -289,61 +291,61 @@ function setPropId(param1, param2, param3, param4) {
 }
 
 function setAttrId(param1, param2, param3, param4, param5) {
-    if(param1!=null) window.localStorage["attrId"]=param1;
-	if(param2!=null) window.localStorage["attrName"]=param2;
-	if(param3!=null) window.localStorage["attrDisplayImage"]=param3;
-	if(param4!=null) window.localStorage["attrCoverImage"]=param4;
-	if(param5!=null) window.localStorage["attrType"]=param5;
-	console.log('param1' + param1 + ' local' + window.localStorage["attrId"]);
-	console.log('param2' + param2 + ' local' + window.localStorage["attrName"]);
-	console.log('param3' + param3 + ' local' + window.localStorage["attrDisplayImage"]);
-	console.log('param4' + param4 + ' local' + window.localStorage["attrCoverImage"]);
-	console.log('param5' + param5 + ' local' + window.localStorage["attrType"]);
+    //if(param1!=null) window.localStorage["attrId"]=param1;
+	//if(param2!=null) window.localStorage["attrName"]=param2;
+	//if(param3!=null) window.localStorage["attrDisplayImage"]=param3;
+	//if(param4!=null) window.localStorage["attrCoverImage"]=param4;
+	//if(param5!=null) window.localStorage["attrType"]=param5;
+	//console.log('param1' + param1 + ' local' + window.localStorage["attrId"]);
+	//console.log('param2' + param2 + ' local' + window.localStorage["attrName"]);
+	//console.log('param3' + param3 + ' local' + window.localStorage["attrDisplayImage"]);
+	//console.log('param4' + param4 + ' local' + window.localStorage["attrCoverImage"]);
+	//console.log('param5' + param5 + ' local' + window.localStorage["attrType"]);
 	
-	var attriId1 = window.localStorage["attrId1"];
-    if(attriId1 != undefined) {
-		attriId1 += param1 + "|";
+	var attriId = window.localStorage["attrId"];
+    if(attriId != undefined) {
+		attriId += param1 + "|";
     } else {
-		attriId1 = param1 + "|";
+		attriId = param1 + "|";
     }
 	//alert(attriId1);
-    window.localStorage["attrId1"] = attriId1;
+    window.localStorage["attrId"] = attriId;
 	
-	var attrName1 = window.localStorage["attrName1"];
-    if(attrName1 != undefined) {
-		attrName1 += param2 + "|";
+	var attrName = window.localStorage["attrName"];
+    if(attrName != undefined) {
+		attrName += param2 + "|";
     } else {
-		attrName1 = param2 + "|";
+		attrName = param2 + "|";
     }
 	//alert(attrName1);
-    window.localStorage["attrName1"] = attrName1;
+    window.localStorage["attrName"] = attrName;
 	
-	var attrDisplayImage1 = window.localStorage["attrDisplayImage1"];
-    if(attrDisplayImage1 != undefined) {
-		attrDisplayImage1 += param3 + "|";
+	var attrDisplayImage = window.localStorage["attrDisplayImage"];
+    if(attrDisplayImage != undefined) {
+		attrDisplayImage += param3 + "|";
     } else {
-		attrDisplayImage1 = param3 + "|";
+		attrDisplayImage = param3 + "|";
     }
 	//alert(attrDisplayImage1);
-    window.localStorage["attrDisplayImage1"] = attrDisplayImage1;
+    window.localStorage["attrDisplayImage"] = attrDisplayImage;
 	
-	var attrCoverImage1 = window.localStorage["attrCoverImage1"];
-    if(attrCoverImage1 != undefined) {
-		attrCoverImage1 += param4 + "|";
+	var attrCoverImage = window.localStorage["attrCoverImage"];
+    if(attrCoverImage != undefined) {
+		attrCoverImage += param4 + "|";
     } else {
-		attrCoverImage1 = param4 + "|";
+		attrCoverImage = param4 + "|";
     }
 	//alert(attrCoverImage1);
-    window.localStorage["attrCoverImage1"] = attrCoverImage1;
+    window.localStorage["attrCoverImage"] = attrCoverImage;
 	
-	var attrType1 = window.localStorage["attrType1"];
-    if(attrType1 != undefined) {
-		attrType1 += param5 + "|";
+	var attrType = window.localStorage["attrType"];
+    if(attrType != undefined) {
+		attrType += param5 + "|";
     } else {
-		attrType1 = param5 + "|";
+		attrType = param5 + "|";
     }
 	//alert(attrType1);
-    window.localStorage["attrType1"] = attrType1;
+    window.localStorage["attrType"] = attrType;
 }
 
 function getAttrData(attr, isBack) {
@@ -351,7 +353,7 @@ function getAttrData(attr, isBack) {
 	//alert('attribute' + attribute);
 	var strData = attribute.split("|");
 	var current = "";
-	if (strData.length > 0) {
+	if (strData.length > 1) {
 		current = strData[strData.length -2];
 		if(isBack) {
 			attribute = attribute.substring(0,(attribute.length - (current.length+1)));
@@ -390,21 +392,22 @@ console.log(targetUrl +"-->");
 
 	//ocultar siempre el icono de informacion. En el html que se carga se muestra cuando aplica(instance_detail.html)
 	$("#action-icon-right").addClass("hide-action-icon-right");
-	$( "#myPanel" ).panel( "close" );
+	
 	var isMenu = false;
 	if(targetUrl.indexOf("newsFeedCommunity") < 0 && targetUrl.indexOf("index2") >= 0){
 		isMenu = true;
-		document.getElementById('icon-bars').href = "#myPanel"
+		document.getElementById('icon-bars').href = "#";//"#myPanel"
 	} 
 	if(targetUrl.indexOf("newsFeedCommunity") >= 0 && targetUrl.indexOf("index2") < 0){
 		 isMenu = true;
-		 document.getElementById('icon-bars').href = "#myPanel"
+		 document.getElementById('icon-bars').href = "#"; //"#myPanel"
 	}
 	if(!isMenu) { 
     	$('#icon-bars').removeClass("ui-icon-bars");
     	$("#icon-bars").addClass("ui-icon-carat-l");
     	$('#icon-barS').attr("data-icon","carat-l");
-    }
+    } 
+	$( "#myPanel" ).panel( "close" );
 
 	var request = $.ajax({
 	  url: targetUrl,
@@ -417,10 +420,10 @@ console.log(targetUrl +"-->");
 		
 		$("#maincontent").html(msg);
 		
-		if($("#to_instanceInfo").html()!=undefined && $("#to_instanceInfo").html()!='' ){
+		/*if($("#to_instanceInfo").html()!=undefined && $("#to_instanceInfo").html()!='' ){
 			$('#subtitle').show();
 			$( '.ui-header .ui-title' ).css( "padding","2px 0" );
-		}
+		}*/
 		/*if($('#to_Instances')){
 			$("#maincontent").addClass("displayListview");
 			
@@ -528,116 +531,147 @@ console.log(targetUrl +"-->");
 }*/
 	
 function backIcon() {
-    alert("Entra a backIcon George");
-	var attribute = window.localStorage['path'];
-	var strData = attribute.split("|");
-	var current = "";
-	if (strData.length > 0) {
-		//alert(strData + ', tamaño: ' + strData.length);
-		current = strData[strData.length -2];
-		//alert('current: ' + current);
-		attribute = attribute.substring(0,(attribute.length - (current.length+1)));
-		//alert('cadena path final: ' + attribute);
-		//current = current.substring(0,current.length-1);
-		//alert('current: ' + current);
-	} else {
-		current = "index2";
-		attribute = "";
-	}
-	window.localStorage['path'] = attribute;
+	if($('#icon-bars').hasClass("ui-icon-bars" )) {
+	    if( $("#myPanel").hasClass("ui-panel-open") == true ){
+           //alert("OPENED");
+		   closePanel();
+        }else{
+            //alert("CLOSED");
+			openPanel();
+        }
 
-	if(current == "index2") {
-        $('#icon-bars').addClass("ui-icon-bars");
-        $("#icon-bars").removeClass("ui-icon-carat-l");
-        $('#icon-barS').attr("data-icon","bars");
-        document.getElementById('icon-bars').href = "#myPanel"
-        //$('#maincontent').empty();
-        $( '.ui-header .ui-title' ).css( "padding","0.7em 0" );
-        var commName=window.localStorage["commName"];
-        if (commName == undefined) commName = "";
-        $('.page-title').html(commName);
-        //document.getElementById('icon-bars').href = "javascript:insertHtml('index2.html')";
-	}
-//    if ($("#to_Instances").html() != undefined && $("#to_Instances").html() != '' ) {
-//        $('#icon-bars').addClass("ui-icon-bars");
-//        $("#icon-bars").removeClass("ui-icon-carat-l");
-//        $('#icon-barS').attr("data-icon","bars");
-//        document.getElementById('icon-bars').href = "#myPanel"
-        //$('#maincontent').empty();
-//        $( '.ui-header .ui-title' ).css( "padding","0.7em 0" );
-//        var commName=window.localStorage["commName"];
-//        if (commName == undefined) commName = "";
-//        $('.page-title').html(commName);
-//        document.getElementById('icon-bars').href = "javascript:insertHtml('index2.html')";
-//    }
-	/*if ($("#to_UserInstances").html() != undefined && $("#to_UserInstances").html() != '' ) {
-        $('#icon-bars').addClass("ui-icon-bars");
-        $("#icon-bars").removeClass("ui-icon-carat-l");
-        $('#icon-barS').attr("data-icon","bars");
-        document.getElementById('icon-bars').href = "#myPanel"
-        //$('#maincontent').empty();
-        $( '.ui-header .ui-title' ).css( "padding","0.7em 0" );
-        var commName=window.localStorage["commName"];
-        if (commName == undefined) commName = "";
-        $('.page-title').html(commName);
-        document.getElementById('icon-bars').href = "javascript:insertHtml('index2.html')";
-    }*/
-    
-    /*if ($("#to_instanceDetail").html() != undefined && $("#to_instanceDetail").html() != '') {
-        document.getElementById('icon-bars').href = "javascript:insertHtml('to_Instances.html')";
-    }*/
-    if ($("#to_instanceInfo").html() != undefined && $("#to_instanceInfo").html() != '') {
-		//alert('Se ejecuto #to_instanceInfo');
-        $('#subtitle').hide();
-        $( '.ui-header .ui-title' ).css( "padding","0.7em 0" );
-        //document.getElementById('icon-bars').href = "javascript:insertHtml('to_attrDetail.html')";
-    }
-		
-    if ($("#vp_display").html() != undefined && $("#vp_display").html() != '') {
-		//alert('Se ejecuto #vp_display');
-        //document.getElementById('icon-bars').href = "javascript:insertHtml('to_InstanceInfo.html')";
-        $('#subtitle').html("Información");
-    } 
-		
-    if ($("#to_instanceObjectList").html() != undefined && $("#to_instanceObjectList").html() != '') {
-		//alert('Se ejecuto #to_instanceObjectList');
-        //document.getElementById('icon-bars').href = "javascript:insertHtml('to_InstanceInfo.html')";
-        $('#subtitle').html("Información");
-    }
-    /*if ($("#to_attrDetail").html() != undefined && $("#to_attrDetail").html() != '') {
-		var isPage = window.localStorage["isPageNF"];
-		if(isPage=='index2') {
+	} else {
+
+		var attribute = window.localStorage['path'];
+		var strData = attribute.split("|");
+		var current = "";
+		if (strData.length > 1) {
+			//alert(strData + ', tamaño: ' + strData.length);
+			current = strData[strData.length -2];
+			//alert('current: ' + current);
+			attribute = attribute.substring(0,(attribute.length - (current.length+1)));
+			//alert('cadena path final: ' + attribute);
+			//current = current.substring(0,current.length-1);
+			//alert('current: ' + current);
+		} else {
+			current = "index2";
+			attribute = "";
+		}
+		window.localStorage['path'] = attribute;
+
+		if(current == "index2") {
+			$('#icon-bars').addClass("ui-icon-bars");
+			$("#icon-bars").removeClass("ui-icon-carat-l");
+			$('#icon-barS').attr("data-icon","bars");
+			document.getElementById('icon-bars').href = "#";//"#myPanel"
+			//$('#maincontent').empty();
+			$( '.ui-header .ui-title' ).css( "padding","0.7em 0" );
+			var commName=window.localStorage["commName"];
+			if (commName == undefined) commName = "";
+			$('.page-title').html(commName);
+			
+			//document.getElementById('icon-bars').href = "javascript:insertHtml('index2.html')";
+		}
+	//    if ($("#to_Instances").html() != undefined && $("#to_Instances").html() != '' ) {
+	//        $('#icon-bars').addClass("ui-icon-bars");
+	//        $("#icon-bars").removeClass("ui-icon-carat-l");
+	//        $('#icon-barS').attr("data-icon","bars");
+	//        document.getElementById('icon-bars').href = "#myPanel"
+			//$('#maincontent').empty();
+	//        $( '.ui-header .ui-title' ).css( "padding","0.7em 0" );
+	//        var commName=window.localStorage["commName"];
+	//        if (commName == undefined) commName = "";
+	//        $('.page-title').html(commName);
+	//        document.getElementById('icon-bars').href = "javascript:insertHtml('index2.html')";
+	//    }
+		/*if ($("#to_UserInstances").html() != undefined && $("#to_UserInstances").html() != '' ) {
 			$('#icon-bars').addClass("ui-icon-bars");
 			$("#icon-bars").removeClass("ui-icon-carat-l");
 			$('#icon-barS').attr("data-icon","bars");
 			document.getElementById('icon-bars').href = "#myPanel"
+			//$('#maincontent').empty();
 			$( '.ui-header .ui-title' ).css( "padding","0.7em 0" );
 			var commName=window.localStorage["commName"];
 			if (commName == undefined) commName = "";
 			$('.page-title').html(commName);
 			document.getElementById('icon-bars').href = "javascript:insertHtml('index2.html')";
-		} else {
-			alert('Se ejecuto #to_attrDetail, else');
-			document.getElementById('icon-bars').href = "javascript:insertHtml('" + isPage + ".html')";
+		}*/
+		
+		/*if ($("#to_instanceDetail").html() != undefined && $("#to_instanceDetail").html() != '') {
+			document.getElementById('icon-bars').href = "javascript:insertHtml('to_Instances.html')";
+		}*/
+		if ($("#to_instanceInfo").html() != undefined && $("#to_instanceInfo").html() != '') {
+			//alert('Se ejecuto #to_instanceInfo');
+			$('#subtitle').hide();
+			$( '.ui-header .ui-title' ).css( "padding","0.7em 0" );
+			//document.getElementById('icon-bars').href = "javascript:insertHtml('to_attrDetail.html')";
+		}
+			
+		if ($("#vp_display").html() != undefined && $("#vp_display").html() != '') {
+			//alert('Se ejecuto #vp_display');
+			//document.getElementById('icon-bars').href = "javascript:insertHtml('to_InstanceInfo.html')";
+			$('#subtitle').html("Información");
+		} 
+			
+		if ($("#to_instanceObjectList").html() != undefined && $("#to_instanceObjectList").html() != '') {
+			//alert('Se ejecuto #to_instanceObjectList');
+			//document.getElementById('icon-bars').href = "javascript:insertHtml('to_InstanceInfo.html')";
 			$('#subtitle').html("Información");
 		}
-    }*/		
-    
-    if ($("#to_AttrInfo").html() != undefined && $("#to_AttrInfo").html() != '') {
-		//document.getElementById('icon-bars').href = "javascript:insertHtml('to_attrDetail.html')";
-		//alert('Se ejecuto #to_AttrInfo');
-		document.getElementById('action-icon-right').href = "javascript:insertHtml('to_InstanceInfo.html')";
-    }
-	
-	document.getElementById('icon-bars').href = "javascript:insertHtml('" + current + ".html')";
+		/*if ($("#to_attrDetail").html() != undefined && $("#to_attrDetail").html() != '') {
+			var isPage = window.localStorage["isPageNF"];
+			if(isPage=='index2') {
+				$('#icon-bars').addClass("ui-icon-bars");
+				$("#icon-bars").removeClass("ui-icon-carat-l");
+				$('#icon-barS').attr("data-icon","bars");
+				document.getElementById('icon-bars').href = "#myPanel"
+				$( '.ui-header .ui-title' ).css( "padding","0.7em 0" );
+				var commName=window.localStorage["commName"];
+				if (commName == undefined) commName = "";
+				$('.page-title').html(commName);
+				document.getElementById('icon-bars').href = "javascript:insertHtml('index2.html')";
+			} else {
+				alert('Se ejecuto #to_attrDetail, else');
+				document.getElementById('icon-bars').href = "javascript:insertHtml('" + isPage + ".html')";
+				$('#subtitle').html("Información");
+			}
+		}*/		
+		if ($("#to_attrDetail").html() != undefined && $("#to_attrDetail").html() != '') {
+			getAttrData('attrId', true);
+			getAttrData('attrName', true);
+			getAttrData('attrCoverImage', true);
+			getAttrData('attrDisplayImage', true);
+			getAttrData('attrType', true);
+			//alert('Es attrDetail, quitamos el actual attrId');
+		}
+		
+		if ($("#to_AttrInfo").html() != undefined && $("#to_AttrInfo").html() != '') {
+			//document.getElementById('icon-bars').href = "javascript:insertHtml('to_attrDetail.html')";
+			//alert('Se ejecuto #to_AttrInfo');
+			document.getElementById('action-icon-right').href = "javascript:insertHtml('to_InstanceInfo.html')";
+		}
+		//checkPanelStatus();
 
-}	
+		
+		document.getElementById('icon-bars').href = "javascript:insertHtml('" + current + ".html')";
+	}
+}
+/*	
+function checkPanelStatus{
+	if( $("#myPanel").hasClass("ui-panel-open") == true ){
+	   alert("OPENED");
+	}else{
+	   alert("CLOSED");
+	}
+
+}*/
+
 function home(){
 	$('#maincontent').empty();
 	$('#icon-bars').addClass("ui-icon-bars");
 	$("#icon-bars").removeClass("ui-icon-carat-l");
 	$('#icon-barS').attr("data-icon","bars");
-	$( "#myPanel" ).panel( "open" );
+	//$( "#myPanel" ).panel( "open" );
 	$('#subtitle').hide();
 	setPath('index2');
 	$( '.ui-header .ui-title' ).css( "padding","0.7em 0" );
@@ -653,11 +687,11 @@ function setPath (page) {
 		path += page + "|";
    } else {
 		path = page + "|";
-		window.localStorage["attrId1"] = "";
-		window.localStorage["attrName1"]="";
-		window.localStorage["attrType1"]="";
-		window.localStorage["attrCoverImage1"]="";
-		window.localStorage["attrDisplayImage1"]="";
+		window.localStorage["attrId"] = "";
+		window.localStorage["attrName"]="";
+		window.localStorage["attrType"]="";
+		window.localStorage["attrCoverImage"]="";
+		window.localStorage["attrDisplayImage"]="";
    }
    window.localStorage["path"] = path;
 }

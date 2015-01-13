@@ -126,13 +126,13 @@ font-weight:100 !important;
 .ui-icon-info:after {
 	background-repeat: no-repeat;
 	background-image: url("../img/i.png");
-	background-color: #FFF;
+	background-color: inherit;
 	background-size: 18px 18px;
 }
 .ui-icon-carat-l:after {
 	background-repeat: no-repeat;
 	background-image: url("../img/back.png");
-	background-color: #FFF;
+	background-color: inherit;
 	background-size: 18px 18px;
 }
 

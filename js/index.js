@@ -21,7 +21,7 @@ function handleClick()
 		
 		if  (object == "401"){
 		
-			$('#error').text("Datos no válidos");		 
+			$('#error').text("Cuenta de usuario o contraseña incorrecta");		 
 		}
 		 else {
 	
@@ -32,13 +32,13 @@ function handleClick()
 		 	
 		 
 		 window.location.replace("index.html"); 
-		$('#error').text("Datos no válidos");
+		$('#error').text("Cuenta de usuario o contraseña incorrecta");
 		});  	 
 		 }
 		else{
 			if(userId){
-			$('#error').text("Contraseña Requerida"); }
-			else {$('#error').text("Campo de Usuario Requerido")}
+			$('#error').text(" Contraseña requerida"); }
+			else {$('#error').text("Cuenta de usuario requerida")}
 		}
 		 
         //event.preventDefault(); // disable normal form submit behavior
