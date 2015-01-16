@@ -1,21 +1,16 @@
 <div id="newsFeedCommunity" class="container" style="background-color:#FFF">
-		<script>
-				
-			function showElement(){
-				$('#seeMore').hide();
-				$('#gifLoad').show();
-				$('#gifLoad').hide(3000);
-				setTimeout( "$('#morePost').show();",3000);
-				
-			}
-				
-		</script>
-		
-		
-		<script id="newsFeedCommunityTem" type="text/template">
-			{{#eachNeewsFeed this}}
-			{{/eachNeewsFeed}}
-		</script>
-		<script src="js/newsFeedCommunity.js"></script>
+	<script>
+		function showElement(){
+			$('#seeMore').hide();
+			$('#gifLoad').show();
+			$('#gifLoad').hide(3000);
+			setTimeout( "$('#morePost').show();",3000);
+		}
+	</script>
+	<script id="newsFeedCommunityTem" type="text/template">
+		{{#eachNeewsFeed this}}
+		{{/eachNeewsFeed}}
+	</script>
+	<script src="js/newsFeedCommunity.js"></script>
 
 </div>

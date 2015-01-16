@@ -6,7 +6,6 @@
 <div id="to_userInstance">
 <script id="obj-list-point" type="text/template">
     <ul class="ui-listview" data-role="listview" data-scroll="true" data-filter="true" data-filter-placeholder="Buscar" id="to_UserInstances">
-	<!--ul data-role="listview" data-scroll="true" data-filter="true" data-input="#pois-filter" id="pois"-->
         {{#each this}}
             <li>
                 <a href="to_attrDetail.html" data-ajax="true" onclick="setPath('to_UserInstances');setAttrId('{{Id}}', '{{Name}}', '{{DisplayImage.Thumbnail}}', '{{CoverImage.Image}}', 'Profile' );setPageNF('to_UserInstances'); insertHtml(this.href); this.blur(); return false;" style="background-color: #FFFFFF;">

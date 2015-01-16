@@ -1,27 +1,36 @@
 //Se Arma un arreglo con objetos que incluyen peticiones asíncronas y otro con las respuestas de los servicios
 //En loadAllRest, evaluar cuando todas las peticiones del arreglo han terminado
 //y sustituir el código generado en cada petición por la cadena que identifica el lugar en que va ese código en result
-//var objInstanceId = window.localStorage["attrId"];
-//var instanceTitle = window.localStorage["attrName"];
-var objInstanceId = getAttrData('attrId', false);//window.localStorage["attrId"];
-var instanceTitle = getAttrData('attrName', false);//window.localStorage["attrName"];
+var objInstanceId = getAttrData('attrId', false);
+var instanceTitle = getAttrData('attrName', false);
+var urlComm = window.localStorage["urlComm"];
+var Authorization = window.localStorage["Authorization"];
 var resultFirstJson;
+var contacts; 
 var data = "";
 var identifiers = "";
 var objectType = getAttrData("attrType", false);
-if (objectType && objectType.toLowerCase() == "profile") {
-    instanceTitle = "Sobre mí";
-    $('#subtitle').hide();
-    $( '.ui-header .ui-title' ).css( "padding","0.7em 0" );
-} else {
-    $('#subtitle').show();
-    $( '.ui-header .ui-title' ).css( "padding","2px 0" );
-}
-/*if (objInstanceId == undefined) {
-    objInstanceId = 1;
-}*/
 //Almacena los carrouselCode generados por las peticiones asincronas
 var htmlCarrousels = [];
+
+var codeStore = null;
+//Almacena las peticiones asincronas para los carruseles
+var innerCalls = [];
+//Almacena los identificadores de los carruseles
+var numCarrousels;
+//Almacena el codigo HTML generado
+var result;
+//Almacena el codigo HTML generado para los contactos en comun
+var commonsResult;
+//Cuenta los contactos en comun entre dos usuarios
+var commonsTotal;
+//Cuenta los contactos en total de un usuario
+var totalContacts;
+
+if (urlComm == undefined) {
+    urlComm = "smartcitypois"; //para llamadas a servicios
+    window.localStorage["urlComm"] = urlComm;
+}
 //Genera instancias de objetos que almacenan el codigo HTML generado para cada carrusel
 var carrouselCode = function(params) {
     var id;
@@ -32,29 +41,34 @@ var carrouselCode = function(params) {
     }
     return {
         playerConstraintId : id,
-        codeGenerated : "",
+        //codeGenerated : "",
         type : objType
     }
 };
-var codeStore = null;
-//Almacena las peticiones asincronas para los carruseles
-var innerCalls = [];
-//Almacena los identificadores de los carruseles
-var numCarrousels;
-//Almacena el codigo HTML generado
-var result;
+if (objectType && objectType.toLowerCase() == "profile") {
+    instanceTitle = "Sobre mí";
+    $('#subtitle').hide();
+    $( '.ui-header .ui-title' ).css( "padding","0.7em 0" );
+	//manda a llamar contactos en comun
+	var deferedCommonsCall = getCommonContacts();
+    innerCalls.push(deferedCommonsCall);
+    //obtiene los contactos en total del usuario
+    getTotalContacts();
+} else {
+    $('#subtitle').show();
+    $( '.ui-header .ui-title' ).css( "padding","2px 0" );
+}
 //Servicio -- Se obtiene la lista de propiedades de un objeto
-//setPath('to_attrDetail');
 $.ajax({
     type: 'GET',
-          "url": "http://smartcitypois.spribo.qoslabs.com/spribo/api/attributes?objectId=" + objInstanceId,
+          "url": "http://" + urlComm + ".spribo.qoslabs.com/spribo/api/attributes?objectId=" + objInstanceId,
           "dataType": "json"
     }).done(function(response){
     	$('.page-title').html(instanceTitle);
 		resultFirstJson = response;
         loadAllRest(resultFirstJson);
 });
-
+//Ejecuta la visualizacion de los carruseles que contenga la pagina
 function putHtml() {
 	 $(".owl-carousel").owlCarousel({
 		autoPlay: false,
@@ -87,6 +101,11 @@ function loadAllRest(responseJson) {
         innerCalls.push(deferedCall);
     }
     $.when( innerCalls ).then( putHtml);
+    if (!objectType || objectType.toLowerCase() != "profile") {
+        var father = document.getElementById("commonsProp").parentElement;
+        father.removeChild(document.getElementById("commonsProp"));
+        father.removeChild(document.getElementById("contactsProp"));
+    }
 }
 
 var secondaryServiceCalls = function (objectId, propertyId, index) {
@@ -94,7 +113,7 @@ var secondaryServiceCalls = function (objectId, propertyId, index) {
     var innerCarrousel;
     var carrouselCodeFnc = $.ajax({
         type: 'GET',
-        url: "http://smartcitypois.spribo.qoslabs.com/spribo/api/associatedWith",
+        url: "http://" + urlComm + ".spribo.qoslabs.com/spribo/api/associatedWith",
         data : {
                 objectId : objectId,
                 playerConstraintId : propertyId
@@ -103,7 +122,7 @@ var secondaryServiceCalls = function (objectId, propertyId, index) {
 		async:false
     }).done(function(response2) {
         innerCarrousel = htmlCarrousel(response2, index);
-        htmlCarrousels[objectIndex].codeGenerated = innerCarrousel;
+        //htmlCarrousels[objectIndex].codeGenerated = innerCarrousel;
         if (innerCarrousel) {
             $('#' + htmlCarrousels[objectIndex].playerConstraintId).html(innerCarrousel);
         }
@@ -118,6 +137,20 @@ function finishHtml() {  //Si ya se atendieron todas las peticiones asincronas e
     $("div a[href='to_instanceObjectList.html']").click(function(event) {
         event.stopPropagation();
     });
+    $("div a[href='to_ContactLists.html']").click(function(event) {
+        event.stopPropagation();
+    });
+    if (objectType && objectType.toLowerCase() == "profile") {
+        $("#carruselCommon").html(commonsResult);
+        if (commonsTotal) {
+            var commonsText = commonsTotal + " contacto" + (commonsTotal != 1 ? "s" : "") + " en común";
+            $("#commonTitle").html(commonsText);
+        }
+        if (totalContacts) {
+            var totalText = totalContacts + " contacto" + (totalContacts != 1 ? "s" : "");
+            $("#totalContacts").html(totalText);
+        }
+    }
 }
 
 //Genera el código HTML con el conjunto de elementos en cada carrusel
@@ -128,10 +161,18 @@ function htmlCarrousel(dataElements, codeIndex) {
         var coverImage = "";
         var displaySmall = "";
         var displayImage = "";
-        if (dataElements[k].CoverImage) {
-            coverSmall = dataElements[k].CoverImage.Small;
-            coverImage = dataElements[k].CoverImage.Image;
-        }
+		if(htmlCarrousels[codeIndex].type == 'Profile') {
+			if (dataElements[k].CoverImage) {
+				coverSmall = dataElements[k].CoverImage.Small;
+				coverImage = dataElements[k].CoverImage.Image;
+			}		
+		} else {
+			if (dataElements[k].DisplayImage) {
+				coverSmall = dataElements[k].DisplayImage.Small;
+				coverImage = dataElements[k].DisplayImage.Image;
+			}
+		}
+        
         if (dataElements[k].DisplayImage) {
             displaySmall = dataElements[k].DisplayImage.Small;
             displayImage = dataElements[k].DisplayImage.Thumbnail;
@@ -153,10 +194,10 @@ function htmlCarrousel(dataElements, codeIndex) {
 //Genera el HTML para el listado de propiedades, sin el código de carruseles
 Handlebars.registerHelper('eachM', function(property) {
     data = "";
-
     for (var i = 0, j = property.length; i < j; i++) {
-    
-        
+        if (property[i].Name== 'DisplayImage' || property[i].Name== 'CoverImage' || property[i].Name== 'Name') {
+            continue;
+        }
         if (property[i].Type == 'string' || property[i].Type == 'date' || property[i].Type == 'boolean' 
 					|| property[i].Type == 'integer' || property[i].Type == 'float' || property[i].Type == 'url' || 
 					property[i].Type == 'email') {
@@ -171,7 +212,6 @@ Handlebars.registerHelper('eachM', function(property) {
             data = data + '</a>';
             data = data + '</div>';
             data = data + '</div>';
-            //data = data + '</div>';
             data = data + '<br>';
             data = data + '<hr width="100%">';
         } else {  //Para propiedades tipo Objeto
@@ -181,10 +221,6 @@ Handlebars.registerHelper('eachM', function(property) {
             } else {
                 identifiers = property[i].Id + "|" + property[i].Type;  //se usa en el código de los carruseles
             }
-            //data = data + '<div class="row">';
-            //data = data + '<div class="col-xs-1">';					
-            //data = data + '<div style="margin-left:10px;" class="events"></div>';
-            //data = data + '</div>';
             data += '<div class="row">';
             data = data + '<div class="col-xs-9">';
             data = data + '<span class="font-detail">' + property[i].Name + '</span>';
@@ -192,7 +228,6 @@ Handlebars.registerHelper('eachM', function(property) {
             data = data + '<div class="col-xs-3">';
             data = data + '</div>';
             data = data + '<br>';
-            //data = data + '</div>';
             data = data + '<br>';
             data = data + '<div class="row">';
             data = data + '<div class="col-xs-12 carousel-arrow">';
@@ -216,3 +251,33 @@ Handlebars.registerHelper('eachM', function(property) {
     return data;
 });	
 
+//Obtiene los datos de los contactos en comun entre dos usuarios
+function getCommonContacts() {
+	
+	var commonResponse = $.ajax({
+            type: 'GET',
+            url: "http://" + urlComm + ".spribo.qoslabs.com/spribo/api/commonContacts?profileId=" + objInstanceId + "&authorizationToken=" + Authorization,
+            dataType: "json",
+            async: false
+        }).done(function(response) {
+            var codeStore1 = carrouselCode([objInstanceId, "Profile"]);
+            htmlCarrousels.push(codeStore1);
+            var thisIndex = htmlCarrousels.length - 1;
+            contacts = response;
+            commonsTotal = contacts.length;
+            commonsResult = htmlCarrousel(contacts, thisIndex); 
+            $("#carruselCommon").html(commonsResult);
+	});
+	return commonResponse;
+}
+//Obtiene el total de contactos de un usuario
+function getTotalContacts() {
+    $.ajax({
+            type: 'GET',
+            url: "http://" + urlComm + ".spribo.qoslabs.com/spribo/api/contacts?profileId=" + objInstanceId + "&authorizationToken=" + Authorization,
+            dataType: "json",
+            async: false
+        }).done(function(response) {
+            totalContacts = response.length;
+	});
+}

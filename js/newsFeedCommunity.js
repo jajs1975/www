@@ -38,8 +38,8 @@
 			data += '<div class="col-xs-9 text-right col-xs-offset-3" style="padding-right: 1px;">';
 
 			data += '<a href=\'';
-			data += 'to_attrDetail.html';/*newsFeedObjType.html*/
-			data += '\' onclick="setPath(\'index2\');setPageNF(\'index2\');setAttrId(\''+ property[i].Actor.Id +'\',\''+ property[i].Actor.Name +'\',\''+ displayThumbnailActor +'\',\''+coverImageActor +'\',\'Profile\');insertHtml(this.href); this.blur(); return false;">';
+			data += 'to_attrDetail.html';
+			data += '\' onclick="setPath(\'home\');setPageNF(\'home\');setAttrId(\''+ property[i].Actor.Id +'\',\''+ property[i].Actor.Name +'\',\''+ displayThumbnailActor +'\',\''+coverImageActor +'\',\'Profile\');insertHtml(this.href); this.blur(); return false;">';
 			data += '<img style="height:60px; width:60px; background-color:#FFFFFF; border:0px;box-shadow : 0px 0px 10px rgba(0, 0, 0, 0.2);" class="img-responsive img-circle img-responsive-rounded" src="' + displayThumbnailActor + '" />';
 			data += '</a>';
 			
@@ -49,11 +49,12 @@
 			
 			/*Datos del objeto*/
 			/*Cabecera, lado derecho*/
-			data += '<div class="col-xs-8 text-left" style="padding-top:10px;">';
+			
+ 			data += '<div class="col-xs-8 text-left" style="padding-top:10px;">';
 			
 			data += '<a class=\'objectName\' href=\'';
-			data += 'to_attrDetail.html';/*newsFeedObjType.html*/
-			data += '\' onclick="setPath(\'index2\');setPageNF(\'index2\');setAttrId(\''+ property[i].Actor.Id +'\',\''+ property[i].Actor.Name +'\',\''+ displayThumbnailActor +'\',\''+coverImageActor +'\',\'Profile\');insertHtml(this.href); this.blur(); return false;">';			
+			data += 'to_attrDetail.html';
+			data += '\' onclick="setPath(\'home\');setAttrId(\''+ property[i].Actor.Id +'\',\''+ property[i].Actor.Name +'\',\''+ displayThumbnailActor +'\',\''+coverImageActor +'\',\'Profile\');insertHtml(this.href); this.blur(); return false;">';			
 			data += '<span class="objectName">' + property[i].Actor.Name + '</span>';
 			data += '</a>';			
 			
@@ -67,8 +68,8 @@
 					if(property[i].Object.CoverImage) coverImageObject = property[i].Object.CoverImage.Image;
 					if(property[i].Object.DisplayImage) displayImageObject = property[i].Object.DisplayImage.Thumbnail;
 					data += '<a class="objectName" href=\'';
-					data += 'to_attrDetail.html';/*newsFeedObjType.html*/
-					data += '\' onclick="setPath(\'index2\');setPageNF(\'index2\');setAttrId(\''+ property[i].Object.Id +'\',\''+ property[i].Object.Name +'\',\''+ displayImageObject +'\',\''+ coverImageObject  +'\',\'Profile\');insertHtml(this.href); this.blur(); return false;">';
+					data += 'to_attrDetail.html';
+					data += '\' onclick="setPath(\'home\');setAttrId(\''+ property[i].Object.Id +'\',\''+ property[i].Object.Name +'\',\''+ displayImageObject +'\',\''+ coverImageObject  +'\',\'Profile\');insertHtml(this.href); this.blur(); return false;">';
 					data += property[i].Object.Name;
 					data += '</a>';
 				} else if (property[i].Object.Type == 'Community') {
@@ -76,11 +77,11 @@
 				} else {
 					coverImageObject = "";
 					displayImageObject = "";
-					if(property[i].Object.CoverImage) coverImageObject = property[i].Object.CoverImage.Image;
+					if(property[i].Object.DisplayImage) coverImageObject = property[i].Object.DisplayImage.Image;
 					if(property[i].Object.DisplayImage) displayImageObject = property[i].Object.DisplayImage.Thumbnail;
 					data += '<a class="objectName" href=\'';
-					data += 'to_attrDetail.html';/*newsFeedObjType.html*/
-					data += '\' onclick="setPath(\'index2\');setPageNF(\'index2\');setAttrId(\''+ property[i].Object.Id +'\',\''+ property[i].Object.Name +'\',\''+ displayImageObject +'\',\''+ coverImageObject +'\',\'\');insertHtml(this.href); this.blur(); return false;">';
+					data += 'to_attrDetail.html';
+					data += '\' onclick="setPath(\'home\');setAttrId(\''+ property[i].Object.Id +'\',\''+ property[i].Object.Name +'\',\''+ displayImageObject +'\',\''+ coverImageObject +'\',\'\');insertHtml(this.href); this.blur(); return false;">';
 					data += property[i].Object.Name;
 					data += '</a>';
 				}
@@ -95,7 +96,7 @@
 						if(property[i].IndirectObject.DisplayImage) displayImageObject = property[i].IndirectObject.DisplayImage.Thumbnail;
 						data += '<a href=\'';
 						data += 'to_attrDetail.html';
-						data += '\' onclick="setPath(\'index2\');setPageNF(\'index2\');setAttrId(\''+ property[i].IndirectObject.Id +'\',\''+ property[i].IndirectObject.Name +'\',\''+ displayImageObject +'\',\''+ coverImageObject +'\',\'Profile\');insertHtml(this.href); this.blur(); return false;">';
+						data += '\' onclick="setPath(\'home\');setAttrId(\''+ property[i].IndirectObject.Id +'\',\''+ property[i].IndirectObject.Name +'\',\''+ displayImageObject +'\',\''+ coverImageObject +'\',\'Profile\');insertHtml(this.href); this.blur(); return false;">';
 						data += property[i].IndirectObject.Name;
 						data += '</a>';
 					} else if (property[i].IndirectObject.Type == 'Community') {
@@ -103,11 +104,11 @@
 					} else {
 						coverImageObject = "";
 						displayImageObject = "";
-						if(property[i].IndirectObject.CoverImage) coverImageObject = property[i].IndirectObject.CoverImage.Image;
+						if(property[i].IndirectObject.DisplayImage) coverImageObject = property[i].IndirectObject.DisplayImage.Image;
 						if(property[i].IndirectObject.DisplayImage) displayImageObject = property[i].IndirectObject.DisplayImage.Thumbnail;
 						data += '<a class="objectName" href=\'';
-						data += 'to_attrDetail.html';/*newsFeedObjType.html*/
-						data += '\' onclick="setPath(\'index2\');setPageNF(\'index2\');setAttrId(\''+ property[i].IndirectObject.Id +'\',\''+ property[i].IndirectObject.Name +'\',\''+ displayImageObject +'\',\''+ coverImageObject +'\',\'\');insertHtml(this.href); this.blur(); return false;">';
+						data += 'to_attrDetail.html';
+						data += '\' onclick="setPath(\'home\');setAttrId(\''+ property[i].IndirectObject.Id +'\',\''+ property[i].IndirectObject.Name +'\',\''+ displayImageObject +'\',\''+ coverImageObject +'\',\'\');insertHtml(this.href); this.blur(); return false;">';
 						data += property[i].IndirectObject.Name;
 						data += '</a>';
 					}
@@ -119,11 +120,26 @@
 			data += '</div>';
 			
 			/*Cuerpo del objeto*/
-			data += '<div class="row" style="margin-top:-25px;">';
-			//data += '<div  class="col-xs-3 text-left" style="padding-right: 1px;">';
-			//data += '</div>';
-			data += '<div class="col-xs-3"></div>';
-			data += '<div class="col-xs-8 text-left">';
+			var styleObj = 'style=""';
+			var styleObj1 = 'style="margin-top:-25px;"';
+			if(property[i].Object.Type == 'Profile' && property[i].Object.DisplayImage && property[i].Type != "UpdateAvatarActivity") {
+				data += '<div class="row" style="display:inline">';
+				data += '<div class="col-xs-3">';
+				data += '<div class="col-xs-9 text-right col-xs-offset-3" >'; 
+				data += '</div>';
+				data += '</div>';
+				data += '<div class="col-xs-8" style="margin-left:-40px;">';
+				data += '<img style="background-color:transparent; border:0px;width:40px" src="img/icon_connection.png">';
+				data += '</div>';
+				data += '</div>';
+				styleObj = 'style="margin-top:-25px; display:inline"';
+				var styleObj1 = 'style="margin-top:-25px; display:inline"';
+			}
+			
+			data += '<div class="row" ' + styleObj1 + '>';
+			data += '<div class="col-xs-3">';
+			data += '</div>';
+			data += '<div class="col-xs-8 text-left" ' + styleObj + '>';
 			if(property[i].Object.Type == 'Profile' && property[i].Object.DisplayImage) {
 				
 				data += '<div class="row">';
@@ -135,7 +151,7 @@
 					
 					data += '<a href=\'';
 					data += 'to_attrDetail.html';
-					data += '\' onclick="setPath(\'index2\');setPageNF(\'index2\');setAttrId(\''+ property[i].Object.Id +'\',\''+ property[i].Object.Name +'\',\''+ displayImageObject +'\',\''+ coverImageObject +'\',\'Profile\');insertHtml(this.href); this.blur(); return false;">';
+					data += '\' onclick="setPath(\'home\');setAttrId(\''+ property[i].Object.Id +'\',\''+ property[i].Object.Name +'\',\''+ displayImageObject +'\',\''+ coverImageObject +'\',\'Profile\');insertHtml(this.href); this.blur(); return false;">';
 					data += '<img style="width:60px; height:60px; background-color:transparent; border:0px;" class="img-responsive img-circle img-responsive-rounded" src="' + displayImageObject + '">';
 					data += '</a>';
 					
@@ -150,8 +166,8 @@
 					
 					data += '<a href=\'';
 					data += 'to_attrDetail.html';
-					data += '\' onclick="setPath(\'index2\');setPageNF(\'index2\');setAttrId(\''+ property[i].Object.Id +'\',\''+ property[i].Object.Name +'\',\''+ displayImageObject +'\',\''+ coverImageObject +'\',\'Profile\');insertHtml(this.href); this.blur(); return false;">';					
-					data += '<img style=" background-color:#FFFFFF; border:0px;max-width:250px" src="' + displayImageObject + '" />'; /*homePost_new.html*/
+					data += '\' onclick="setPath(\'home\');setAttrId(\''+ property[i].Object.Id +'\',\''+ property[i].Object.Name +'\',\''+ displayImageObject +'\',\''+ coverImageObject +'\',\'Profile\');insertHtml(this.href); this.blur(); return false;">';					
+					data += '<img style=" background-color:#FFFFFF; border:0px;max-width:250px" src="' + displayImageObject + '" />'; 
 					data += '</a>';
 					
 					data += '</div>';
@@ -159,15 +175,15 @@
 				data += '</div>';
 			} else if((property[i].Object.Type != 'Profile' && property[i].Object.Type != 'Community') && property[i].Type != 'InstancePageModifiedActivity' && property[i].Object.DisplayImage) {
 				coverImageObject = "";
-				if(property[i].Object.CoverImage) coverImageObject = property[i].Object.CoverImage.Image;
+				if(property[i].Object.DisplayImage) coverImageObject = property[i].Object.DisplayImage.Image;
 				displayImageObject = property[i].Object.DisplayImage.Image;
 				data += '<div class="row">';
 				data += '<div class="col-xs-12 text-left">';
 				
 				data += '<a class="objectName" href=\'';
-				data += 'to_attrDetail.html';/*newsFeedObjType.html*/
-				data += '\' onclick="setPath(\'index2\');setPageNF(\'index2\');setAttrId(\''+ property[i].Object.Id +'\',\''+ property[i].Object.Name +'\',\''+ displayImageObject +'\',\''+ coverImageObject +'\',\'\');insertHtml(this.href); this.blur(); return false;">';
-				data += '<img style=" background-color:#FFFFFF; border:0px;max-width:250px" src="' + displayImageObject + '" />'; /*homePost_new.html*/
+				data += 'to_attrDetail.html';
+				data += '\' onclick="setPath(\'home\');setAttrId(\''+ property[i].Object.Id +'\',\''+ property[i].Object.Name +'\',\''+ displayImageObject +'\',\''+ coverImageObject +'\',\'\');insertHtml(this.href); this.blur(); return false;">';
+				data += '<img style=" background-color:#FFFFFF; border:0px;max-width:250px" src="' + displayImageObject + '" />';
 						data += '</a>';				
 				data += '</div>';
 				data += '</div>';
@@ -215,7 +231,6 @@
 				data += '</div>';
 			}
 			data += '</div>';
-			//data += '</div>';
 			
 			data += '</div>';
 			data += '<br>';
@@ -239,9 +254,3 @@
 		}*/
 		return data;
 	});	
-/*Forma estatica*/
-		/* var template = $('#newsFeedCommunityTem').html(); 
-		 var compile = Handlebars.compile(template);
-		 var result = compile(data1);
-	    $('#maincontent').html(result);*/
-		/***/

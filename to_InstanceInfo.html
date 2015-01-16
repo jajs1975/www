@@ -1,5 +1,3 @@
-
-
 <!-- Owl Carousel Assets -->
 <style>
 .font-detail {
@@ -91,19 +89,62 @@
 </style>
 
 
-	<div id="to_instanceInfo" class="container" style="background-color:#FFF">
-		<script id="obj-getInstanceInfo" type="text/template">
-			<div id="to_instanceInfo" class="container" style="background-color:#FFF">
-                <div class="row">
-                    <div class="col-xs-12 col-sm-8 col-sm-offset-2" style="background-color:#FFFFFF">	
+    <script id="obj-getInstanceInfo" type="text/template">
+        <div id="to_instanceInfo" class="container" style="background-color:#FFF">
+            <div class="row">
+                <div class="col-xs-12 col-sm-8 col-sm-offset-2" style="background-color:#FFFFFF">	
+                    <br>
+                    <br>
+                    
+                    <div class="row" id="commonsProp">
+                        <div class="col-xs-9" onclick="setPath('to_InstanceInfo');setListType('Common'); insertHtml('to_ContactLists.html');this.blur(); return false;">
+                            <span class="font-detail" id="commonTitle">En com&uacute;n</span>
+                        </div>
+                        <div class="col-xs-3"></div>
                         <br>
-                         {{#eachM this}}
-                         {{/eachM}}
+                        <br>
+                        <div class="row">
+                            <div class="col-xs-12 carousel-arrow">
+                                <div class="col-xs-10">
+                                    <div class="carouselSpribo owl-carousel" id="carruselCommon">
+                                    </div>
+                                </div>
+                                <div class="col-xs-2">
+                                    <div class="col-xs-offset-6">
+                                        <a href="to_ContactLists.html" onclick="setPath('to_InstanceInfo');setListType('Common');insertHtml(this.href);this.blur(); return false;">
+                                        <img style="height:26px; top:22px; width:35px" src="img/arrow.png"></img>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr width="100%">
+                        </div>
                     </div>
+                    <div class="row" id="contactsProp" onclick="setPath('to_InstanceInfo');setListType('All'); insertHtml('to_ContactLists.html');this.blur(); return false;">
+                        <div class="col-xs-9" >
+                            <span class="font-detail" id="totalContacts">contactos</span>
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="col-xs-offset-8">
+                                <a href="to_ContactLists.html" onclick="setPath('to_InstanceInfo');setListType('All');insertHtml(this.href);this.blur(); return false;">
+                                    <span style="color:#F48341;" class="glyphicon glyphicon-chevron-right "></span>
+                                </a>
+                            </div>
+                        </div>
+                        <br>
+                        <hr width="100%">
+                    </div>
+                    
+
+                    {{#eachM this}}
+                    {{/eachM}}
                 </div>
-			</div>
-		</script>
-	</div>
+            </div>
+
+
+
+        </div>
+    </script>
 <br>
 <br>	
 <br>
@@ -115,7 +156,6 @@
 		</p>
 	</div>
 </div>
-
 
 <script src="js/to_InstanceInfo.js"></script>
 <script>

@@ -1,17 +1,15 @@
 var objectId=window.localStorage["objInstanceId"];
 var playerConstraintId=window.localStorage["propId"];
-var windowSubtitle = getAttrData('attrName', false);//window.localStorage["attrName"];
-var attrType=getAttrData('attrType', false);//window.localStorage["attrType"]; 
+var windowSubtitle = window.localStorage["objInstanceName"];
 
-//Servicio 9 -- Lista de instancias de tipo de objeto asignadas a una propiedad
 $.ajax({
     type: 'GET',
           "url": "http://smartcitypois.spribo.qoslabs.com/spribo/api/associatedWith?objectId="+objectId+"&playerConstraintId=" + playerConstraintId,
           "dataType": "json"
     }).done(function(response){
-		//console.log(response);
         loadAllRest(response);
 });  
+
 //Recarga la lista de jquery con las instancias creadas
 function loadAllRest( responseJson){
     var template = $('#obj-list-instance').html(); 
