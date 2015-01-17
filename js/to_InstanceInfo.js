@@ -5,6 +5,7 @@ var objInstanceId = getAttrData('attrId', false);
 var instanceTitle = getAttrData('attrName', false);
 var urlComm = window.localStorage["urlComm"];
 var Authorization = window.localStorage["Authorization"];
+var userId = window.localStorage["userId"];
 var resultFirstJson;
 var contacts; 
 var data = "";
@@ -55,6 +56,7 @@ if (objectType && objectType.toLowerCase() == "profile") {
     //obtiene los contactos en total del usuario
     getTotalContacts();
 } else {
+    $('#subtitle').html("Información");
     $('#subtitle').show();
     $( '.ui-header .ui-title' ).css( "padding","2px 0" );
 }
@@ -105,9 +107,14 @@ function loadAllRest(responseJson) {
         var father = document.getElementById("commonsProp").parentElement;
         father.removeChild(document.getElementById("commonsProp"));
         father.removeChild(document.getElementById("contactsProp"));
+    } else if (objInstanceId == userId) {
+        //si es un perfil, pero es el del usuario en sesion
+        var father = document.getElementById("commonsProp").parentElement;
+        father.removeChild(document.getElementById("commonsProp"));
     }
 }
 
+//Realiza peticiones para obtener los datos de los elementos en los carruseles de los atributos tipo objeto
 var secondaryServiceCalls = function (objectId, propertyId, index) {
     var objectIndex = index;
     var innerCarrousel;
@@ -132,6 +139,7 @@ var secondaryServiceCalls = function (objectId, propertyId, index) {
 };
 
 
+//Asigna el codigo generado al elemento del DOM correspondiente
 function finishHtml() {  //Si ya se atendieron todas las peticiones asincronas en innerCalls
     $('#maincontent').html(result);
     $("div a[href='to_instanceObjectList.html']").click(function(event) {

@@ -6,7 +6,8 @@ var Authorization=window.localStorage["Authorization"];
 var listType = window.localStorage["listType"];
 //Almacena el codigo html generado
 var result=""; 
-
+var list1Code = "";
+var list2Code = "";
 $('.page-title').html("Contactos");
 //Peticion para obtener todos los contactos
 var getContacts= $.ajax({
@@ -20,7 +21,7 @@ var getContacts= $.ajax({
 function loadAllRest( responseJson) {
     var template = $('#obj-list-point1').html(); 
     var compileResult = Handlebars.compile(template);
-    result += compileResult(responseJson);
+    list1Code = compileResult(responseJson);
 }
 //Peticion para obtener los contactos en comun
 var getCommon = $.ajax({
@@ -34,10 +35,11 @@ var getCommon = $.ajax({
 function loadAllRest2( responseJson) {
     var template = $('#obj-list-point2').html(); 
     var compileResult = Handlebars.compile(template);
-    result += compileResult(responseJson);
+    list2Code = compileResult(responseJson);
 }
 //cuando se hayan ejecutado las funciones indicadas se hace:
 $.when(getContacts, getCommon).then( function() {
+    result = list1Code + list2Code;
 	$("#maincontent").addClass("displayListview");
 	$('#maincontent').html(result);
     //para la primer lista
@@ -85,27 +87,11 @@ $.when(getContacts, getCommon).then( function() {
             $('#CommonContacts').addClass("ctrlSegDActive");
             $('#commonContactsContainer').hide();
             $('#allContactsContainer').show();
-/*
-        $('#AllContacts').addClass("ctrlSegDActive");
-            $('#AllContacts').removeClass("ctrlSegActive");
-            $('#CommonContacts').addClass("ctrlSegActive");
-            $('#CommonContacts').removeClass("ctrlSegDActive");
-            $('#commonContactsContainer').show();
-            $('#allContactsContainer').hide();
-        } else {*/
          }
     });
 	  $('#CommonContacts').click(function(event) {
         event.stopPropagation();
          if (!$('#CommonContacts').hasClass("ctrlSegActive")) {
-         /*
-            $('#AllContacts').removeClass("ctrlSegDActive");
-            $('#AllContacts').addClass("ctrlSegActive");
-            $('#CommonContacts').removeClass("ctrlSegActive");
-            $('#CommonContacts').addClass("ctrlSegDActive");
-            $('#commonContactsContainer').hide();
-            $('#allContactsContainer').show();
-         } else {*/
             $('#AllContacts').addClass("ctrlSegDActive");
             $('#AllContacts').removeClass("ctrlSegActive");
             $('#CommonContacts').addClass("ctrlSegActive");

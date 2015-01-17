@@ -5,22 +5,24 @@
 </style>
 <div id="to_ContactLists">
     <script id="obj-list-point1" type="text/template">
-    <div data-role="tabs" class="ui-tabs ui-widget ui-widget-content ui-corner-all"><!--  -->
-        <div data-role="navbar" class="ui-navbar">
-            <div class="row">
-            <ul class="ui-grid-b ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
-                <li id="CommonContacts" class="ctrlSeg ui-block-a ui-state-default ui-corner-top " role="tab" tabindex="-1" aria-controls="fragment-2" aria-labelledby="ui-id-2" aria-selected="false">
-                    <span class="ui-link ui-btn ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-2">En común</span></li>
-                <li id="AllContacts" class="ctrlSeg ui-block-b ui-state-default ui-corner-top ui-tabs-active ui-state-active" role="tab" tabindex="0" aria-controls="fragment-1" aria-labelledby="ui-id-1" aria-selected="true">
-                    <span class="ui-link ui-btn ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-1">Todos</span></li>
-            </ul>
+    <div data-role="tabs" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
+
+        <div class="row">
+            <div data-role="navbar" class="ui-navbar">
+                <ul class="ui-grid-b ui-tabs-nav"><!--  ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all -->
+                    <li id="CommonContacts" class="ctrlSeg ui-block-a">
+                        <span class="ui-btn firstSeg">En común</span></li>
+                    <li id="AllContacts" class="ctrlSeg ui-block-b"">
+                        <span class="ui-btn lastSeg">Todos</span></li>
+                </ul>
             </div>
         </div>
+
         <div id="allContactsContainer">
-             <ul id="MyContactsDiv" class="ui-listview" data-role="listview" data-scroll="true" data-filter="true" data-filter-placeholder="BuscarT">
+             <ul id="MyContactsDiv" class="ui-listview" data-role="listview" data-scroll="true" data-filter="true" data-filter-placeholder="Buscar">
                 {{#each this}}
                 <li>
-                    <a href="to_attrDetail.html" data-ajax="true" onclick="setPath('to_ContactLists');setAttrId('{{Id}}', '{{Name}}', '{{DisplayImage.Thumbnail}}', '{{CoverImage.Image}}', 'Profile' );setPageNF('to_UserInstances'); insertHtml(this.href); this.blur(); return false;" style="background-color: #FFFFFF;">
+                    <a href="to_attrDetail.html" data-ajax="true" onclick="setPath('to_ContactLists');setAttrId('{{Id}}', '{{Name}}', '{{DisplayImage.Thumbnail}}', '{{CoverImage.Image}}', 'Profile' ); insertHtml(this.href); this.blur(); return false;" style="background-color: #FFFFFF;">
                         <img class="img-responsive img-circle img-responsive-rounded" style="width:60px;height:60px;" src="{{DisplayImage.Thumbnail}}">
                         <p><h3 class="ui-li-heading text-muted">{{Name}}</h3></p>
                     </a>
@@ -37,10 +39,10 @@
         </script> 
         <script id="obj-list-point2" type="text/template">	
         <div id="commonContactsContainer">
-             <ul id="CommonContactsDiv" class="ui-listview " data-role="listview" data-scroll="true" data-filter="true" data-filter-placeholder="BuscarC">
+             <ul id="CommonContactsDiv" class="ui-listview " data-role="listview" data-scroll="true" data-filter="true" data-filter-placeholder="Buscar">
                 {{#each this}}
                 <li>
-                    <a href="to_attrDetail.html" data-ajax="true" onclick="setPath('to_ContactLists');setAttrId('{{Id}}', '{{Name}}', '{{DisplayImage.Thumbnail}}', '{{CoverImage.Image}}', 'Profile' );setPageNF('to_UserInstances'); insertHtml(this.href); this.blur(); return false;" style="background-color: #FFFFFF;">
+                    <a href="to_attrDetail.html" data-ajax="true" onclick="setPath('to_ContactLists');setAttrId('{{Id}}', '{{Name}}', '{{DisplayImage.Thumbnail}}', '{{CoverImage.Image}}', 'Profile' ); insertHtml(this.href); this.blur(); return false;" style="background-color: #FFFFFF;">
                         <img class="img-responsive img-circle img-responsive-rounded" style="width:60px;height:60px;" src="{{DisplayImage.Thumbnail}}">
                         <p><h3 class="ui-li-heading text-muted">{{Name}}</h3></p>
                     </a>
