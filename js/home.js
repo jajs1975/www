@@ -4,7 +4,8 @@
                 
         var commId=window.localStorage["commId"];
         var urlComm = window.localStorage["urlComm"];
-		var usrName = window.localStorage["userId"]; 
+		var usrName = window.localStorage["userId"];
+        var usrAuthorized = window.localStorage["Authorization"] ? true : false;
 		restartVariables();
 		$('#username').html('<img src="img/user_48dp.png" class="img-profile" style="width:20px;height:20px"> <span style="color:#FFF;"  class="text-menu side-menu-item">'+usrName+'</span> '); 
         if (commId == undefined) commId = 1;
@@ -27,13 +28,17 @@
             }
         });
     
-         var objTypesTpl = Handlebars.compile($("#obj-list-tpl").html());	
-         $.ajax({
-         type: 'GET',
-            "url": "http://" + urlComm + ".spribo.qoslabs.com/spribo/api/instancesOf?objectId=InstancePage", 
-            "dataType": "json"
-         }).done(function(response){
+        var objTypesTpl = Handlebars.compile($("#obj-list-tpl").html());	
+        $.ajax({
+            type: 'GET',
+            url: "http://" + urlComm + ".spribo.qoslabs.com/spribo/api/instancesOf?objectId=InstancePage", 
+            dataType: "json"
+        }).done(function(response) {
               $('.objTypes').html(objTypesTpl(response));
+              if (!usrAuthorized) {
+                var father = document.getElementById("loggedUser").parentElement;
+                father.removeChild(document.getElementById("loggedUser"));
+              }
          });
     
     /* ---------------------------------- Local Functions ---------------------------------- */
@@ -97,7 +102,7 @@ function getAjax1() {
 	var userId = window.localStorage["userId"];
 	var ajax1 = $.ajax({
 		type: 'GET',
-        "url": "http://smartcitypois.spribo.qoslabs.com/spribo/api/attributeValue?objectId="+userId+"&attributeId=Avatar",
+        "url": "http://" + urlComm + ".spribo.qoslabs.com/spribo/api/attributeValue?objectId="+userId+"&attributeId=Avatar",
         "dataType": "json",
 		async:false
 	}).done(function(object){
@@ -120,7 +125,7 @@ function getAjax2() {
 	var userId = window.localStorage["userId"];
 	var ajax2 = $.ajax({
 		type: 'GET',
-		"url": "http://smartcitypois.spribo.qoslabs.com/spribo/api/attributeValue?objectId="+userId+"&attributeId=Cover",
+		"url": "http://" + urlComm + ".spribo.qoslabs.com/spribo/api/attributeValue?objectId="+userId+"&attributeId=Cover",
 		"dataType": "json",
 		async:false
 	}).done(function(object){

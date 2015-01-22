@@ -1,9 +1,15 @@
 var objectId=window.localStorage["objectId"];
 var typeObjName=window.localStorage["objectName"];
+var urlComm = window.localStorage["urlComm"];
+
+if (urlComm == undefined) {
+    urlComm = "smartcitypois"; //para llamadas a servicios
+    window.localStorage["urlComm"] = urlComm;
+}
 
 $.ajax({
     type: 'GET',
-          "url": "http://smartcitypois.spribo.qoslabs.com/spribo/api/instancesOf?objectId=" + objectId,
+          "url": "http://" + urlComm + ".spribo.qoslabs.com/spribo/api/instancesOf?objectId=" + objectId,
           "dataType": "json"
     }).done(function(response){
         loadAllRest(response);

@@ -1,11 +1,16 @@
-var objectId=getAttrData('attrId', false);//window.localStorage["userId"];
+var objectId=window.localStorage["userId"];
 var Authorization=window.localStorage["Authorization"];
 var typeObjName=window.localStorage["commName"];
+var urlComm = window.localStorage["urlComm"];
 
+if (urlComm == undefined) {
+    urlComm = "smartcitypois"; //para llamadas a servicios
+    window.localStorage["urlComm"] = urlComm;
+}
 $.ajax({
     type: 'GET',
          
-          "url": "http://smartcitypois.spribo.qoslabs.com/spribo/api/contacts?profileId="+objectId+"&authorizationToken=" + Authorization,
+          "url": "http://" + urlComm + ".spribo.qoslabs.com/spribo/api/contacts?spriboId="+objectId+"&authorizationToken=" + Authorization,
           "dataType": "json"
     }).done(function(response){
         loadAllRest(response);

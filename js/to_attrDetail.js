@@ -3,7 +3,16 @@ var attrName=getAttrData("attrName", false);
 var attrDisplayImage=getAttrData("attrDisplayImage", false);
 var attrCoverImage=getAttrData("attrCoverImage", false);
 var attrType=getAttrData("attrType", false); 
+var Authorization = window.localStorage["Authorization"];
+var urlComm = window.localStorage["urlComm"];
+var userId = window.localStorage["userId"];
 
+if (urlComm == undefined) {
+    urlComm = "smartcitypois"; //para llamadas a servicios
+    window.localStorage["urlComm"] = urlComm;
+}
+
+var loadPage; 
 $('.page-title').html(attrName);
 $('#subtitle').hide();
 $( '.ui-header .ui-title' ).css( "padding","0.7em 0" );
@@ -20,9 +29,9 @@ if (attrType!= undefined && attrType == 'Profile') {
     	 $('#prflImg').html('<img id ="profile" style="border: 2px solid silver; height: 130px; width: 130px; " class="img-responsive img-circle img-responsive-rounded" src="'+ attrDisplayImage +'" />');	
 		 styleProfile = 'style="margin-top:-30px"';
     } 
-	$.ajax({
+	loadPage = $.ajax({
 		type: 'GET',
-			  "url": "http://smartcitypois.spribo.qoslabs.com/spribo/api/storiesFor?objectId=" + attrId + "&total=100",
+			  "url": "http://" + urlComm + ".spribo.qoslabs.com/spribo/api/storiesFor?objectId=" + attrId + "&total=100",
 			  "dataType": "json"
 		}).done(function(response1){
 			loadAllRest(response1);
@@ -40,15 +49,21 @@ if (attrType!= undefined && attrType == 'Profile') {
 	Handlebars.registerHelper('eachNeewsFeedOT', function(property) {
 		var data = "";
 		data += '<div class="row" ' + styleProfile + '>';
-		data += '<div class="col-xs-4 text-center col-xs-offset-2" ></div>';
+		data += '<div class="col-xs-4 text-center col-xs-offset-2" id= "contacStatusImg"> </div>';
 		data += '<div class="col-xs-4 col-xs-offset-2">';
+		if(userId != attrId) {
+			data += '<a href="#" data-toggle="modal" onclick="getFoggy();$(\'#userNameModal\').html(\'' + attrName + '\');" data-target="#dialogComent" style="color:#F48341;" class="ui-link">';
+		} else {
+			data += '<a href="#"></a>';
+		}
 		data += '<img class="img-circle" src="img/icon2.png" width="40px">';
+		data += '</a>';
 		data += '</div>';
 		data += '</div>';
 		
 		data += '<div class="row">';
 		data += '<div class="col-sm-12 text-center ">';
-		data += '<div style="background-image:url(img/background_usernewsfeed.png); background-repeat:no-repeat; background-size: auto 100%;background-position: center;padding-top: 2px;padding-bottom: 2px; color: #FFF"><br>Actividad Reciente&nbsp;&nbsp;<br></div>';
+		data += '<div style="background-image:url(img/background_usernewsfeed.png); background-repeat:no-repeat; background-size: auto 100%;background-position: center;padding-top: 2px;padding-bottom: 2px; color: #FFF"><br>Actividad Reciente<br></div>';
 		data += '</div>';
 		data += '</div>';
 		
@@ -214,7 +229,7 @@ if (attrType!= undefined && attrType == 'Profile') {
 				
 				data += '<a class="objectName" href=\'';
 				data += 'to_attrDetail.html';
-				data += '\' onclick="setPath(\'to_attrDetail\');setPageNF(\'home\');setAttrId(\''+ property[i].Object.Id +'\',\''+ property[i].Object.Name +'\',\''+ displayImageObject +'\',\''+ coverImageObject +'\',\'\');insertHtml(this.href); this.blur(); return false;">';
+				data += '\' onclick="setPath(\'to_attrDetail\');setAttrId(\''+ property[i].Object.Id +'\',\''+ property[i].Object.Name +'\',\''+ displayImageObject +'\',\''+ coverImageObject +'\',\'\');insertHtml(this.href); this.blur(); return false;">';
 				data += '<img style=" background-color:#FFFFFF; border:0px;max-width:250px" src="' + displayImageObject + '" />'; 
 						data += '</a>';				
 				data += '</div>';
@@ -277,7 +292,7 @@ if (attrType!= undefined && attrType == 'Profile') {
 } else {
 	$.ajax({
 		type: 'GET',
-			  "url": "http://smartcitypois.spribo.qoslabs.com/spribo/api/storiesFor?objectId=" + attrId + "&total=100",
+			  "url": "http://" + urlComm + ".spribo.qoslabs.com/spribo/api/storiesFor?objectId=" + attrId + "&total=100",
 			  "dataType": "json"
 		}).done(function(response){
 			loadAllRest(response);
@@ -395,4 +410,53 @@ if (attrType!= undefined && attrType == 'Profile') {
 		return data;
 });	
 
+}
+$.when(loadPage).then(setImg); 
+
+function setImg() {
+	if (attrType != undefined && attrType == 'Profile' && userId != attrId) {
+		$.ajax({
+			type: 'GET',
+            url: "http://" + urlComm + ".spribo.qoslabs.com/spribo/api/connectionStatus?spriboId=" + attrId + "&authorizationToken=" + Authorization,
+            dataType: "json"
+        }).done(function(response) {
+            if (response.Status == 'IsConnectedTo') {
+                //$('#contacStatusImg').html('<img class="img-circle" src="img/back.png" width="40px" onclick="">'); 
+            } else if (response.Status == 'HasPendingApproval') {
+                $('#contacStatusImg').html('<img class="img-circle" src="img/back.png" width="40px" >'); 
+            } else if (response.Status == 'IsPendingApproval') {
+                $('#contacStatusImg').html('<img class="img-circle" src="img/icon1.png" width="40px" >'); 
+            } else {
+                $('#contacStatusImg').html('<img class="img-circle" src="img/addcontact.png" width="40px" onclick="connectTo()" data-toggle="modal" data-target="#modalLive">'); 	
+            }
+            addModal();
+        }); 
+	}
+	
+		
+}
+function connectTo() {
+    getFoggy();
+	$.ajax({
+			type: 'POST',
+            url: "http://" + urlComm + ".spribo.qoslabs.com/spribo/api/connect?spriboId=" + attrId + "&authorizationToken=" + Authorization,
+            dataType: "text"
+    }).done(function(response) {
+        if (response) {
+            if (response == 'true') {
+                var msg = 'Solicitud de conexi&oacute;n enviada a ' + attrName
+                $('.modal-body > span').html(msg);
+                setImg();
+            } else {
+                var msg = 'Se produjo un error con la solicitud o ya existe la conexi&oacute;n con ' + attrName
+                $('.modal-body > span').html(msg);
+            }
+        } else {
+            var msg = 'Se produjo un error con la solicitud o ya existe la conexi&oacute;n con ' + attrName
+            $('.modal-body > span').html(msg);
+        }
+    }).fail(function() {
+        var msg = 'Se produjo un error con la solicitud'
+        $('.modal-body > span').html(msg);
+    });
 }

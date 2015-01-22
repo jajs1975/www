@@ -7,7 +7,7 @@
     <ul class="ui-listview" data-role="listview" data-scroll="true" data-filter="true" data-filter-placeholder="Buscar" id="to_Instances">
         {{#each this}}
             <li>
-                <a href="to_attrDetail.html" data-ajax="true" onclick="setPath('to_Instances');setPageNF('to_Instances');setAttrId('{{Id}}', '{{Name}}', '{{DisplayImage.Thumbnail}}', '{{DisplayImage.Image}}',''); insertHtml(this.href); this.blur(); return false;" style="background-color: #FFFFFF;">
+                <a href="to_attrDetail.html" data-ajax="true" onclick="setPath('to_Instances');setAttrId('{{Id}}', '{{Name}}', '{{DisplayImage.Thumbnail}}', '{{DisplayImage.Image}}',''); insertHtml(this.href); this.blur(); return false;" style="background-color: #FFFFFF;">
                     <img class="img-responsive img-circle img-responsive-rounded" style="width:60px;height:60px;" src="{{DisplayImage.Thumbnail}}">
 					<p><h3 class="ui-li-heading text-muted">{{Name}}</h3></p>
                 </a>

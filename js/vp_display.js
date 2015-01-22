@@ -1,9 +1,15 @@
-var propId=window.localStorage["propId"];
-var objInstanceId=window.localStorage["objInstanceId"];
+var propId=getInstData('objInstanceId', false);//window.localStorage["propId"];
+var objInstanceId=getAttrData('attrId', false);//window.localStorage["objInstanceId"];
+var urlComm = window.localStorage["urlComm"];
+
+if (urlComm == undefined) {
+    urlComm = "smartcitypois"; //para llamadas a servicios
+    window.localStorage["urlComm"] = urlComm;
+}
 
 $.ajax({
     type: 'GET',
-          "url": "http://smartcitypois.spribo.qoslabs.com/spribo/api/attributeValue?objectId="+objInstanceId+"&attributeId="+ propId,
+          "url": "http://" + urlComm + ".spribo.qoslabs.com/spribo/api/attributeValue?objectId="+objInstanceId+"&attributeId="+ propId,
           "dataType": "json"
     }).done(function(response){
 	var  value = "";

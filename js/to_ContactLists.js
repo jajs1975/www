@@ -8,11 +8,17 @@ var listType = window.localStorage["listType"];
 var result=""; 
 var list1Code = "";
 var list2Code = "";
+var urlComm = window.localStorage["urlComm"];
+
+if (urlComm == undefined) {
+    urlComm = "smartcitypois"; //para llamadas a servicios
+    window.localStorage["urlComm"] = urlComm;
+}
 $('.page-title').html("Contactos");
 //Peticion para obtener todos los contactos
 var getContacts= $.ajax({
     type: 'GET',
-          "url": "http://smartcitypois.spribo.qoslabs.com/spribo/api/contacts?profileId="+objInstanceId+"&authorizationToken=" + Authorization,//sjfaodf7832909
+          "url": "http://" + urlComm + ".spribo.qoslabs.com/spribo/api/contacts?profileId="+objInstanceId+"&authorizationToken=" + Authorization,//sjfaodf7832909
           "dataType": "json"
     }).done(function(response) {
         loadAllRest(response);
@@ -26,7 +32,7 @@ function loadAllRest( responseJson) {
 //Peticion para obtener los contactos en comun
 var getCommon = $.ajax({
     type: 'GET',
-          "url": "http://smartcitypois.spribo.qoslabs.com//spribo/api/commonContacts?profileId="+objInstanceId+"&authorizationToken="+Authorization,
+          "url": "http://" + urlComm + ".spribo.qoslabs.com//spribo/api/commonContacts?profileId="+objInstanceId+"&authorizationToken="+Authorization,
           "dataType": "json"
     }).done(function(response){
         loadAllRest2(response);

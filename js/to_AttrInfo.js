@@ -1,8 +1,13 @@
 var attrId=getAttrData('attrId', false);//window.localStorage["attrId"];
+var urlComm = window.localStorage["urlComm"];
 
+if (urlComm == undefined) {
+    urlComm = "smartcitypois"; //para llamadas a servicios
+    window.localStorage["urlComm"] = urlComm;
+}
 $.ajax({
     type: 'GET',
-          "url": "http://smartcitypois.spribo.qoslabs.com/spribo/api/attributes?objectId=" + attrId,
+          "url": "http://" + urlComm + ".spribo.qoslabs.com/spribo/api/attributes?objectId=" + attrId,
           "dataType": "json"
 }).done(function(response){
     	

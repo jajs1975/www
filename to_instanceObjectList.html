@@ -4,10 +4,11 @@
 	}
 </style>
 <script id="obj-list-instance" type="text/template">
+<div id="instanceObjectList"> 
     <ul class="ui-listview" data-role="listview" data-scroll="true" data-filter="true" data-filter-placeholder="Buscar" id="to_instanceObjectList">
         {{#each this}}
             <li>
-                <a href="to_attrDetail.html" data-ajax="true" onclick="setPath('to_instanceObjectList');setAttrId('{{Id}}', '{{Name}}', '{{DisplayImage.Thumbnail}}', '{{CoverImage.Image}}'); insertHtml(this.href); this.blur(); return false;" style="background-color: #FFFFFF;">
+                <a href="to_attrDetail.html" data-ajax="true" onclick="setPath('to_instanceObjectList');setAttrId('{{Id}}', '{{Name}}', '{{DisplayImage.Thumbnail}}', '{{CoverImage.Image}}', {{getHandleType}}); insertHtml(this.href); this.blur(); return false;" style="background-color: #FFFFFF;">
                     {{#if DisplayImage.Thumbnail}}
                     <img class="img-responsive img-circle img-responsive-rounded" style="width:60px;height:60px" src="{{DisplayImage.Thumbnail}}">
                     {{/if}}
@@ -22,5 +23,6 @@
 				</p>
 			</li>
     </ul>
+</div>
 </script>
 <script src="js/to_instanceObjectList.js"></script>
