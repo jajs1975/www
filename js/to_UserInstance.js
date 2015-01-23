@@ -9,11 +9,10 @@ if (urlComm == undefined) {
 }
 $.ajax({
     type: 'GET',
-         
-          "url": "http://" + urlComm + ".spribo.qoslabs.com/spribo/api/contacts?spriboId="+objectId+"&authorizationToken=" + Authorization,
-          "dataType": "json"
-    }).done(function(response){
-        loadAllRest(response);
+    url: "http://" + urlComm + ".spribo.qoslabs.com/spribo/api/contacts?spriboId="+objectId+"&authorizationToken=" + Authorization,
+    dataType: "json"
+}).done(function(response){
+    loadAllRest(response);
 });  
 //Recarga la lista de jquery con las instancias creadas
 function loadAllRest( responseJson){

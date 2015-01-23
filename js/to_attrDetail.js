@@ -49,13 +49,13 @@ if (attrType!= undefined && attrType == 'Profile') {
 	Handlebars.registerHelper('eachNeewsFeedOT', function(property) {
 		var data = "";
 		data += '<div class="row" ' + styleProfile + '>';
-		data += '<div class="col-xs-4 text-center col-xs-offset-2" id= "contacStatusImg"> </div>';
-		data += '<div class="col-xs-4 col-xs-offset-2">';
-		if(userId != attrId) {
+		data += '<div class="col-xs-6 text-center" id="contacStatusImg"> </div>';
+		data += '<div class="col-xs-6 text-center">';
+		//if(userId != attrId) {
 			data += '<a href="#" data-toggle="modal" onclick="getFoggy();$(\'#userNameModal\').html(\'' + attrName + '\');" data-target="#dialogComent" style="color:#F48341;" class="ui-link">';
-		} else {
+		/*} else {
 			data += '<a href="#"></a>';
-		}
+		}*/
 		data += '<img class="img-circle" src="img/icon2.png" width="40px">';
 		data += '</a>';
 		data += '</div>';
@@ -140,7 +140,7 @@ if (attrType!= undefined && attrType == 'Profile') {
 						displayImageObject = "";
 						if(property[i].IndirectObject.CoverImage) coverImageObject = property[i].IndirectObject.CoverImage.Image;
 						if(property[i].IndirectObject.DisplayImage) displayImageObject = property[i].IndirectObject.DisplayImage.Thumbnail;
-						data += '<a href=\'';
+						data += '<a class="objectName" href=\'';
 						data += 'to_attrDetail.html';
 						data += '\' onclick="setPath(\'to_attrDetail\');setAttrId(\''+ property[i].IndirectObject.Id +'\',\''+ property[i].IndirectObject.Name +'\',\''+ displayImageObject +'\',\''+ coverImageObject +'\',\'Profile\');insertHtml(this.href); this.blur(); return false;">';
 						data += property[i].IndirectObject.Name;
@@ -420,14 +420,19 @@ function setImg() {
             url: "http://" + urlComm + ".spribo.qoslabs.com/spribo/api/connectionStatus?spriboId=" + attrId + "&authorizationToken=" + Authorization,
             dataType: "json"
         }).done(function(response) {
+            var htmlCode;
             if (response.Status == 'IsConnectedTo') {
-                //$('#contacStatusImg').html('<img class="img-circle" src="img/back.png" width="40px" onclick="">'); 
+                htmlCode = '<a href="#" data-toggle="modal" data-target="#actionSheet" onclick="getFoggy()" style="color:#F48341;" class="ui-link">';
+                htmlCode += '<img class="img-circle" src="img/subtractContact.png" width="40px"></a>';
+                $('#contacStatusImg').html(htmlCode);
             } else if (response.Status == 'HasPendingApproval') {
-                $('#contacStatusImg').html('<img class="img-circle" src="img/back.png" width="40px" >'); 
+                $('#contacStatusImg').html('<a href="#" class="ui-link"><img class="img-circle" src="img/back.png" width="40px"></a>');
             } else if (response.Status == 'IsPendingApproval') {
-                $('#contacStatusImg').html('<img class="img-circle" src="img/icon1.png" width="40px" >'); 
+                $('#contacStatusImg').html('<a href="#" class="ui-link"><img class="img-circle" src="img/icon1.png" width="40px"></a>');
             } else {
-                $('#contacStatusImg').html('<img class="img-circle" src="img/addcontact.png" width="40px" onclick="connectTo()" data-toggle="modal" data-target="#modalLive">'); 	
+            htmlCode = '<a href="#" data-toggle="modal" data-target="#modalLive" onclick="connectTo()" style="color:#F48341;" class="ui-link">';
+            htmlCode += '<img class="img-circle" src="img/addcontact.png" width="40px"></a>';
+                $('#contacStatusImg').html(htmlCode);
             }
             addModal();
         }); 
@@ -458,5 +463,22 @@ function connectTo() {
     }).fail(function() {
         var msg = 'Se produjo un error con la solicitud'
         $('.modal-body > span').html(msg);
+    });
+}
+
+function disconnectFrom() {
+    $.ajax({
+        type: 'POST',
+        url: "http://" + urlComm + ".spribo.qoslabs.com/spribo/api/disconnect?spriboId=" + attrId + "&authorizationToken=" + Authorization,
+        dataType: "text"
+    }).done(function(response) {
+        if (response) {
+            if (response == 'true') {
+                console.log("Se realizo la operación"); 
+                setImg();
+            } else {
+                console.log("Error al desconectar");
+            }
+        }
     });
 }

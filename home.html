@@ -214,6 +214,7 @@ hr{
     background-color: rgba(255, 255, 255, 0.75) !important;
     border-radius: 12px !important;
     border: 0px !important;
+	box-shadow: 0 0px 0px rgba(0,0,0,.5) !important; 
 }
 .modalAlert-header {
     border: 0px !important;
@@ -230,6 +231,32 @@ hr{
     border: 0px !important;
     color: #F25900 !important;
     padding-top: 10px;
+}
+.modalAS-dialog {
+    width: 95% !important;
+    /*height: 95% !important;*/
+    bottom: 0;
+    position: absolute;
+}
+.modalAS-content {
+    background-color: rgba(255, 255, 255, 0.75) !important;
+    border-radius: 12px !important;
+    border: 0px !important;
+    width: 100% !important;
+}
+.btn-ASprimary, .btn-ASprimary:hover {
+    color: #F00;
+    background-color: rgba(255, 255, 255, 0.75);
+    width: 100%;
+}
+.btn-ASdefault {
+    color: #666;
+    background-color: rgba(255, 255, 255, 0.75);
+    width: 100%;
+}
+.separation {
+    padding: 5px;
+    border: 0px;
 }
 </style>
 </head>
@@ -274,13 +301,13 @@ hr{
 			<div style="padding-bottom:0px;padding:0px">
 				<div class="row">
 					<div class="col-xs-3" style="text-align:left;">
-						<a class="btn objectName" data-dismiss="modal" onclick="cleanForm();">Cancelar</a>
+						<a class="btn objectName" data-dismiss="modal" onclick="cleanForm();">cancelar</a>
 					</div>
 					<div class="col-xs-6">
 						<div id="userNameModal" class="page-title text-center"></div>
 					</div>
 					<div class="col-xs-3" style="text-align:right;">
-						<a class="btn objectName" data-dismiss="modal" onclick="sendPost(document.getElementById('shareIdeas').value);cleanForm();">Enviar</a>
+						<a class="btn objectName" data-dismiss="modal" onclick="sendPost(document.getElementById('shareIdeas').value);cleanForm();">enviar</a>
 					</div>
 				</div>
 			
@@ -641,10 +668,20 @@ function getFoggy() {
 
 function sendPost(post) {
     var attrId=getAttrData("attrId", false);
-	var authorization = window.localStorage["Authorization"]
-	var formData = {spriboId: attrId ,post: post,authorizationToken:authorization};
-	if(authorization != undefined &&authorization != null && post != undefined && post != null && post.length > 0 && attrId != undefined && attrId != null) {
-		var data=  $.ajax({
+	var authorization = window.localStorage["Authorization"];
+	var userId=window.localStorage["userId"];
+	var formData = "";
+	var isValid = false;
+	if(attrId != userId) {
+		formData = {spriboId: attrId ,post: post,authorizationToken:authorization};
+		isValid = authorization != undefined && authorization != null && post != undefined && post != null && post.length > 0;
+	} else {
+		formData = {post: post,authorizationToken:authorization};
+		isValid = authorization != undefined && authorization != null && post != undefined && post != null && post.length > 0 && attrId != undefined && attrId != null;
+	}
+	
+	if(isValid) {
+		$.ajax({
 			type: 'POST',
 			url: "http://" + urlComm + ".spribo.qoslabs.com/spribo/api/postOnUserWall",
 			data : formData,
@@ -655,7 +692,6 @@ function sendPost(post) {
 			insertHtml('to_attrDetail.html');
 		});
 	}
-
 }
 function cleanForm() {
 	$('#maincontent').foggy(false);
@@ -678,11 +714,26 @@ function addModal() {
             event.stopPropagation();
         });
     }
+    if ($('#actionSheet').length == 0) {
+        var addedAS = '<div class="modal fade" id="actionSheet" tabindex="-1" role="dialog" aria-labelledby="actionSheetLabel" aria-hidden="true" onclick="quitModal();" data-dismiss="modal">';
+        addedAS += '<div class="modal-dialog modalAS-dialog"><div class="modal-content modalAlert-content">';
+        addedAS += '<div id="actionSheetHeader" class="modal-header modalAlert-header" data-dismiss="modal"><h4 class="modal-title" id="actionSheetLabel"></h4></div>';
+        addedAS += '<div id="actionSheetBody" class="modal-body modalAlert-body" data-dismiss="modal"><span></span></div>';
+        addedAS += '<div class="modal-footer modalAlert-footer"><div class="separation"><button type="button" class="btn btn-ASprimary" data-dismiss="modal" onclick="disconnectFrom();">Eliminar de mis contactos</button></div>';
+        addedAS += '<div class="separation"><button type="button" class="btn btn-ASdefault" data-dismiss="modal" onclick="quitModal();">Cancelar</button></div>';
+        addedAS += '</div></div></div>';
+        $('#pageone').append(addedAS);
+        /*
+        $('#actionSheetHeader').click(function(event) {
+            event.stopPropagation();
+        });
+        $('#actionSheetBody').click(function(event) {
+            event.stopPropagation();
+        });*/
+    }
 }
 function quitModal() {
     $('#maincontent').foggy(false);
     $('#pageHeader').foggy(false);
-    $('.modal')
-
 }
 </script>

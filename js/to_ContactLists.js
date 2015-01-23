@@ -18,7 +18,7 @@ $('.page-title').html("Contactos");
 //Peticion para obtener todos los contactos
 var getContacts= $.ajax({
     type: 'GET',
-          "url": "http://" + urlComm + ".spribo.qoslabs.com/spribo/api/contacts?profileId="+objInstanceId+"&authorizationToken=" + Authorization,//sjfaodf7832909
+          "url": "http://" + urlComm + ".spribo.qoslabs.com/spribo/api/contacts?spriboId="+objInstanceId+"&authorizationToken=" + Authorization,//sjfaodf7832909
           "dataType": "json"
     }).done(function(response) {
         loadAllRest(response);
@@ -32,7 +32,7 @@ function loadAllRest( responseJson) {
 //Peticion para obtener los contactos en comun
 var getCommon = $.ajax({
     type: 'GET',
-          "url": "http://" + urlComm + ".spribo.qoslabs.com//spribo/api/commonContacts?profileId="+objInstanceId+"&authorizationToken="+Authorization,
+          "url": "http://" + urlComm + ".spribo.qoslabs.com//spribo/api/commonContacts?spriboId="+objInstanceId+"&authorizationToken="+Authorization,
           "dataType": "json"
     }).done(function(response){
         loadAllRest2(response);

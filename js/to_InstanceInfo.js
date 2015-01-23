@@ -264,7 +264,7 @@ function getCommonContacts() {
 	
 	var commonResponse = $.ajax({
             type: 'GET',
-            url: "http://" + urlComm + ".spribo.qoslabs.com/spribo/api/commonContacts?profileId=" + objInstanceId + "&authorizationToken=" + Authorization,
+            url: "http://" + urlComm + ".spribo.qoslabs.com/spribo/api/commonContacts?spriboId=" + objInstanceId + "&authorizationToken=" + Authorization,
             dataType: "json",
             async: false
         }).done(function(response) {
@@ -282,7 +282,7 @@ function getCommonContacts() {
 function getTotalContacts() {
     $.ajax({
             type: 'GET',
-            url: "http://" + urlComm + ".spribo.qoslabs.com/spribo/api/contacts?profileId=" + objInstanceId + "&authorizationToken=" + Authorization,
+            url: "http://" + urlComm + ".spribo.qoslabs.com/spribo/api/contacts?spriboId=" + objInstanceId + "&authorizationToken=" + Authorization,
             dataType: "json",
             async: false
         }).done(function(response) {

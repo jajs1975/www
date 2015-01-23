@@ -99,7 +99,7 @@ Handlebars.registerHelper('eachNeewsFeed', function(property) {
 					displayImageObject = "";
 					if(property[i].IndirectObject.CoverImage) coverImageObject = property[i].IndirectObject.CoverImage.Image;
 					if(property[i].IndirectObject.DisplayImage) displayImageObject = property[i].IndirectObject.DisplayImage.Thumbnail;
-					data += '<a href=\'';
+					data += '<a class="objectName" href=\'';
 					data += 'to_attrDetail.html';
 					data += '\' onclick="setPath(\'home\');setAttrId(\''+ property[i].IndirectObject.Id +'\',\''+ property[i].IndirectObject.Name +'\',\''+ displayImageObject +'\',\''+ coverImageObject +'\',\'Profile\');insertHtml(this.href); this.blur(); return false;">';
 					data += property[i].IndirectObject.Name;
