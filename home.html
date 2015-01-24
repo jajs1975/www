@@ -540,7 +540,7 @@ console.log(targetUrl +"-->");
 	 
 	request.done(function( msg ) {
 		console.log('success!!');
-		
+		alert('Html incrutado: ' + targetUrl + ', respuesta: ' + msg);
 		$("#maincontent").html(msg);
 		$("#maincontent").removeClass("displayListview");
 	});
@@ -581,22 +581,22 @@ function backIcon() {
 			var commName=window.localStorage["commName"];
 			if (commName == undefined) commName = "";
 			$('.page-title').html(commName);
-			alert('Es home, se agregan y quitan estilos');
+			//alert('Es home, se agregan y quitan estilos');
 		}
 		if ($("#to_instanceInfo").html() != undefined && $("#to_instanceInfo").html() != '') {
 			$('#subtitle').hide();
 			$( '.ui-header .ui-title' ).css( "padding","0.7em 0" );
-			alert('Es la página de información, se agregan y quitan estilos');
+			//alert('Es la página de información, se agregan y quitan estilos');
 		}
 			
 		if ($("#vp_display").html() != undefined && $("#vp_display").html() != '') {
 			$('#subtitle').html("Información");
-			alert('Es el despliegue del atributo de una instancia de objeto, se agrega el subtitulo');
+			//alert('Es el despliegue del atributo de una instancia de objeto, se agrega el subtitulo');
 		} 
 			
 		if ($("#to_instanceObjectList").html() != undefined && $("#to_instanceObjectList").html() != '') {
 			$('#subtitle').html("Información");
-			alert('Es el carrusel de una instancia de objeto, se agrega el subtitulo');
+			//alert('Es el carrusel de una instancia de objeto, se agrega el subtitulo');
 		}
 		if ($("#to_attrDetail").html() != undefined && $("#to_attrDetail").html() != '') {
 			getAttrData('attrId', true);
@@ -604,19 +604,19 @@ function backIcon() {
 			getAttrData('attrCoverImage', true);
 			getAttrData('attrDisplayImage', true);
 			getAttrData('attrType', true);
-			alert('Es la página de detalle, eliminamos la ultima instancia de objeto: ' + getAttrData('attrId', false) + ', ' + getAttrData('attrName', false) + ', ' + getAttrData('attrCoverImage', false) + ', ' + getAttrData('attrDisplayImage', false) + ', ' + getAttrData('attrType', false));
+			//alert('Es la página de detalle, eliminamos la ultima instancia de objeto: ' + getAttrData('attrId', false) + ', ' + getAttrData('attrName', false) + ', ' + getAttrData('attrCoverImage', false) + ', ' + getAttrData('attrDisplayImage', false) + ', ' + getAttrData('attrType', false));
 		}
 		
 		if ($("#to_AttrInfo").html() != undefined && $("#to_AttrInfo").html() != '') {
 			document.getElementById('action-icon-right').href = "javascript:insertHtml('to_InstanceInfo.html')";
-			alert('Es pagina de info de una instancia de objeto');
+			//alert('Es pagina de info de una instancia de objeto');
 		}
 		
 		if ($("#instanceObjectList").html() != undefined && $("#instanceObjectList").html() != '') {
 			getInstData('objInstanceId', true);
 			getInstData('objInstanceName', true);
 			getInstData('objInstanceType', true);
-			alert('En carrusel, lista: ' + getInstData('objInstanceId', false) + ', ' + getInstData('objInstanceName', false) + ', ' + getInstData('objInstanceType', false));
+			//alert('En carrusel, lista: ' + getInstData('objInstanceId', false) + ', ' + getInstData('objInstanceName', false) + ', ' + getInstData('objInstanceType', false));
 		}
 		alert('página a mostrar' + current);
 		document.getElementById('icon-bars').href = "javascript:insertHtml('" + current + ".html')";
