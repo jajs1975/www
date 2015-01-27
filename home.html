@@ -333,7 +333,8 @@ hr{
 
 
 <div data-role="footer" data-position="fixed" data-tap-toggle="false" class="ui-bar headerFooterColor">
-<a href="#" class="ui-icon-alt footeranchor iconsSpribo iconsScribo1" data-icon="home" data-iconpos="top" data-inline="true" onclick="home(); insertHtml('newsFeedCommunity.html'); this.blur(); return false;">Inicio</a>
+<a href="newsFeedCommunity.html" class="ui-icon-alt footeranchor iconsSpribo iconsScribo1" data-icon="home" data-iconpos="top" data-inline="true" onclick="home(); insertHtml(this.href); this.blur(); return false;">Inicio</a>
+<!--a href="#" class="ui-icon-alt footeranchor iconsSpribo iconsScribo1" data-icon="home" data-iconpos="top" data-inline="true" onclick="home(); insertHtml('newsFeedCommunity.html'); this.blur(); return false;">Inicio</a-->
 
 </div><!-- /footer -->
 
@@ -512,7 +513,6 @@ function getAttrData(attr, isBack) {
 
 function insertHtml(targetUrl) {
 console.log(targetUrl +"-->");
-	alert('En insertHtml, path: ' + targetUrl);
 	//ocultar siempre el icono de informacion. En el html que se carga se muestra cuando aplica(instance_detail.html)
 	$("#action-icon-right").addClass("hide-action-icon-right");
 	
@@ -578,22 +578,18 @@ function backIcon() {
 			var commName=window.localStorage["commName"];
 			if (commName == undefined) commName = "";
 			$('.page-title').html(commName);
-			//alert('Es home, se agregan y quitan estilos');
 		}
 		if ($("#to_instanceInfo").html() != undefined && $("#to_instanceInfo").html() != '') {
 			$('#subtitle').hide();
 			$( '.ui-header .ui-title' ).css( "padding","0.7em 0" );
-			//alert('Es la página de información, se agregan y quitan estilos');
 		}
 			
 		if ($("#vp_display").html() != undefined && $("#vp_display").html() != '') {
 			$('#subtitle').html("Información");
-			//alert('Es el despliegue del atributo de una instancia de objeto, se agrega el subtitulo');
 		} 
 			
 		if ($("#to_instanceObjectList").html() != undefined && $("#to_instanceObjectList").html() != '') {
 			$('#subtitle').html("Información");
-			//alert('Es el carrusel de una instancia de objeto, se agrega el subtitulo');
 		}
 		if ($("#to_attrDetail").html() != undefined && $("#to_attrDetail").html() != '') {
 			getAttrData('attrId', true);
@@ -601,26 +597,20 @@ function backIcon() {
 			getAttrData('attrCoverImage', true);
 			getAttrData('attrDisplayImage', true);
 			getAttrData('attrType', true);
-			//alert('Es la página de detalle, eliminamos la ultima instancia de objeto: ' + getAttrData('attrId', false) + ', ' + getAttrData('attrName', false) + ', ' + getAttrData('attrCoverImage', false) + ', ' + getAttrData('attrDisplayImage', false) + ', ' + getAttrData('attrType', false));
 		}
 		
 		if ($("#to_AttrInfo").html() != undefined && $("#to_AttrInfo").html() != '') {
 			document.getElementById('action-icon-right').href = "javascript:insertHtml('to_InstanceInfo.html')";
-			//alert('Es pagina de info de una instancia de objeto');
 		}
 		
 		if ($("#instanceObjectList").html() != undefined && $("#instanceObjectList").html() != '') {
 			getInstData('objInstanceId', true);
 			getInstData('objInstanceName', true);
 			getInstData('objInstanceType', true);
-			//alert('En carrusel, lista: ' + getInstData('objInstanceId', false) + ', ' + getInstData('objInstanceName', false) + ', ' + getInstData('objInstanceType', false));
 		}
-		//alert('página a mostrar' + current + ', host: ' + location.host + ', href: ' + location.href + ', pathName: ' + location.pathname);
-		var result = location.href.lastIndexOf("/");
-		var result2 = location.href.substring(0,result);
-		//alert(result2 + '/' + current + '.html');
-		//insertHtml("http://localhost:8080/work/Spribo/" + current + ".html");
-		insertHtml(result2 + '/' + current + '.html');
+		var strPath = location.href.lastIndexOf("/");
+		var urlRed = location.href.substring(0,strPath);
+		insertHtml(urlRed + '/' + current + '.html');
 		//document.getElementById('icon-bars').href = current + ".html";//"javascript:insertHtml('" + current + ".html')";
 		
 	}
