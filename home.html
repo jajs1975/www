@@ -512,7 +512,7 @@ function getAttrData(attr, isBack) {
 
 function insertHtml(targetUrl) {
 console.log(targetUrl +"-->");
-
+	alert('En insertHtml, path: ' + targetUrl);
 	//ocultar siempre el icono de informacion. En el html que se carga se muestra cuando aplica(instance_detail.html)
 	$("#action-icon-right").addClass("hide-action-icon-right");
 	
@@ -540,7 +540,6 @@ console.log(targetUrl +"-->");
 	 
 	request.done(function( msg ) {
 		console.log('success!!');
-		alert('Html incrutado: ' + targetUrl + ', respuesta: ' + msg);
 		$("#maincontent").html(msg);
 		$("#maincontent").removeClass("displayListview");
 	});
@@ -552,7 +551,6 @@ console.log(targetUrl +"-->");
 
 function backIcon() {
 	if($('#icon-bars').hasClass("ui-icon-bars" )) {
-		alert('En menu');
 	    if( $("#myPanel").hasClass("ui-panel-open") == true ){
 		   closePanel();
         }else{
@@ -560,7 +558,6 @@ function backIcon() {
         }
 	} else {
 		var attribute = window.localStorage['path'];
-		alert('path: ' + attribute);		
 		var strData = attribute.split("|");
 		var current = "";
 		if (strData.length > 1) {
@@ -618,8 +615,14 @@ function backIcon() {
 			getInstData('objInstanceType', true);
 			//alert('En carrusel, lista: ' + getInstData('objInstanceId', false) + ', ' + getInstData('objInstanceName', false) + ', ' + getInstData('objInstanceType', false));
 		}
-		alert('página a mostrar' + current);
-		document.getElementById('icon-bars').href = "javascript:insertHtml('" + current + ".html')";
+		//alert('página a mostrar' + current + ', host: ' + location.host + ', href: ' + location.href + ', pathName: ' + location.pathname);
+		var result = location.href.lastIndexOf("/");
+		var result2 = location.href.substring(0,result);
+		//alert(result2 + '/' + current + '.html');
+		//insertHtml("http://localhost:8080/work/Spribo/" + current + ".html");
+		insertHtml(result2 + '/' + current + '.html');
+		//document.getElementById('icon-bars').href = current + ".html";//"javascript:insertHtml('" + current + ".html')";
+		
 	}
 }
 
