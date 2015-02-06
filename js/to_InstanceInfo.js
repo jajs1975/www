@@ -24,6 +24,7 @@ var result;
 //Almacena el codigo HTML generado para los contactos en comun
 var commonsResult;
 //Cuenta los contactos en comun entre dos usuarios
+//Cuenta los contactos en comun entre dos usuarios
 var commonsTotal;
 //Cuenta los contactos en total de un usuario
 var totalContacts;
@@ -129,7 +130,6 @@ var secondaryServiceCalls = function (objectId, propertyId, index) {
 		async:false
     }).done(function(response2) {
         innerCarrousel = htmlCarrousel(response2, index);
-        //htmlCarrousels[objectIndex].codeGenerated = innerCarrousel;
         if (innerCarrousel) {
             $('#' + htmlCarrousels[objectIndex].playerConstraintId).html(innerCarrousel);
         }
@@ -189,8 +189,8 @@ function htmlCarrousel(dataElements, codeIndex) {
         data1 = data1 + '<a href="to_attrDetail.html" class="item link" onclick="setPath(\'to_InstanceInfo\');setAttrId(\'';
         data1 = data1 + dataElements[k].Id + '\', \'' + dataElements[k].Name + '\', \'' + displayImage + '\', \'' + coverImage + '\', \'' + htmlCarrousels[codeIndex].type;
         data1 = data1 + '\'); insertHtml(this.href);this.blur(); return false;">';
-        data1 = data1 + '<img src="' + displayImage + '" class="img-circle" style="width:60px; height:60px; ">';
-        data1 = data1 + '<h5 style="color:#C2C2C2" class="text-center">' + dataElements[k].Name + '</h5>';
+        data1 = data1 + '<img src="' + displayImage + '" class="img-circle thmbnlSize" ">';
+        data1 = data1 + '<h5 class="text-center fontClrGrey">' + dataElements[k].Name + '</h5>';
         data1 = data1 + '</a>';
         data1 = data1 + '</div>\n';
     }
@@ -216,12 +216,12 @@ Handlebars.registerHelper('eachM', function(property) {
             data = data + '<div class="col-xs-3">';
             data = data + '<div class="col-xs-offset-8">';
             data = data + '<a href="vp_display.html" onclick="setPropId(\'' + property[i].Id + '\',\'\',\'' + property[i].Type + '\'); insertHtml(this.href);this.blur(); return false;">';
-            data = data + '<span style="color:#F48341;" class="glyphicon glyphicon-chevron-right "></span>';
+            data = data + '<span class="glyphicon glyphicon-chevron-right chevronClr"></span>';
             data = data + '</a>';
             data = data + '</div>';
             data = data + '</div>';
             data = data + '<br>';
-            data = data + '<hr width="100%">';
+            data = data + '<hr class="allWidth">';
         } else {  //Para propiedades tipo Objeto
         
             if (identifiers.length > 0) {
@@ -246,12 +246,12 @@ Handlebars.registerHelper('eachM', function(property) {
             data = data + '<div class="col-xs-2">';
             data = data + '<div class="col-xs-offset-6">';
             data = data + '<a href="to_instanceObjectList.html" onclick="setPath(\'to_InstanceInfo\');setPropId(\'' + property[i].Id + '\', \'' + property[i].Name + '\',\'' + property[i].Type + '\'); insertHtml(this.href);this.blur(); return false;">';
-            data = data + '<img style="height:26px; top:22px; width:35px" src="img/arrow.png"></img>';
+            data = data + '<img class="arrowSize" src="img/arrow.png"></img>';
             data = data + '</a>';
             data = data + '</div>';
             data = data + '</div>';
             data = data + '</div>';
-            data = data + '<hr width="100%">';
+            data = data + '<hr class="allWidth">';
             data = data + '</div>';
         }	
         data = data + '</div>';

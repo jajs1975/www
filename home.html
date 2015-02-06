@@ -1,365 +1,107 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-capable" content="yes">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-capable" content="yes">
 
-<link rel="stylesheet" href="lib/jquery/css/jquery.mobile-1.4.4.min.css">
-<script src="lib/jquery/js/jquery-1.11.0.js"></script>
-<script src="lib/jquery/js/jquery.mobile-1.4.4.min.js"></script>
-
-<link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<script src="lib/bootstrap/js/bootstrap.min.js"></script>
-
-<script src="lib/handlebars/js/handlebars.js"></script>
-<link href="lib/owl-carousel/owl.carousel.css" rel="stylesheet">
-<link href="lib/owl-carousel/owl.theme.css" rel="stylesheet">
-<script src="lib/owl-carousel/owl.carousel.js"></script>
-<link rel="stylesheet" href="css/spribo.css">
-<script type='text/javascript' src='lib/foggy/jquery.foggy.min.js'></script>
-
-<style>
-hr{
-	margin-bottom: 2px;
-    margin-left: 20px;
-    margin-top: 2px;
-	border-width: 1px 0 0;
-	border-image: none;
-	border-color: #e2e2e2;
-}
-
-.ui-listview > li > hr{
-	margin-bottom: 2px;
-    margin-left: 80px;
-	margin-right: 5px;
-    margin-top: 2px;
-	border-width: 2px 0 0;
-	border-image: none;
-	border-color: #e2e2e2;
-}
- 
-.ui-li-has-thumb .ui-btn-inner {
-    /*max-height: 30px;*/
-    padding-left: 60px;
-}
-.ui-listview > li {
-    /*height: 80px;*/
-}
-
-.ui-listview > li h3 {
-	font-weight:100;
-	font-size:18px;
-	margin-left: -20px;
-	padding: 4px;
-}
-
-.ui-listview > li h4 {
-	font-weight:100;
-	font-size:14px;
-	margin-left: -20px;
-	padding: 4px;
-}
-
-.ui-listview > li a: hover,
-.ui-listview > li a: hover {
-	background-color:#F00;
-}
-
-.ui-listview > li.ui-first-child img:first-child:not(.ui-li-icon) {
-	border-top-left-radius: 50%;
-}
-.ui-listview > li.ui-last-child img:first-child:not(.ui-li-icon) {
-    border-bottom-left-radius: 50%;
-}
-
-.ui-listview > li > a.ui-btn {
-    border-style: none;
-    border-width: 0px 0px 0px;
-	
-}
-
-.ui-icon-carat-r:after {
-    background-image: url("data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22iso-8859-1%22%3F%3E%3C!DOCTYPE%20svg%20PUBLIC%20%22-%2F%2FW3C%2F%2FDTD%20SVG%201.1%2F%2FEN%22%20%22http%3A%2F%2Fwww.w3.org%2FGraphics%2FSVG%2F1.1%2FDTD%2Fsvg11.dtd%22%3E%3Csvg%20version%3D%221.1%22%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%20y%3D%220px%22%20%20width%3D%2214px%22%20height%3D%2214px%22%20viewBox%3D%220%200%2014%2014%22%20style%3D%22enable-background%3Anew%200%200%2014%2014%3B%22%20xml%3Aspace%3D%22preserve%22%3E%3Cpolygon%20style%3D%22fill%3A%23F25900%3B%22%20points%3D%223.404%2C2.051%208.354%2C7%203.404%2C11.95%205.525%2C14.07%2012.596%2C7%205.525%2C-0.071%20%22%2F%3E%3C%2Fsvg%3E");
-	background-color: transparent;
-}
-
-.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
-    background-color: #ddd;
-    color: #fff;
-}
-
-#no-results {
-    display : none;
-}
-
-.displayListview{
-	background-color: #FFFFFF;
-	padding: 1em 1em 1em 25px;
-}
-
-.ui-panel-inner{
-	background-image: url("img/background_home.jpg");
-}
-.hide-action-icon-right{
-	display: none !important;
-}
-.font-detail {
-
-	font-size: 17px;
-	font-weight: 300;
-	font-stretch:normal;
-
-	
-	margin-left: 20px;
-	color:#878787;
-}
-.page-subTitle{
-	font-size:15px !important;
-	font-color: #878787 !important;
-	color: #F25900 !important;
-}
-/*carousel info in index.html*/
-.carouselSpribo .item{
-	margin: 3px;
-}
-.carousel-arrow {
- display: -webkit-flex; /*Safari*/
- -webkit-align-items: center; /*Safari*/
- display:flex;
- align-items: center;
-}
-.carouselSpribo .item img{
-	/*display: block;*/
-	width: 100%;
-	height: auto;
-}
-
-.titleElementCarousel{
-	font-size: 17px;
-	font-weight: 500 !important;
-}
-.titleElementCarousel:link {
-    color: #878785;
-}
-.titleElementCarousel:visited {
-    color: #878785;
-}
-.titleElementCarousel:hover {
-    color: #878785;
-}
-.titleElementCarousel:active {
-    color: #878785;
-}
-.iconsScribo1 {
-   color:#878787 !important;
-}
-.ctrlSeg {
-    width: 50% !important;
-}
-.ctrlSegActive span {
-    background-color: #F77004 !important;
-    color: #FFF !important;
-    border-color: #F77004 !important;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;
-    font-weight: normal !important;
-}
-.ctrlSegDActive span {
-    background-color: #FFF !important;
-    color: #F77004 !important;
-    border-color: #F77004 !important;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;
-    font-weight: normal !important;
-}
-.firstSeg {
-    border-top-left-radius: 7px;
-    border-bottom-left-radius: 7px;
-}
-.lastSeg {
-    border-top-right-radius: 7px;
-    border-bottom-right-radius: 7px;
-}
-.clsTextArea{
-	width: 100% !important;
-	height: 100% !important;
-	background-color: rgba(255,255,255,0.6) !important;
-	color: #000 !important;
-	text-shadow: none !important;
-	
-}
-*::-webkit-input-placeholder {
-    color: #000;
-}
-*:-moz-placeholder {
-    /* FF 4-18 */
-    color: #000;
-}
-*::-moz-placeholder {
-    /* FF 19+ */
-    color: #000;
-}
-*:-ms-input-placeholder {
-    /* IE 10+ */
-    color: #000;
-}
-.modal-backdrop {
-	background-color: transparent !important
-}
-
-.modalAlert-dialog {
-    width: 95% !important;
-}
-.modalAlert-content {
-    background-color: rgba(255, 255, 255, 0.75) !important;
-    border-radius: 12px !important;
-    border: 0px !important;
-	box-shadow: 0 0px 0px rgba(0,0,0,.5) !important; 
-}
-.modalAlert-header {
-    border: 0px !important;
-}
-.modalAlert-body {
-    text-align: center;
-}
-.modalAlert-footer {
-    border: 0px !important;
-    text-align: center !important;
-}
-.modalAlert-btn {
-    background-color: transparent !important;
-    border: 0px !important;
-    color: #F25900 !important;
-    padding-top: 10px;
-}
-.modalAS-dialog {
-    width: 95% !important;
-    /*height: 95% !important;*/
-    bottom: 0;
-    position: absolute;
-}
-.modalAS-content {
-    background-color: rgba(255, 255, 255, 0.75) !important;
-    border-radius: 12px !important;
-    border: 0px !important;
-    width: 100% !important;
-}
-.btn-ASprimary, .btn-ASprimary:hover {
-    color: #F00;
-    background-color: rgba(255, 255, 255, 0.75);
-    width: 100%;
-}
-.btn-ASdefault {
-    color: #666;
-    background-color: rgba(255, 255, 255, 0.75);
-    width: 100%;
-}
-.separation {
-    padding: 5px;
-    border: 0px;
-}
-</style>
+    <link rel="stylesheet" href="lib/jquery/css/jquery.mobile-1.4.4.min.css">
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="lib/owl-carousel/owl.carousel.css" rel="stylesheet">
+    <link href="lib/owl-carousel/owl.theme.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/spribo.css">
+    
+    <script src="lib/jquery/js/jquery-1.11.0.js"></script>
+    <script src="lib/jquery/js/jquery.mobile-1.4.4.min.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="lib/handlebars/js/handlebars.js"></script>
+    <script src="lib/owl-carousel/owl.carousel.js"></script>
+    <script type='text/javascript' src='lib/foggy/jquery.foggy.min.js'></script>
 </head>
 <body>
+    <div data-role="page" id="pageone" class="ui-responsive-panel" data-title="SPRIBO MOBILE">
+        <div data-role="panel" data-position-fixed="true" id="myPanel" data-dismissible="false" data-display="reveal" data-position="left">
+            <div data-role="listview" class="nav-search">
+                <div class="userInfo" id="loggedUser">
+                    <ul class="nav nav-pills nav-stacked">
+                        <li>
+                            <a href="to_attrDetail.html"  id="username" onclick="setPath('home');getUserInfo(); insertHtml(this.href); this.blur(); return false;" data-ajax="true"> <!--  style="text-shadow: none !important;padding: 5px 5px;" -->
+                                <span class="text-menu side-menu-item"></span><!--   style="color:#FFF;" -->
+                            </a><hr>
+                        </li>
+                        <li>
+                            <a href="to_UserInstances.html" onclick="setPath('home');insertHtml(this.href); this.blur(); return false;" data-ajax="true"> <!--  style="text-shadow: none !important;padding: 5px 5px;" -->
+                                <img src="img/contacts_focus_48dp.png">  <!--  style="width:20px;height:20px" -->
+                                <span class="text-menu side-menu-item">Contactos</span><!--   style="color:#FFF;" -->
+                            </a><hr>
+                       </li>
+                    </ul>
+                </div>
+                <div class="objTypes"></div> 
+            </div><!-- /nav-search-->
+        </div><!-- /myPanel -->
+        <!--myPanel-->
+        <div data-role="header" id="pageHeader" data-position="fixed" data-tap-toggle="false" class="headerFooterColor">
+            <a id="icon-bars" href="#" class="ui-icon-alt iconsSpribo" data-icon="bars" data-iconpos="notext" data-inline="true" onclick="backIcon();">Menu</a>
+            <h1 class="page-title"></h1>
+            <h1 id="subtitle" class="page-subTitle">Información</h1> <!--  style="display:none" -->
+            <a id="action-icon-right" href="to_InstanceInfo.html" onclick="insertHtml(this.href); this.blur(); setPath('to_attrDetail');return false;" class="ui-icon-alt hide-action-icon-right iconsSpribo" data-icon="info" data-iconpos="notext" data-inline="true" rel="external" data-ajax="false">Info</a>
+        </div><!-- /header -->
+        
+        <div class="modal fade" id="dialogComent" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true" onclick="cleanForm();">
+            <div class="modal-dialog"> <!--  style="height:50%;width:100%;margin:0px" -->
+                <div class="modal-content"> <!--  style="background-color:transparent; height:100%; width:100%;box-shadow: 0 0px 0px rgba(0,0,0,0);border:2px" -->
+                    <div> <!--  style="padding-bottom:0px;padding:0px" -->
+                        <div class="row">
+                            <div class="col-xs-3 modal-content-left"> <!--  style="text-align:left;" -->
+                                <a class="btn objectName" data-dismiss="modal" onclick="cleanForm();">cancelar</a>
+                            </div>
+                            <div class="col-xs-6">
+                                <div id="userNameModal" class="page-title text-center"></div>
+                            </div>
+                            <div class="col-xs-3 modal-content-right"> <!--  style="text-align:right;" -->
+                                <a class="btn objectName" data-dismiss="modal" onclick="sendPost(document.getElementById('shareIdeas').value);cleanForm();">enviar</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-body"> <!--  style="height:80%;position:relative;padding-left:5px; padding-right:5px;padding-top:1px; outline: none;" -->
+                        <div class="row"> <!--  style="height:100%;position:relative; padding:0px" -->
+                            <div class="col-xs-12 no-float"> <!--  style="height:100%;position:relative; padding:0px" -->
+                                <textarea rows="6" id="shareIdeas" class="clsTextArea" placeholder="Comparte tus ideas..."></textarea> <!--  style="height:100%" -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="maincontent" data-role="main" class="ui-content">
+        </div> 
+        <div data-role="footer" data-position="fixed" data-tap-toggle="false" class="ui-bar headerFooterColor">
+            <a href="newsFeedCommunity.html" class="ui-icon-alt footeranchor iconsSpribo iconsScribo1" data-icon="home" data-iconpos="top" data-inline="true" onclick="home(); insertHtml(this.href); this.blur(); return false;">Inicio</a>
+        </div><!-- /footer -->
+    </div>
 
-<div data-role="page" id="pageone" class="ui-responsive-panel" data-title="SPRIBO MOBILE">
-	<div data-role="panel" data-position-fixed="true" id="myPanel" data-dismissible="false" data-display="reveal" data-position="left">
-		<div data-role="listview" class="nav-search">
-
-		<div class="userInfo" id="loggedUser">
-			<ul class="nav nav-pills nav-stacked">  
-			   <li>
-					<a href="to_attrDetail.html"  id="username" onclick="setPath('home');getUserInfo(); insertHtml(this.href); this.blur(); return false;" data-ajax="true" style="text-shadow: none !important;padding: 5px 5px;">
-						<span style="color:#FFF;" class="text-menu side-menu-item"></span>
-					</a><hr>
-			   </li>
-
-			   <li>
-					<a href="to_UserInstances.html" onclick="setPath('home');insertHtml(this.href); this.blur(); return false;" data-ajax="true" style="text-shadow: none !important;padding: 5px 5px;">
-						<img src="img/contacts_focus_48dp.png"  style="width:20px;height:20px">
-						<span style="color:#FFF;" class="text-menu side-menu-item">Contactos</span>
-					</a><hr>
-			   </li>
-			</ul>                                                    
-		</div>  
-			
-			<div class="objTypes"></div> 
-		</div><!-- /nav-search-->
-	</div><!-- /myPanel -->
-	<!--myPanel-->
-  <div data-role="header" id="pageHeader" data-position="fixed" data-tap-toggle="false" class="headerFooterColor">
-	<a id="icon-bars" href="#" class="ui-icon-alt iconsSpribo" data-icon="bars" data-iconpos="notext" data-inline="true" onclick="backIcon();">Menu</a>
-		<h1 class="page-title"></h1>
-		<h1 id="subtitle" class="page-subTitle" style="display:none">Información</h1>
-	<a id="action-icon-right" href="to_InstanceInfo.html" onclick="insertHtml(this.href); this.blur(); setPath('to_attrDetail');return false;" class="ui-icon-alt hide-action-icon-right iconsSpribo" data-icon="info" data-iconpos="notext" data-inline="true" rel="external" data-ajax="false">Info</a>
-  </div><!-- /header -->
-  
-<div class="modal fade" id="dialogComent" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true" onclick="cleanForm();">
-	<div class="modal-dialog" style="height:50%;width:100%;margin:0px">
-		<div class="modal-content" style="background-color:transparent; height:100%; width:100%;box-shadow: 0 0px 0px rgba(0,0,0,0);border:2px"><!--#E6E6E6-->
-			<!--br-->
-			<div style="padding-bottom:0px;padding:0px">
-				<div class="row">
-					<div class="col-xs-3" style="text-align:left;">
-						<a class="btn objectName" data-dismiss="modal" onclick="cleanForm();">cancelar</a>
-					</div>
-					<div class="col-xs-6">
-						<div id="userNameModal" class="page-title text-center"></div>
-					</div>
-					<div class="col-xs-3" style="text-align:right;">
-						<a class="btn objectName" data-dismiss="modal" onclick="sendPost(document.getElementById('shareIdeas').value);cleanForm();">enviar</a>
-					</div>
-				</div>
-			
-			</div>
-			<div class="modal-body" style="height:80%;position:relative;padding-left:5px; padding-right:5px;padding-top:1px; outline: none;">
-				<div class="row" style="height:100%;position:relative; padding:0px">
-					<div class="col-xs-12 no-float" style="height:100%;position:relative; padding:0px">
-					    <!--form name="frmShareIdeas" id="frmShareIdeas" style="height:100%"-->
-						<textarea style="height:100%" rows="6" id="shareIdeas" class="clsTextArea" placeholder="Comparte tus ideas..."></textarea>
-						<!--/form-->
-					</div>
-				</div>
-			</div>
-			<!--div class="modal-footer">
-			</div-->
-		</div>
-	</div>
-</div>
-
-<div id="maincontent" data-role="main" class="ui-content">
-	
-</div> 
-
-
-<div data-role="footer" data-position="fixed" data-tap-toggle="false" class="ui-bar headerFooterColor">
-<a href="newsFeedCommunity.html" class="ui-icon-alt footeranchor iconsSpribo iconsScribo1" data-icon="home" data-iconpos="top" data-inline="true" onclick="home(); insertHtml(this.href); this.blur(); return false;">Inicio</a>
-<!--a href="#" class="ui-icon-alt footeranchor iconsSpribo iconsScribo1" data-icon="home" data-iconpos="top" data-inline="true" onclick="home(); insertHtml('newsFeedCommunity.html'); this.blur(); return false;">Inicio</a-->
-
-</div><!-- /footer -->
-
-</div>
-
-<script id="obj-list-tpl" type="text/template">  
-    <ul class="nav nav-pills nav-stacked">
-        {{#each this}}
-			<li>
-				<a href="to_Instances.html" onclick="setPath('home');setObjId('{{Id}}', '{{Name}}'); insertHtml(this.href); this.blur(); return false;" data-ajax="true" style="text-shadow: none !important;padding: 5px 5px;">
-					<span style="color:#FFF;" class="text-menu side-menu-item">&nbsp;{{Name}}</span>
-				</a><hr>
-			</li>
-        {{/each}}
-    </ul>   
-</script> 
-<script id="newsFeedCommunityTem" type="text/template">
-	{{#eachNeewsFeed this}}
-	{{/eachNeewsFeed}}
-</script>
-<script src="js/newsFeedCommunity.js"></script>
-<!--script src="lib/handlebars.js"></script-->
-<script src="cordova.js"></script>
-<script src="lib/fastclick/fastclick.js"></script>
-<script src="js/home.js"></script>
+    <script id="obj-list-tpl" type="text/template">  
+        <ul class="nav nav-pills nav-stacked">
+            {{#each this}}
+            <li>
+                <a href="to_Instances.html" onclick="setPath('home');setObjId('{{Id}}', '{{Name}}'); insertHtml(this.href); this.blur(); return false;" data-ajax="true"> <!--  style="text-shadow: none !important;padding: 5px 5px;" -->
+                <span class="text-menu side-menu-item">&nbsp;{{Name}}</span> <!--  style="color:#FFF;" -->
+                </a><hr>
+            </li>
+            {{/each}}
+        </ul>   
+    </script> 
+    <script id="newsFeedCommunityTem" type="text/template">
+        {{#eachNeewsFeed this}}
+        {{/eachNeewsFeed}}
+    </script>
+    <script src="js/newsFeedCommunity.js"></script>
+    <!--script src="lib/handlebars.js"></script-->
+    <script src="cordova.js"></script>
+    <script src="lib/fastclick/fastclick.js"></script>
+    <script src="js/home.js"></script>
 </body>
 </html>
 
@@ -721,9 +463,9 @@ function addModal() {
         addedAS += '<div class="modal-dialog modalAS-dialog"><div class="modal-content modalAlert-content">';
         addedAS += '<div id="actionSheetHeader" class="modal-header modalAlert-header" data-dismiss="modal"><h4 class="modal-title" id="actionSheetLabel"></h4></div>';
         addedAS += '<div id="actionSheetBody" class="modal-body modalAlert-body" data-dismiss="modal"><span></span></div>';
-        addedAS += '<div class="modal-footer modalAlert-footer"><div class="separation"><button type="button" class="btn btn-ASprimary" data-dismiss="modal" onclick="disconnectFrom();">Eliminar de mis contactos</button></div>';
+        addedAS += '<div class="modal-footer modalAlert-footer"><div id="innerFooter"><div class="separation"><button type="button" class="btn btn-ASprimary" data-dismiss="modal" onclick="disconnectFrom();">Eliminar de mis contactos</button></div>';
         addedAS += '<div class="separation"><button type="button" class="btn btn-ASdefault" data-dismiss="modal" onclick="quitModal();">Cancelar</button></div>';
-        addedAS += '</div></div></div>';
+        addedAS += '</div></div></div></div>';
         $('#pageone').append(addedAS);
         /*
         $('#actionSheetHeader').click(function(event) {

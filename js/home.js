@@ -7,7 +7,7 @@
 		var usrName = window.localStorage["userId"];
         var usrAuthorized = window.localStorage["Authorization"] ? true : false;
 		restartVariables();
-		$('#username').html('<img src="img/user_48dp.png" class="img-profile" style="width:20px;height:20px"> <span style="color:#FFF;"  class="text-menu side-menu-item">'+usrName+'</span> '); 
+		$('#username').html('<img src="img/user_48dp.png" class="img-profile iconSize"> <span class="text-menu side-menu-item frGrndClrWht">'+usrName+'</span> '); 
         if (commId == undefined) commId = 1;
 		if (urlComm == undefined || urlComm != "smartcitypois") {
             urlComm = "smartcitypois";
