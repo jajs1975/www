@@ -17,13 +17,7 @@ html, body { height:80%; margin:0; padding:0; background-color: #EF8C4B; }
 /*icons left align*/
 .left-inner-addon { position: relative !important;;}
 .left-inner-addon input { background-color:transparent !important; padding-left: 30px !important; background: rgb(255, 255, 255) transparent !important;}
-input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill { 
-/*background-color: transparent !important; 
--webkit-box-shadow: 0 0 0px 1000px white inset !important; */
-
--webkit-box-shadow:0 0 0 50px #EF8C4B inset !important; /* Change the color to your own background color */
-    -webkit-text-fill-color: #red !important;
-}
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill { -webkit-box-shadow:0 0 0 50px #EF8C4B inset !important; }
 .left-inner-addon i { position: absolute !important; padding: 10px 12px !important; pointer-events: none !important; }
 .right-inner-addon { position: relative !important; }
 .right-inner-addon input { padding-right: 30px !important; }

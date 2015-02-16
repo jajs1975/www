@@ -12,12 +12,7 @@
     <link href="lib/owl-carousel/owl.theme.css" rel="stylesheet">
     <link rel="stylesheet" href="css/spribo.css">
     
-    <script src="lib/jquery/js/jquery-1.11.0.js"></script>
-    <script src="lib/jquery/js/jquery.mobile-1.4.4.min.js"></script>
-    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
-    <script src="lib/handlebars/js/handlebars.js"></script>
-    <script src="lib/owl-carousel/owl.carousel.js"></script>
-    <script type='text/javascript' src='lib/foggy/jquery.foggy.min.js'></script>
+    
 </head>
 <body>
     <div data-role="page" id="pageone" class="ui-responsive-panel" data-title="SPRIBO MOBILE">
@@ -81,7 +76,13 @@
             <a href="newsFeedCommunity.html" class="ui-icon-alt footeranchor iconsSpribo iconsScribo1" data-icon="home" data-iconpos="top" data-inline="true" onclick="home(); insertHtml(this.href); this.blur(); return false;">Inicio</a>
         </div><!-- /footer -->
     </div>
-
+	
+	<script src="lib/jquery/js/jquery-1.11.0.js"></script>
+    <script src="lib/jquery/js/jquery.mobile-1.4.4.min.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="lib/handlebars/js/handlebars.js"></script>
+    <script src="lib/owl-carousel/owl.carousel.js"></script>
+    <script type='text/javascript' src='lib/foggy/jquery.foggy.min.js'></script>
     <script id="obj-list-tpl" type="text/template">  
         <ul class="nav nav-pills nav-stacked">
             {{#each this}}
@@ -102,6 +103,7 @@
     <script src="cordova.js"></script>
     <script src="lib/fastclick/fastclick.js"></script>
     <script src="js/home.js"></script>
+
 </body>
 </html>
 
@@ -255,6 +257,7 @@ function getAttrData(attr, isBack) {
 
 function insertHtml(targetUrl) {
 console.log(targetUrl +"-->");
+	alert('url a ejecutar: ' + targetUrl)
 	//ocultar siempre el icono de informacion. En el html que se carga se muestra cuando aplica(instance_detail.html)
 	$("#action-icon-right").addClass("hide-action-icon-right");
 	
@@ -282,6 +285,7 @@ console.log(targetUrl +"-->");
 	 
 	request.done(function( msg ) {
 		console.log('success!!');
+		alert('Msg: '  + msg);
 		$("#maincontent").html(msg);
 		$("#maincontent").removeClass("displayListview");
 	});
