@@ -7,7 +7,7 @@
 		var usrName = window.localStorage["userId"];
         var usrAuthorized = window.localStorage["Authorization"] ? true : false;
 		restartVariables();
-		$('#username').html('<img src="img/user_48dp.png" class="img-profile" style="width:20px;height:20px"> <span style="color:#FFF;"  class="text-menu side-menu-item">'+usrName+'</span> '); 
+		$('#username').html('<img src="img/user_48dp.png" class="img-profile iconSize"> <span class="text-menu side-menu-item frGrndClrWht">'+usrName+'</span> '); 
         if (commId == undefined) commId = 1;
 		if (urlComm == undefined || urlComm != "smartcitypois") {
             urlComm = "smartcitypois";
@@ -54,18 +54,18 @@
 		   //document.addEventListener("online", function(){ alert("Ahora se encuentra conectado a Internet"); }, false);
 		   
 		   document.addEventListener("backbutton", function (e) {
-						   alert("Pulsaron backbutton...");
+						   //alert("Pulsaron backbutton...");
 						   backIcon();
 						   e.preventDefault();
 		   }, false );
 		   
 		   document.addEventListener("menubutton", function (e) {
-						   alert("Pulsaron menu button");
+						   //alert("Pulsaron menu button");
 						   if( $("#myPanel").hasClass("ui-panel-open") == true ){
-							  alert("OPENED");
+							  //alert("OPENED");
 							  closePanel();
 						   }else{
-							  alert("CLOSED");
+							  //alert("CLOSED");
 							  openPanel();
 						   }
 						   e.preventDefault();
@@ -153,7 +153,7 @@ function restartVariables() {
 	window.localStorage["attrType"]="";
 	window.localStorage["objectId"]="";
 	window.localStorage["objectName"]="";
-	window.localStorage["isPageNF"]="";
+	//window.localStorage["isPageNF"]="";
 	window.localStorage["path"]="";
 	window.localStorage["objInstanceId"]="";
 	window.localStorage["objInstanceName"]="";

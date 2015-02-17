@@ -1,3 +1,4 @@
+alert('Cargando newsFeedCommunity.js');
 var urlComm = window.localStorage["urlComm"];
 
 if (urlComm == undefined) {
@@ -44,7 +45,7 @@ Handlebars.registerHelper('eachNeewsFeed', function(property) {
 
 		data += '<a href=\'';
 		data += 'to_attrDetail.html';
-		data += '\' onclick="setPath(\'home\');setAttrId(\''+ property[i].Actor.Id +'\',\''+ property[i].Actor.Name +'\',\''+ displayThumbnailActor +'\',\''+coverImageActor +'\',\'Profile\');insertHtml(this.href); this.blur(); return false;">';
+		data += '\' data-ajax="true" onclick="setPath(\'home\');setAttrId(\''+ property[i].Actor.Id +'\',\''+ property[i].Actor.Name +'\',\''+ displayThumbnailActor +'\',\''+coverImageActor +'\',\'Profile\');insertHtml(this.href); this.blur(); return false;">';
 		data += '<img style="height:60px; width:60px; background-color:#FFFFFF; border:0px;box-shadow : 0px 0px 10px rgba(0, 0, 0, 0.2);" class="img-responsive img-circle img-responsive-rounded" src="' + displayThumbnailActor + '" />';
 		data += '</a>';
 		
@@ -57,7 +58,7 @@ Handlebars.registerHelper('eachNeewsFeed', function(property) {
 		
 		data += '<div class="col-xs-8 text-left" style="padding-top:10px;">';
 		
-		data += '<a class=\'objectName\' href=\'';
+		data += '<a class=\'objectName\' data-ajax="true" href=\'';
 		data += 'to_attrDetail.html';
 		data += '\' onclick="setPath(\'home\');setAttrId(\''+ property[i].Actor.Id +'\',\''+ property[i].Actor.Name +'\',\''+ displayThumbnailActor +'\',\''+coverImageActor +'\',\'Profile\');insertHtml(this.href); this.blur(); return false;">';			
 		data += '<span class="objectName">' + property[i].Actor.Name + '</span>';
@@ -72,7 +73,7 @@ Handlebars.registerHelper('eachNeewsFeed', function(property) {
 				displayImageObject = "";
 				if(property[i].Object.CoverImage) coverImageObject = property[i].Object.CoverImage.Image;
 				if(property[i].Object.DisplayImage) displayImageObject = property[i].Object.DisplayImage.Thumbnail;
-				data += '<a class="objectName" href=\'';
+				data += '<a class="objectName" data-ajax="true" href=\'';
 				data += 'to_attrDetail.html';
 				data += '\' onclick="setPath(\'home\');setAttrId(\''+ property[i].Object.Id +'\',\''+ property[i].Object.Name +'\',\''+ displayImageObject +'\',\''+ coverImageObject  +'\',\'Profile\');insertHtml(this.href); this.blur(); return false;">';
 				data += property[i].Object.Name;
@@ -84,7 +85,7 @@ Handlebars.registerHelper('eachNeewsFeed', function(property) {
 				displayImageObject = "";
 				if(property[i].Object.DisplayImage) coverImageObject = property[i].Object.DisplayImage.Image;
 				if(property[i].Object.DisplayImage) displayImageObject = property[i].Object.DisplayImage.Thumbnail;
-				data += '<a class="objectName" href=\'';
+				data += '<a data-ajax="true" class="objectName" href=\'';
 				data += 'to_attrDetail.html';
 				data += '\' onclick="setPath(\'home\');setAttrId(\''+ property[i].Object.Id +'\',\''+ property[i].Object.Name +'\',\''+ displayImageObject +'\',\''+ coverImageObject +'\',\'\');insertHtml(this.href); this.blur(); return false;">';
 				data += property[i].Object.Name;
@@ -99,7 +100,7 @@ Handlebars.registerHelper('eachNeewsFeed', function(property) {
 					displayImageObject = "";
 					if(property[i].IndirectObject.CoverImage) coverImageObject = property[i].IndirectObject.CoverImage.Image;
 					if(property[i].IndirectObject.DisplayImage) displayImageObject = property[i].IndirectObject.DisplayImage.Thumbnail;
-					data += '<a href=\'';
+					data += '<a data-ajax="true" class="objectName" href=\'';
 					data += 'to_attrDetail.html';
 					data += '\' onclick="setPath(\'home\');setAttrId(\''+ property[i].IndirectObject.Id +'\',\''+ property[i].IndirectObject.Name +'\',\''+ displayImageObject +'\',\''+ coverImageObject +'\',\'Profile\');insertHtml(this.href); this.blur(); return false;">';
 					data += property[i].IndirectObject.Name;
@@ -111,7 +112,7 @@ Handlebars.registerHelper('eachNeewsFeed', function(property) {
 					displayImageObject = "";
 					if(property[i].IndirectObject.DisplayImage) coverImageObject = property[i].IndirectObject.DisplayImage.Image;
 					if(property[i].IndirectObject.DisplayImage) displayImageObject = property[i].IndirectObject.DisplayImage.Thumbnail;
-					data += '<a class="objectName" href=\'';
+					data += '<a data-ajax="true" class="objectName" href=\'';
 					data += 'to_attrDetail.html';
 					data += '\' onclick="setPath(\'home\');setAttrId(\''+ property[i].IndirectObject.Id +'\',\''+ property[i].IndirectObject.Name +'\',\''+ displayImageObject +'\',\''+ coverImageObject +'\',\'\');insertHtml(this.href); this.blur(); return false;">';
 					data += property[i].IndirectObject.Name;
@@ -154,7 +155,7 @@ Handlebars.registerHelper('eachNeewsFeed', function(property) {
 				if(property[i].Object.CoverImage) coverImageObject = property[i].Object.CoverImage.Image;
 				data += '<div class="col-xs-3 text-left" style="padding-left: 1px;">';
 				
-				data += '<a href=\'';
+				data += '<a data-ajax="true" href=\'';
 				data += 'to_attrDetail.html';
 				data += '\' onclick="setPath(\'home\');setAttrId(\''+ property[i].Object.Id +'\',\''+ property[i].Object.Name +'\',\''+ displayImageObject +'\',\''+ coverImageObject +'\',\'Profile\');insertHtml(this.href); this.blur(); return false;">';
 				data += '<img style="width:60px; height:60px; background-color:transparent; border:0px;" class="img-responsive img-circle img-responsive-rounded" src="' + displayImageObject + '">';
@@ -169,7 +170,7 @@ Handlebars.registerHelper('eachNeewsFeed', function(property) {
 				if(property[i].Object.CoverImage) coverImageObject = property[i].Object.CoverImage.Image;
 				data += '<div class="col-xs-12 text-left">';
 				
-				data += '<a href=\'';
+				data += '<a data-ajax="true" href=\'';
 				data += 'to_attrDetail.html';
 				data += '\' onclick="setPath(\'home\');setAttrId(\''+ property[i].Object.Id +'\',\''+ property[i].Object.Name +'\',\''+ displayImageObject +'\',\''+ coverImageObject +'\',\'Profile\');insertHtml(this.href); this.blur(); return false;">';					
 				data += '<img style=" background-color:#FFFFFF; border:0px;max-width:250px" src="' + displayImageObject + '" />'; 
@@ -185,7 +186,7 @@ Handlebars.registerHelper('eachNeewsFeed', function(property) {
 			data += '<div class="row">';
 			data += '<div class="col-xs-12 text-left">';
 			
-			data += '<a class="objectName" href=\'';
+			data += '<a data-ajax="true" class="objectName" href=\'';
 			data += 'to_attrDetail.html';
 			data += '\' onclick="setPath(\'home\');setAttrId(\''+ property[i].Object.Id +'\',\''+ property[i].Object.Name +'\',\''+ displayImageObject +'\',\''+ coverImageObject +'\',\'\');insertHtml(this.href); this.blur(); return false;">';
 			data += '<img style=" background-color:#FFFFFF; border:0px;max-width:250px" src="' + displayImageObject + '" />';

@@ -9,7 +9,7 @@
 
         <div class="row">
             <div data-role="navbar" class="ui-navbar">
-                <ul class="ui-grid-b ui-tabs-nav"><!--  ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all -->
+                <ul class="ui-grid-b ui-tabs-nav">
                     <li id="CommonContacts" class="ctrlSeg ui-block-a">
                         <span class="ui-btn firstSeg">En común</span></li>
                     <li id="AllContacts" class="ctrlSeg ui-block-b"">
@@ -22,41 +22,41 @@
              <ul id="MyContactsDiv" class="ui-listview" data-role="listview" data-scroll="true" data-filter="true" data-filter-placeholder="Buscar">
                 {{#each this}}
                 <li>
-                    <a href="to_attrDetail.html" data-ajax="true" onclick="setPath('to_ContactLists');setAttrId('{{Id}}', '{{Name}}', '{{DisplayImage.Thumbnail}}', '{{CoverImage.Image}}', 'Profile' ); insertHtml(this.href); this.blur(); return false;" style="background-color: #FFFFFF;">
-                        <img class="img-responsive img-circle img-responsive-rounded" style="width:60px;height:60px;" src="{{DisplayImage.Thumbnail}}">
+                    <a href="to_attrDetail.html" data-ajax="true" onclick="setPath('to_ContactLists');setAttrId('{{Id}}', '{{Name}}', '{{DisplayImage.Thumbnail}}', '{{CoverImage.Image}}', 'Profile' ); insertHtml(this.href); this.blur(); return false;" class="bckGrndClrWht">
+                        <img class="img-responsive img-circle img-responsive-rounded thmbnlSize" src="{{DisplayImage.Thumbnail}}">
                         <p><h3 class="ui-li-heading text-muted">{{Name}}</h3></p>
                     </a>
                     <hr>
                 </li>
                 {{/each}}
-                <li class="ui-li-static ui-body-inherit ui-last-child ui-screen-hidden" id="no-results" style="background-color: rgb(239, 238, 243); display: list-item;">
-                    <p style="background-color: #efeef3;">
+                <li class="ui-li-static ui-body-inherit ui-last-child ui-screen-hidden noResults" id="no-results">
+                    <p>
                         <h4 class="ui-li-heading text-muted text-center">No existen coincidencias con tu búsqueda.</h4>
                     </p>
-                </li>	
-            </ul>    
+                </li>
+            </ul>
         </div>
-        </script> 
-        <script id="obj-list-point2" type="text/template">	
+        </script>
+        <script id="obj-list-point2" type="text/template">
         <div id="commonContactsContainer">
              <ul id="CommonContactsDiv" class="ui-listview " data-role="listview" data-scroll="true" data-filter="true" data-filter-placeholder="Buscar">
                 {{#each this}}
                 <li>
-                    <a href="to_attrDetail.html" data-ajax="true" onclick="setPath('to_ContactLists');setAttrId('{{Id}}', '{{Name}}', '{{DisplayImage.Thumbnail}}', '{{CoverImage.Image}}', 'Profile' ); insertHtml(this.href); this.blur(); return false;" style="background-color: #FFFFFF;">
-                        <img class="img-responsive img-circle img-responsive-rounded" style="width:60px;height:60px;" src="{{DisplayImage.Thumbnail}}">
+                    <a href="to_attrDetail.html" data-ajax="true" onclick="setPath('to_ContactLists');setAttrId('{{Id}}', '{{Name}}', '{{DisplayImage.Thumbnail}}', '{{CoverImage.Image}}', 'Profile' ); insertHtml(this.href); this.blur(); return false;" class="bckGrndClrWht">
+                        <img class="img-responsive img-circle img-responsive-rounded thmbnlSize" src="{{DisplayImage.Thumbnail}}">
                         <p><h3 class="ui-li-heading text-muted">{{Name}}</h3></p>
                     </a>
                     <hr>
                 </li>
                 {{/each}}
-                <li class="ui-li-static ui-body-inherit ui-last-child ui-screen-hidden" id="no-results2" style="background-color: rgb(239, 238, 243); display: list-item;">
-                    <p style="background-color: #efeef3;">
+                <li class="ui-li-static ui-body-inherit ui-last-child ui-screen-hidden noResults" id="no-results2">
+                    <p>
                         <h4 class="ui-li-heading text-muted text-center">No existen coincidencias con tu búsqueda.</h4>
                     </p>
                 </li>
-            </ul>  
+            </ul>
         </div>
-    </div><!-- de tabs -->
+    </div><!-- de data-role=tabs -->
     </script>
 </div>
 <script src="js/to_ContactLists.js"></script>

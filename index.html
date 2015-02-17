@@ -3,169 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Login</title>
-
 <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="lib/bootstrap/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="css/index.css">
 <script src="lib/jquery/js/jquery-1.11.0.js"></script>
 <script src="lib/bootstrap/js/bootstrap.min.js"></script>
 <script src="lib/jquery/js/jquery.mobile.custom.js"></script>
-
-<style>
-
-html, body {
-	height:80%;
-	margin:0;
-	padding:0;
-	background-color: #EF8C4B;
-	/*background: url(img/background1.jpg) no-repeat center center fixed;
-	background-image: url("img/background1.jpg");
-	background-repeat:no-repeat;
-	background-attachment:fixed;
-	background-size: contain;
-	-o-background-size: contain;
-	-moz-background-size: contain;
-	-webkit-background-size: contain;*/
-	
-}
-
-.carousel, .item, .active {
-	height:90%;
-}
-.carousel-inner {
-	height:90%;
-}
-.carousel {
-	margin-bottom: 60px;
-}
-.carousel-caption {
-	z-index: 10;
-}
-.carousel .item {
-	background-color: #000;
-}
-
-.carousel .carousel-inner .bg {
-    background-repeat:no-repeat;
-    background-size:cover;
-}
-.carousel .carousel-inner .spribo {
-    background-image:url(img/spribo.png);
-    background-position: center top;
-	background-color: #EF8C4B;
-}
-.carousel .carousel-inner .bg1 {
-    background-image:url(img/h1.jpg);
-    background-position: center top;
-}
-.carousel .carousel-inner .bg2 {
-    background-image:url(img/h2.jpg);
-    background-position: center center;
-}
-.carousel .carousel-inner .bg3 {
-    background-image:url(img/h3.jpg);
-    background-position: center bottom;
-}
-
-/***********************/
-.row {
-    margin-left: 0px;
-    margin-right: 0px;
-	margin-top: -40px;
-}
-
-/*icons left align*/
-.left-inner-addon {
-    position: relative;
-}
-.left-inner-addon input {
-	background-color:transparent;
-    padding-left: 30px;
-}
-.left-inner-addon i {
-    position: absolute;
-    padding: 10px 12px;
-    pointer-events: none;
-}
-
-.right-inner-addon {
-    position: relative;
-}
-.right-inner-addon input {
-    padding-right: 30px;    
-}
-.right-inner-addon i {
-    position: absolute;
-    right: 0px;
-    padding: 10px 12px;
-    pointer-events: none;
-	border-radius: none;
-}
-
-/*remove borders*/
-.simplebox {
-  outline: none;
-  border: none !important;
-  -webkit-box-shadow: none !important;
-  -moz-box-shadow: none !important;
-  box-shadow: none !important;
-  border-bottom: 1px solid #fff !important;
-  border-radius: none !important;
-}
-/*change the color of placeholder*/
-.form-control::-moz-placeholder {
-  color: #fff;
-}
-.form-control:-ms-input-placeholder {
-  color: #fff;
-}
-.form-control::-webkit-input-placeholder {
-  color: #fff;
-}
-/*white icon*/
-.white-icon {
-    color: white;
-}
-
-/*center login button*/
-.form-actions {
-    margin: 0;
-    background-color: transparent;
-    text-align: center;
-}
-/*change color button*/
-.btn-warning { background-color: #EE9363; border-color:transparent; border-radius:1px; text-shadow: none !important;} //button
-
-.btn-warning:hover { background-color: #ED9632; } //hover
-
-.form-control{
-	box-shadow: none !important;
-	/*border: none !important;*/
-    border-radius: 0px !important;
-}
-.form-control::-moz-input {
-	box-shadow: none !important;	
-}
-.form-control:-ms-input {
-	box-shadow: none !important;
-}
-.form-control::-webkit-input {
-	box-shadow: none !important;
-}
-
-.form-control {
-	-webkit-border-radius: 0px !important;
-	-moz-border-radius: 0px !important;
-	-o-border-radius: 0px !important;
-	border-radius: 0px !important;
-	-webkit-box-shadow: none !important;
-	-moz-box-shadow: none !important;
-	-o-box-shadow: none !important;
-	box-shadow: none !important;
-	
-}
-
-
-</style>
+<script src="js/index.js"></script>
 </head>
 <body>
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -174,13 +18,11 @@ html, body {
 	<li data-target="#myCarousel" data-slide-to="1"></li>
 	<li data-target="#myCarousel" data-slide-to="2"></li>
 	</ol>-->
-	
 	<div class="carousel-inner">
 		<div class="item bg spribo active">
 			<div class="container">
 				<div class="carousel-caption">
 					<!--<h1>Tenemos una nueva versión</h1>-->
-					
 				</div>
 			</div>
 		</div>
@@ -194,7 +36,6 @@ html, body {
 				</div>
 			</div>
 		</div>
-		
 		<div class="item bg bg2">
 			<div class="container">
 				<div class="carousel-caption">
@@ -204,7 +45,6 @@ html, body {
 				</div>
 			</div>
 		</div>
-		
 		<div class="item bg bg3">
 			<div class="container">
 				<div class="carousel-caption">
@@ -216,39 +56,32 @@ html, body {
 		</div>
 	</div>
 </div>
-
 <div class="row">
 	<div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
 	<span id="error"> </span>
-    <form id="authForm" role="form" onSubmit="return handleClick()" >
+    <form id="authForm" role="form" onSubmit="return handleClick()" autocomplete="off">
 		<p><div class="left-inner-addon ">
-			<i class="glyphicon glyphicon-user white-icon" style="font-color:red;"></i>
+			<i class="glyphicon glyphicon-user white-icon"></i>
 			<input type="text" class="form-control simplebox" id="userId" placeholder="Cuenta de usuario"/>
 		</div></p>
 	
 		<div class="left-inner-addon ">
 			<i class="glyphicon glyphicon-lock white-icon"></i>
 			<input type="password" class="form-control simplebox" id="psswd" placeholder="Contraseña" />
-		</div>	</p>
-	
+		</div>	
+		<p></p>
 		<br>
 		<div class="form-actions">
-                <input type="submit" class="btn btn-default btn-warning" value="Ingresar" id="submitButton" >
-		<p style="font-size: 85%; color:#eee;">
-		¿Olvidaste tu contraseña?
-		</p>
+            <input type="submit" class="btn btn-default btn-warning" value="Ingresar" id="submitButton" >
+			<p class="txtPassword">
+			¿Olvidaste tu contraseña?
+			</p>
 		</div>
 	</form>
-	
-	
 	</div>
 </div>
-    
-<script src="js/index.js"></script>
-    
 </body>
 </html>         
-
 <script>
 $(document).ready(function() {  
 	$('.carousel').carousel({  
