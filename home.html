@@ -257,7 +257,7 @@ function getAttrData(attr, isBack) {
 
 function insertHtml(targetUrl) {
 console.log(targetUrl +"-->");
-	alert('url a ejecutar: ' + targetUrl)
+	//alert('url a ejecutar: ' + targetUrl)
 	//ocultar siempre el icono de informacion. En el html que se carga se muestra cuando aplica(instance_detail.html)
 	$("#action-icon-right").addClass("hide-action-icon-right");
 	
@@ -285,8 +285,9 @@ console.log(targetUrl +"-->");
 	 
 	request.done(function( msg ) {
 		console.log('success!!');
-		alert('Msg: '  + msg);
+		//alert('Msg: '  + msg);
 		$("#maincontent").html(msg);
+		//alert(document.getElementById('maincontent').innerHTML);
 		$("#maincontent").removeClass("displayListview");
 	});
 

@@ -1,3 +1,4 @@
+alert('Cargando newsFeedCommunity.js');
 var urlComm = window.localStorage["urlComm"];
 
 if (urlComm == undefined) {

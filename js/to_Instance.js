@@ -1,3 +1,4 @@
+alert('Cargando to_Instance.js');
 var objectId=window.localStorage["objectId"];
 var typeObjName=window.localStorage["objectName"];
 var urlComm = window.localStorage["urlComm"];

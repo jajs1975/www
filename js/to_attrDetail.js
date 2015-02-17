@@ -1,3 +1,4 @@
+alert('Cargando to_attrDetail.js');
 var attrId=getAttrData("attrId", false);
 var attrName=getAttrData("attrName", false);
 var attrDisplayImage=getAttrData("attrDisplayImage", false);
@@ -14,6 +15,7 @@ if (urlComm == undefined) {
 
 var loadPage; 
 $('.page-title').html(attrName);
+alert('Titulo de detalle: ' + attrName);
 $('#subtitle').hide();
 $( '.ui-header .ui-title' ).css( "padding","0.7em 0" );
 
@@ -38,6 +40,7 @@ if (attrType!= undefined && attrType == 'Profile') {
 	}); 
 
 	function loadAllRest(responseJson){
+		alert('NewsFeedProfile: ' + responseJson);
 		$('.page-title').html(attrName);
 		var template = $('#newsFeedCommunityOT').html(); 
 		var compileResult = Handlebars.compile(template);
@@ -290,6 +293,7 @@ if (attrType!= undefined && attrType == 'Profile') {
 		return data;
 	});	
 } else {
+	
 	$.ajax({
 		type: 'GET',
 			  "url": "http://" + urlComm + ".spribo.qoslabs.com/spribo/api/storiesFor?objectId=" + attrId + "&total=100",
@@ -299,6 +303,7 @@ if (attrType!= undefined && attrType == 'Profile') {
 	}); 
 
 	function loadAllRest(responseJson){
+		alert('Ejecucion de ajax...' + responseJson)
 		$('.page-title').html(attrName);
 		var template = $('#newsFeedCommunityOT').html(); 
 		var compileResult = Handlebars.compile(template);
