@@ -1,25 +1,25 @@
 <style>
-	.center-search {
+	.center-search{
 		text-align: center;
 	}
 </style>
 <script id="obj-list-point" type="text/template">
     <ul class="ui-listview" data-role="listview" data-scroll="true" data-filter="true" data-filter-placeholder="Buscar" id="to_Instances">
-    {{#each this}}
-        <li>
-            <a href="to_attrDetail.html" data-ajax="true" onclick="setPath('to_Instances');setAttrId('{{Id}}', '{{Name}}', '{{DisplayImage.Thumbnail}}', '{{DisplayImage.Image}}',''); insertHtml(this.href); this.blur(); return false;" class="bckGrndClrWht">
-                <img class="img-responsive img-circle img-responsive-rounded thmbnlSize" src="{{DisplayImage.Thumbnail}}">
-                <p><h3 class="ui-li-heading text-muted">{{Name}}</h3></p>
-            </a>
-            <hr>
-        </li>
-    {{/each}}
-        <li class="ui-li-static ui-body-inherit ui-last-child ui-screen-hidden noResults" id="no-results">
-            <p>
-                <h4 class="ui-li-heading text-muted text-center">No existen coincidencias con tu búsqueda.</h4>
-            </p>
-        </li>
-    </ul>
-</script>
+        {{#each this}}
+            <li>
+                <a href="to_attrDetail.html" data-ajax="true" onclick="setPath('to_Instances');setAttrId('{{Id}}', '{{Name}}', '{{DisplayImage.Thumbnail}}', '{{DisplayImage.Image}}',''); insertHtml(this.href); this.blur(); return false;" style="background-color: #FFFFFF;">
+                    <img class="img-responsive img-circle img-responsive-rounded" style="width:60px;height:60px;" src="{{DisplayImage.Thumbnail}}">
+					<p><h3 class="ui-li-heading text-muted">{{Name}}</h3></p>
+                </a>
+                <hr>
+            </li>
+		{{/each}}
+			<li class="ui-li-static ui-body-inherit ui-last-child ui-screen-hidden" id="no-results" style="background-color: rgb(239, 238, 243); display: list-item;">
+				<p style="background-color: #efeef3;">
+					<h4 class="ui-li-heading text-muted text-center">No existen coincidencias con tu búsqueda.</h4>
+				</p>
+			</li>
+    </ul>    
+</script>       
 
 <script src="js/to_Instance.js"></script>

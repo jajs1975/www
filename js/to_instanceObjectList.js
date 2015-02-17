@@ -10,15 +10,15 @@ if (urlComm == undefined) {
 }
 $.ajax({
     type: 'GET',
-    url: "http://" + urlComm + ".spribo.qoslabs.com/spribo/api/associatedWith?objectId=" + objectId + "&playerConstraintId=" + playerConstraintId,
-    dataType: "json"
-    }).done(function(response) {
+          "url": "http://" + urlComm + ".spribo.qoslabs.com/spribo/api/associatedWith?objectId="+objectId+"&playerConstraintId=" + playerConstraintId,
+          "dataType": "json"
+    }).done(function(response){
         loadAllRest(response);
-});
+});  
 
 //Recarga la lista de jquery con las instancias creadas
-function loadAllRest( responseJson) {
-    var template = $('#obj-list-instance').html();
+function loadAllRest( responseJson){
+    var template = $('#obj-list-instance').html(); 
     var compileResult = Handlebars.compile(template);
     var result = compileResult(responseJson);
     $("#maincontent").addClass("displayListview");
@@ -38,7 +38,8 @@ function loadAllRest( responseJson) {
     });
     $('#to_instanceObjectList').listview().listview('refresh');
     
-}
+} 
+
 
 Handlebars.registerHelper('getHandleType', function() {
 	var type = getInstData('objInstanceType', false);

@@ -88,10 +88,11 @@
 }
 </style>
 
+
     <script id="obj-getInstanceInfo" type="text/template">
-        <div id="to_instanceInfo" class="container bckGrndClrWht">
+        <div id="to_instanceInfo" class="container" style="background-color:#FFF">
             <div class="row">
-                <div class="col-xs-12 col-sm-8 col-sm-offset-2 bckGrndClrWht">
+                <div class="col-xs-12 col-sm-8 col-sm-offset-2" style="background-color:#FFFFFF">	
                     <br>
                     <br>
                     
@@ -111,12 +112,12 @@
                                 <div class="col-xs-2">
                                     <div class="col-xs-offset-6">
                                         <a href="to_ContactLists.html" onclick="setPath('to_InstanceInfo');setListType('Common');insertHtml(this.href);this.blur(); return false;">
-                                        <img class="arrowSize" src="img/arrow.png"></img>
+                                        <img style="height:26px; top:22px; width:35px" src="img/arrow.png"></img>
                                         </a>
                                     </div>
                                 </div>
                             </div>
-                            <hr class="allWidth">
+                            <hr width="100%">
                         </div>
                     </div>
                     <div class="row" id="contactsProp" onclick="setPath('to_InstanceInfo');setListType('All'); insertHtml('to_ContactLists.html');this.blur(); return false;">
@@ -126,18 +127,21 @@
                         <div class="col-xs-3">
                             <div class="col-xs-offset-8">
                                 <a href="to_ContactLists.html" onclick="setPath('to_InstanceInfo');setListType('All');insertHtml(this.href);this.blur(); return false;">
-                                    <span class="glyphicon glyphicon-chevron-right chevronClr"></span>
+                                    <span style="color:#F48341;" class="glyphicon glyphicon-chevron-right "></span>
                                 </a>
                             </div>
                         </div>
                         <br>
-                        <hr class="allWidth">
+                        <hr width="100%">
                     </div>
                     
+
                     {{#eachM this}}
                     {{/eachM}}
                 </div>
             </div>
+
+
 
         </div>
     </script>
@@ -148,7 +152,7 @@
 <div class="row">
 	<div class="col-xs-12">
 		<p class="text-center">
-			<img id="gifLoad" class="thmbnlSize" src="img/cargando_logo.gif" />
+			<img id="gifLoad" style="width:60px;height:60px;" src="img/cargando_logo.gif" />
 		</p>
 	</div>
 </div>

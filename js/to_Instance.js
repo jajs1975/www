@@ -1,4 +1,3 @@
-alert('Cargando to_Instance.js');
 var objectId=window.localStorage["objectId"];
 var typeObjName=window.localStorage["objectName"];
 var urlComm = window.localStorage["urlComm"];
@@ -12,11 +11,11 @@ $.ajax({
     type: 'GET',
           "url": "http://" + urlComm + ".spribo.qoslabs.com/spribo/api/instancesOf?objectId=" + objectId,
           "dataType": "json"
-    }).done(function(response) {
+    }).done(function(response){
         loadAllRest(response);
 });  
 //Recarga la lista de jquery con las instancias creadas
-function loadAllRest( responseJson) {
+function loadAllRest( responseJson){
     var template = $('#obj-list-point').html(); 
     var compileResult = Handlebars.compile(template);
     var result = compileResult(responseJson);
@@ -33,3 +32,4 @@ function loadAllRest( responseJson) {
     });
     $('#to_Instances').listview().listview('refresh');
 } 
+

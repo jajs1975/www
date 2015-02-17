@@ -1,4 +1,3 @@
-alert('Cargando to_UserInstance.js');
 var objectId=window.localStorage["userId"];
 var Authorization=window.localStorage["Authorization"];
 var typeObjName=window.localStorage["commName"];
@@ -10,24 +9,25 @@ if (urlComm == undefined) {
 }
 $.ajax({
     type: 'GET',
-    url: "http://" + urlComm + ".spribo.qoslabs.com/spribo/api/contacts?spriboId="+objectId+"&authorizationToken=" + Authorization,
-    dataType: "json"
-}).done(function(response) {
-    loadAllRest(response);
-});
+         
+          "url": "http://" + urlComm + ".spribo.qoslabs.com/spribo/api/contacts?spriboId="+objectId+"&authorizationToken=" + Authorization,
+          "dataType": "json"
+    }).done(function(response){
+        loadAllRest(response);
+});  
 //Recarga la lista de jquery con las instancias creadas
-function loadAllRest( responseJson) {
-    var template = $('#obj-list-point').html();
+function loadAllRest( responseJson){
+    var template = $('#obj-list-point').html(); 
     var compileResult = Handlebars.compile(template);
     var result = compileResult(responseJson);
     $("#maincontent").addClass("displayListview");
     $('#maincontent').html(result);
 	$('.page-title').html(typeObjName);
 	var nodo = $('#subtitle');
-	if ($(nodo).is(":visible")) {
+	if ($(nodo).is(":visible")){
 		$(nodo).hide();
 		$( '.ui-header .ui-title' ).css( "padding","0.7em 0" );
-	}
+	}	
     //here already exists #to_Instances
     $("#to_UserInstances").on( "filterablefilter", function( event, ui ) {
         if ($(this).children(':visible').not('#no-results').length === 0) {
@@ -37,4 +37,4 @@ function loadAllRest( responseJson) {
         }
     });
     $('#to_UserInstances').listview().listview('refresh');
-}
+} 
