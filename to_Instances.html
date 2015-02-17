@@ -8,7 +8,7 @@
     {{#each this}}
         <li>
             <a href="to_attrDetail.html" data-ajax="true" onclick="setPath('to_Instances');setAttrId('{{Id}}', '{{Name}}', '{{DisplayImage.Thumbnail}}', '{{DisplayImage.Image}}',''); insertHtml(this.href); this.blur(); return false;" class="bckGrndClrWht">
-                <img class="img-responsive img-circle img-responsive-rounded thmbnlSize" src="{{DisplayImage.Thumbnail}}">
+                <img class="img-responsive img-circle img-responsive-rounded thmbnlSize" src="{{DisplayImage.Thumbnail}}"/>
                 <p><h3 class="ui-li-heading text-muted">{{Name}}</h3></p>
             </a>
             <hr>
@@ -21,5 +21,4 @@
         </li>
     </ul>
 </script>
-
 <script src="js/to_Instance.js"></script>

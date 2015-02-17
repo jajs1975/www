@@ -1,3 +1,4 @@
+$.ajaxSetup({ cache: false });
 alert('Cargando to_attrDetail.js');
 var attrId=getAttrData("attrId", false);
 var attrName=getAttrData("attrName", false);

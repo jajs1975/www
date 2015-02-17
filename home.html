@@ -276,10 +276,11 @@ console.log(targetUrl +"-->");
     	$('#icon-barS').attr("data-icon","carat-l");
     } 
 	$( "#myPanel" ).panel( "close" );
-	$.ajaxSetup({ cache: false });
+	
 
 	var request = $.ajax({
 	  url: targetUrl,
+	  cache: false,
 	  type: "GET",
 	  dataType: "html",
 	});
@@ -290,6 +291,7 @@ console.log(targetUrl +"-->");
 		$("#maincontent").html(msg);
 		alert(document.getElementById('maincontent').innerHTML);
 		$("#maincontent").removeClass("displayListview");
+		$("#maincontent").load();
 	});
 
 	request.fail(function( jqXHR, textStatus ) {
