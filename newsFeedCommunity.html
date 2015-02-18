@@ -1,3 +1,10 @@
+<script>
+	var strPath = location.href.lastIndexOf("/");
+	var urlRed = location.href.substring(0,strPath);
+	var urlScript = urlRed + "/js/newsFeedCommunity.js";
+	document.body.appendChild(document.createElement('script')).src = urlScript;
+
+</script>
 <div id="newsFeedCommunity" class="container"> <!--style="background-color:#FFF"-->
 	<script>
 		function showElement(){
@@ -11,6 +18,6 @@
 		{{#eachNeewsFeed this}}
 		{{/eachNeewsFeed}}
 	</script>
-	<script src="js/newsFeedCommunity.js"></script>
+	<!--script src="js/newsFeedCommunity.js"></script-->
 
 </div>

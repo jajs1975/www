@@ -44,11 +44,9 @@
     /* ---------------------------------- Local Functions ---------------------------------- */
 		//var app = document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1;
 		//if (app) {  // PhoneGap application
-		 alert("UserAgentGeorge:"+navigator.userAgent);
 		 if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|IEMobile)/)) {
-			 alert("entra a onDeviceReady....Local-0");
 			document.addEventListener('deviceready', function () {	
-			alert("entra a onDeviceReady....Local-1");
+			//alert("entra a onDeviceReady....Local");
 			FastClick.attach(document.body);
 			
 			document.addEventListener("offline", function(){ alert("Esta aplicacion requiere contar con conexion a Internet."); }, false);
@@ -77,7 +75,7 @@
 		
 	  }else {
 		  //WebPage application-->do nothing
-		  alert("entra a WebPage application1:"+document.URL);
+		  //alert("entra a WebPage application1:"+document.URL);
 		  //jAlert("WebPage application--Esta aplicacion requiere contar con conexion a Internet.","Mensaje Spribo");
 	  }		
     /* --------------------------------- Authentication Managment --------------------------- */

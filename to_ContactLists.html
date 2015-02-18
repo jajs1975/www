@@ -3,6 +3,13 @@
 		text-align: center;
 	}
 </style>
+<script>
+	var strPath = location.href.lastIndexOf("/");
+	var urlRed = location.href.substring(0,strPath);
+	var urlScript = urlRed + "/js/to_ContactLists.js";
+	document.body.appendChild(document.createElement('script')).src = urlScript;
+
+</script>
 <div id="to_ContactLists">
     <script id="obj-list-point1" type="text/template">
     <div data-role="tabs" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
@@ -59,4 +66,4 @@
     </div><!-- de data-role=tabs -->
     </script>
 </div>
-<script src="js/to_ContactLists.js"></script>
+<!--script src="js/to_ContactLists.js"></script-->

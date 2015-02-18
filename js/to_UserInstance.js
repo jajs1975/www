@@ -1,4 +1,3 @@
-alert('Cargando to_UserInstance.js');
 var objectId=window.localStorage["userId"];
 var Authorization=window.localStorage["Authorization"];
 var typeObjName=window.localStorage["commName"];

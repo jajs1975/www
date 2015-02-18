@@ -1,3 +1,10 @@
+<script>
+	var strPath = location.href.lastIndexOf("/");
+	var urlRed = location.href.substring(0,strPath);
+	var urlScript = urlRed + "/js/vp_display.js";
+	document.body.appendChild(document.createElement('script')).src = urlScript;
+
+</script>
 <div id="instanceObjectList"> 
 	<div id="vp_display" class="row" style="background-color:#FFFFFF">
 		<br>
@@ -8,4 +15,4 @@
 		<div class="col-xs-1"></div>
 	</div>
 </div>	
-<script src="js/vp_display.js"> </script>
+<!--script src="js/vp_display.js"> </script-->

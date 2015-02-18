@@ -1,4 +1,3 @@
-alert('to_ContactList.js');
 //Perfil del que se obtienen los contactos
 var objInstanceId=getAttrData('attrId', false);//window.localStorage["objInstanceId"];
 //Token del usuario en sesion
