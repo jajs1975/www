@@ -209,7 +209,9 @@ Handlebars.registerHelper('eachM', function(property) {
         if (property[i].Type == 'string' || property[i].Type == 'date' || property[i].Type == 'boolean' 
 					|| property[i].Type == 'integer' || property[i].Type == 'float' || property[i].Type == 'url' || 
 					property[i].Type == 'email') {
-            data += '<div class="row" onclick="setPath(\'to_InstanceInfo\');setPropId(\'' + property[i].Id + '\', \'\',\'' + property[i].Type + '\'); insertHtml(\'vp_display.html\');this.blur(); return false;">';
+			var strPath = location.href.lastIndexOf("/");
+			var urlRed = location.href.substring(0,strPath);
+            data += '<div class="row" onclick="setPath(\'to_InstanceInfo\');setPropId(\'' + property[i].Id + '\', \'\',\'' + property[i].Type + '\'); insertHtml(\'' + urlRed + '/vp_display.html\');this.blur(); return false;">';
             data = data + '<div class="col-xs-9" >';
             data = data + '<span class="font-detail">' + property[i].Name +'</span>';
             data = data + '</div>';

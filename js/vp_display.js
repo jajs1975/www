@@ -13,7 +13,7 @@ $.ajax({
           "dataType": "json"
     }).done(function(response){
 	var  value = "";
-	alert('respuesta: ' + JSON.stringify(response));
+	//alert('respuesta: ' + JSON.stringify(response));
 	 if(response.Values){
 		for(var i=0; i<response.Values.length ; i++){
 			value+= response.Values[i];
@@ -30,7 +30,7 @@ $.ajax({
 		}
 	}*/
 		$('#propValue').html(value);
-		alert('Id del propValue: ' + document.getElementById('propValue').innerHTML + 'Id del subtitle: ' + document.getElementById('subtitle').innerHTML);
+		//alert('Id del propValue: ' + document.getElementById('propValue').innerHTML + 'Id del subtitle: ' + document.getElementById('subtitle').innerHTML);
         $('#subtitle').html(response.Name);
 		//alert();
 }); 
