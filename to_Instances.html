@@ -1,7 +1,8 @@
-<script src="js/to_Instance.js"></script>
 <script>
- alert("En to_Instance Hola");
+	var strPath = location.href.lastIndexOf("/");
+	var urlRed = location.href.substring(0,strPath);	
 </script>
+<script src=""+urlRed+"/js/to_Instance.js"></script>
 <style>
 	.center-search {
 		text-align: center;
