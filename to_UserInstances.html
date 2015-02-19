@@ -7,7 +7,13 @@
 	var strPath = location.href.lastIndexOf("/");
 	var urlRed = location.href.substring(0,strPath);
 	var urlScript = urlRed + "/js/to_UserInstance.js";
-	document.body.appendChild(document.createElement('script')).src = urlScript;
+	if(document.getElementById('to_UserInstancejs')) {
+		var element = document.getElementById('to_UserInstancejs');
+		element.parentNode.removeChild(element);
+	}
+	var element = document.createElement('script');
+	element.id="to_UserInstancejs";
+	document.body.appendChild(element).src = urlScript;
 
 </script>
 <div id="to_userInstance">

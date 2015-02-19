@@ -291,3 +291,9 @@ function getTotalContacts() {
             totalContacts = response.length;
 	});
 }
+
+function setInsertHtmlPath(html) {
+	var strPath = location.href.lastIndexOf("/");
+	var urlRed = location.href.substring(0,strPath);
+	insertHtml(urlRed + '/' + html);
+}

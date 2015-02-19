@@ -2,7 +2,13 @@
 	var strPath = location.href.lastIndexOf("/");
 	var urlRed = location.href.substring(0,strPath);
 	var urlScript = urlRed + "/js/to_attrDetail.js";
-	document.body.appendChild(document.createElement('script')).src = urlScript;
+	if(document.getElementById('to_attrDetailjs')) {
+		var element = document.getElementById('to_attrDetailjs');
+		element.parentNode.removeChild(element);
+	}
+	var element = document.createElement('script');
+	element.id="to_attrDetailjs";
+	document.body.appendChild(element).src = urlScript;
 
 </script>
 <div id="to_attrDetail">

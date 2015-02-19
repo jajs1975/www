@@ -91,8 +91,13 @@
 	var strPath = location.href.lastIndexOf("/");
 	var urlRed = location.href.substring(0,strPath);
 	var urlScript = urlRed + "/js/to_InstanceInfo.js";
-	document.body.appendChild(document.createElement('script')).src = urlScript;
-
+	if(document.getElementById('to_InstanceInfojs')) {
+		var element = document.getElementById('to_InstanceInfojs');
+		element.parentNode.removeChild(element);
+	}
+	var element = document.createElement('script');
+	element.id="to_InstanceInfojs";
+	document.body.appendChild(element).src = urlScript;
 </script>
     <script id="obj-getInstanceInfo" type="text/template">
         <div id="to_instanceInfo" class="container bckGrndClrWht">
@@ -125,7 +130,7 @@
                             <hr class="allWidth">
                         </div>
                     </div>
-                    <div class="row" id="contactsProp" onclick="setPath('to_InstanceInfo');setListType('All'); insertHtml('to_ContactLists.html');this.blur(); return false;">
+                    <div class="row" id="contactsProp" onclick="setPath('to_InstanceInfo');setListType('All'); setInsertHtmlPath('to_ContactLists.html');this.blur(); return false;">
                         <div class="col-xs-9" >
                             <span class="font-detail" id="totalContacts">contactos</span>
                         </div>
