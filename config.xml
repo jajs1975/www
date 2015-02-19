@@ -54,7 +54,11 @@
     <icon gap:platform="ios" height="144" src="res/icon/ios/icon-72-2x.png" width="144" />
     <icon gap:platform="webos" src="res/icon/webos/icon-64.png" />
     <icon gap:platform="winphone" src="res/icon/windows-phone/icon-48.png" />
-    <icon gap:platform="winphone" gap:role="background" src="res/icon/windows-phone/icon-173.png" />
+    <icon gap:platform="winphone" gap:role="background" src="res/icon/windows-phone/icon-173-tile.png" />
+	<icon gap:platform="winphone" gap:qualifier="ldpi" src="res/icon/windows-phone/icon-36-ldpi.png" />
+    <icon gap:platform="winphone" gap:qualifier="mdpi" src="res/icon/windows-phone/icon-48-mdpi.png" />
+    <icon gap:platform="winphone" gap:qualifier="hdpi" src="res/icon/windows-phone/icon-72-hdpi.png" />
+    <icon gap:platform="winphone" gap:qualifier="xhdpi" src="res/icon/windows-phone/icon-96-xhdpi.png" />
 	<gap:splash src="res/splash.png" />
     <gap:splash gap:platform="android" gap:qualifier="port-ldpi" src="res/screen/android/screen-ldpi-portrait.png" />
     <gap:splash gap:platform="android" gap:qualifier="port-mdpi" src="res/screen/android/screen-mdpi-portrait.png" />
@@ -66,7 +70,10 @@
     <gap:splash gap:platform="ios" height="1136" src="res/screen/ios/screen-iphone-portrait-568h-2x.png" width="640" />
     <gap:splash gap:platform="ios" height="1024" src="res/screen/ios/screen-ipad-portrait.png" width="768" />
     <gap:splash gap:platform="ios" height="768" src="res/screen/ios/screen-ipad-landscape.png" width="1024" />
-    <gap:splash gap:platform="winphone" src="res/screen/windows-phone/screen-portrait.jpg" />   
+    <gap:splash gap:platform="winphone" gap:qualifier="port-ldpi" src="res/screen/windows-phone/screen-ldpi-portrait.png" />
+    <gap:splash gap:platform="winphone" gap:qualifier="port-mdpi" src="res/screen/windows-phone/screen-mdpi-portrait.png" />
+    <gap:splash gap:platform="winphone" gap:qualifier="port-hdpi" src="res/screen/windows-phone/screen-hdpi-portrait.png" />
+    <gap:splash gap:platform="winphone" gap:qualifier="port-xhdpi" src="res/screen/windows-phone/screen-xhdpi-portrait.png" />
     <access origin="*" />
     <feature name="App">
        <param name="android-package" value="org.apache.cordova.App" />
